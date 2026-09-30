@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=block">
+<title>ChromeOS ランチャー</title>
+<style>
+:root{--surf:rgba(232,241,255,.88);--surf2:rgba(255,255,255,.55);--txt:#1f1f1f;--sub:#444746;--pc:#c2e7ff;--onpc:#001d35;--hov:rgba(0,0,0,.08);--shelf:rgba(226,236,252,.92);--panel:#eef3fd;--tile:#dde6f5;--line:rgba(0,0,0,.14);--acc:#0b57d0;
+--w1:#b8f0ff;--w2:#5ab4ff;--w3:#1b3fe0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--surf:rgba(38,34,34,.92);--surf2:rgba(255,255,255,.08);--txt:#f0e4e0;--sub:#d8c2bc;--pc:#ffb59a;--onpc:#3a0b00;--hov:rgba(255,255,255,.1);--shelf:rgba(40,36,36,.92);--panel:#2b2524;--tile:#4a3c38;--line:rgba(255,255,255,.16);--acc:#ffb59a;--w1:#5a3a2a;--w2:#2a1c1c;--w3:#120c0c}}
+:root[data-theme="dark"]{--surf:rgba(38,34,34,.92);--surf2:rgba(255,255,255,.08);--txt:#f0e4e0;--sub:#d8c2bc;--pc:#ffb59a;--onpc:#3a0b00;--hov:rgba(255,255,255,.1);--shelf:rgba(40,36,36,.92);--panel:#2b2524;--tile:#4a3c38;--line:rgba(255,255,255,.16);--acc:#ffb59a;--w1:#5a3a2a;--w2:#2a1c1c;--w3:#120c0c}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:"Google Sans","Roboto","Noto Sans JP","Hiragino Sans",sans-serif;color:var(--txt);background:linear-gradient(160deg,var(--w1),var(--w2) 45%,var(--w3));user-select:none}
+svg.wp{position:fixed;inset:0;width:100%;height:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.ic{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;font-weight:700;font-size:20px;box-shadow:0 1px 3px rgba(0,0,0,.25);flex:none}
+.ic.s{width:32px;height:32px;font-size:15px}
+[hidden]{display:none!important}
+.ms{font-family:'Material Symbols Rounded';font-weight:400;font-style:normal;font-size:24px;line-height:1;display:inline-block;width:1em;overflow:hidden;white-space:nowrap;text-transform:none;direction:ltr;font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;font-feature-settings:'liga';vertical-align:middle}
+.ic{width:48px;height:48px;border-radius:34%;display:grid;place-items:center;box-shadow:none;font-size:0}
+.ic .ms{font-size:28px}.ic.s{width:34px;height:34px}.ic.s .ms{font-size:21px}
+.app0 .wb{padding:0;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.bar{display:flex;gap:8px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line);flex:none}
+.bar input:not([type]){flex:1;min-width:0;height:36px;border-radius:18px;border:1px solid var(--line);background:var(--tile);color:var(--txt);padding:0 14px;font:inherit;outline:0}
+.cb{height:36px;padding:0 14px;border-radius:18px;background:var(--pc);color:var(--onpc);display:inline-flex;align-items:center;gap:6px;font-size:13px;cursor:pointer}
+.cb.t{background:var(--tile);color:var(--txt)}.cb .ms{font-size:20px}
+.scroll{flex:1;overflow:auto;padding:12px;min-height:0}
+.ph{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:4px}
+.ph img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:pointer}
+.cam{flex:1;position:relative;background:#000;display:grid;place-items:center;min-height:0}
+.cam video{max-width:100%;max-height:100%;transition:opacity .1s}
+.shut{width:60px;height:60px;border-radius:50%;border:4px solid var(--txt);background:var(--pc)}
+.fr{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;cursor:pointer}
+.fr:hover,.fr.sel{background:var(--hov)}.fr .ms{color:var(--acc)}.fr small{color:var(--sub);margin-left:auto}
+.lb{position:absolute;inset:0;background:#111;color:#fff;display:flex;flex-direction:column;z-index:2}
+.lb img{flex:1;min-height:0;object-fit:contain;width:100%}
+.wxc{background:var(--tile);border-radius:20px;padding:14px}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+@keyframes winin{from{opacity:0;transform:scale(.92)}}
+@keyframes fall{to{transform:translateY(360px)}}
+@keyframes flt{50%{transform:translateY(-6px)}}
+@keyframes eq{50%{height:16px}}
+@keyframes fade{from{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+body[data-wp=sunset]{background:linear-gradient(160deg,#ffe0b2,#ff8a65 45%,#5c3a8a)}
+body[data-wp=forest]{background:linear-gradient(160deg,#c8f0d0,#4fae8a 45%,#0d3b3a)}
+body[data-wp=night]{background:linear-gradient(160deg,#5b6ee1,#2b3a67 45%,#0b1020)}
+#launcher,#qs{display:flex;flex-direction:column;visibility:hidden;opacity:0;transform:translateY(20px) scale(.94);transition:opacity .2s,transform .3s cubic-bezier(.2,0,0,1),visibility 0s .3s}
+#qs{display:block;transform-origin:bottom right}
+#launcher.open,#qs.open{visibility:visible;opacity:1;transform:none;transition:opacity .2s,transform .3s cubic-bezier(.2,0,0,1);animation:none}
+#launcher.stag .app{animation:up .34s both cubic-bezier(.2,0,0,1)}
+.pin,.app{transition:background .15s,transform .15s}.pin:active,.app:active{transform:scale(.92)}
+.pin .ic{transition:transform .15s}.pin:hover .ic{transform:translateY(-3px)}
+.tile{transition:background .2s,color .2s,transform .1s}.tile:active{transform:scale(.97)}
+.win{animation:winin .22s cubic-bezier(.2,0,0,1);transition:opacity .2s,transform .2s;resize:both;min-height:200px}
+.win.out{opacity:0;transform:scale(.92)}.win.min{opacity:0;transform:translateY(60vh) scale(.3)}
+#lock{display:flex;opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
+#lock.open{opacity:1;visibility:visible;transition:opacity .3s}
+.ph video{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:pointer}
+.lb{animation:fade .2s}.lb video{flex:1;min-height:0;width:100%}
+.eq{display:inline-flex;gap:2px;align-items:flex-end;height:18px}.eq i{width:4px;height:4px;background:var(--acc);border-radius:2px}
+.eq.on i{animation:eq .6s ease-in-out infinite}.eq i:nth-child(2){animation-delay:.15s}.eq i:nth-child(3){animation-delay:.3s}
+.pt{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.pt i{position:absolute;top:-20px;width:2px;height:16px;background:rgba(255,255,255,.5);animation:fall linear infinite}
+.pt.sn i{width:6px;height:6px;border-radius:50%;background:#fff}
+#welcome{position:fixed;inset:0;z-index:200;background:#f8fafd;color:#1f1f1f;padding:min(10vh,90px) min(8vw,120px);overflow:hidden;transition:opacity .5s,transform .5s,visibility 0s .5s}
+#welcome.gone{opacity:0;visibility:hidden;transform:scale(1.05)}
+#welcome h1{font-size:clamp(28px,4vw,42px);font-weight:400;margin-bottom:8px}
+#welcome>*{animation:up .7s both cubic-bezier(.2,0,0,1)}
+#welcome>:nth-child(2){animation-delay:.1s}#welcome>:nth-child(3){animation-delay:.2s}#welcome>:nth-child(4){animation-delay:.3s}
+.wchip{display:inline-flex;align-items:center;gap:8px;margin:36px 10px 0 0;padding:8px 16px;border:1px solid #dadce0;border-radius:20px;background:#fff;font-size:13px}
+#wstart{position:absolute;left:min(8vw,120px);bottom:min(8vh,70px);background:#0b57d0;color:#fff;padding:0 28px;height:40px;font-size:14px}
+.num{height:36px;border-radius:12px;border:1px solid var(--line);background:var(--tile);color:var(--txt);padding:0 8px;font:inherit;text-align:center;outline:0}
+.set{display:flex;flex:1;min-height:0}
+.snav{width:220px;flex:none;overflow:auto;padding:8px;border-right:1px solid var(--line)}
+.snav button{display:flex;gap:12px;align-items:center;width:100%;padding:10px 14px;border-radius:24px;text-align:left;font-size:14px;transition:background .2s,color .2s}
+.snav button:hover{background:var(--hov)}.snav button.on{background:var(--pc);color:var(--onpc)}
+.spg{padding:12px 28px}
+@media (max-width:640px){.set{flex-direction:column}.snav{width:auto;display:flex;border:0;padding:4px}.snav button{width:auto;padding:10px}.snav button span:last-child{display:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.disc{width:140px;height:140px;margin:6px auto 12px;border-radius:50%;background:conic-gradient(var(--pc),var(--tile),var(--pc),var(--tile),var(--pc));display:grid;place-items:center;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.disc .ms{font-size:64px;color:var(--acc)}.disc.spin{animation:spin 6s linear infinite}
+.tm{flex:1;overflow:auto;background:#1e1e1e;color:#d4d4d4;font:13px/1.6 monospace;padding:12px;user-select:text}
+.sh{border-collapse:collapse;font-size:13px}.sh td,.sh th{border:1px solid var(--line);padding:0;min-width:84px}.sh th{background:var(--tile);position:sticky;top:0;font-weight:400;padding:4px;z-index:1}
+.sh input{width:100%;border:0;background:transparent;color:var(--txt);padding:6px;font:inherit;outline:0}.sh input:focus{outline:2px solid var(--acc);outline-offset:-2px}
+#shelf{transition:transform .25s}body.ah #shelf{transform:translateY(calc(100% - 5px))}body.ah #shelf:hover{transform:none}
+body.na *{animation:none!important;transition:none!important}
+.snav button,.fr,.cb{transition:background .2s}
+/* shelf */
+#shelf{position:fixed;left:0;right:0;bottom:0;height:48px;background:var(--shelf);backdrop-filter:blur(20px);border-radius:24px 24px 0 0;display:flex;align-items:center;padding:0 8px;z-index:50;margin-bottom:env(safe-area-inset-bottom,0px)}
+#lbtn{width:34px;height:34px;border-radius:50%;background:var(--hov);display:grid;place-items:center}
+#lbtn i{width:14px;height:14px;border-radius:50%;background:var(--txt);display:block}
+#pins{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:6px}
+.pin{position:relative;width:40px;height:40px;border-radius:12px;display:grid;place-items:center}
+.pin:hover{background:var(--hov)}
+.pin.run::after{content:"";position:absolute;bottom:0;width:5px;height:5px;border-radius:50%;background:var(--txt)}
+#tray{margin-left:auto;display:flex;gap:8px;align-items:center}
+.pill{height:34px;padding:0 14px;border-radius:17px;background:var(--hov);font-size:14px;display:flex;align-items:center;gap:8px}
+.pill.on{background:var(--pc);color:var(--onpc)}
+/* launcher */
+#launcher{position:fixed;left:8px;bottom:56px;width:min(648px,calc(100% - 16px));height:min(688px,calc(100% - 72px));background:var(--surf);backdrop-filter:blur(30px);border-radius:24px;z-index:40;display:none;flex-direction:column;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3);transform-origin:bottom left}
+#launcher.open{display:flex;animation:pop .18s ease-out}
+@keyframes pop{from{opacity:0;transform:scale(.94) translateY(12px)}}
+@media (prefers-reduced-motion:reduce){#launcher.open{animation:none}}
+.sb{display:flex;align-items:center;gap:12px;padding:0 20px;height:56px;border-bottom:1px solid var(--line);flex:none}
+.sb input{flex:1;background:none;border:0;outline:0;font:inherit;font-size:15px;color:var(--txt)}
+.sb input::placeholder{color:var(--sub)}
+.gdots{display:flex;gap:2px}.gdots b{width:9px;height:9px;border-radius:50%}
+#body{flex:1;overflow:auto;padding:0 16px 16px}
+.sec{display:flex;justify-content:space-between;align-items:center;padding:16px 24px 8px;font-size:13px;color:var(--sub)}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.app{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 4px;border-radius:12px;font-size:12.5px;width:100%}
+.app:hover,.app:focus-visible{background:var(--hov)}
+.app span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px}
+#recent.hide{display:none}
+hr{border:0;border-top:1px solid var(--line);margin:8px 24px}
+.empty{padding:40px;text-align:center;color:var(--sub);font-size:14px}
+/* quick settings */
+#qs{position:fixed;right:8px;bottom:56px;width:min(360px,calc(100% - 16px));background:var(--panel);border-radius:28px;padding:16px;z-index:45;display:none;box-shadow:0 8px 32px rgba(0,0,0,.35)}
+#qs.open{display:block;animation:pop .18s ease-out}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{display:flex;align-items:center;gap:10px;padding:0 14px;min-height:64px;border-radius:32px;background:var(--tile);text-align:left;font-size:13.5px;line-height:1.25}
+.tile small{display:block;font-size:12px;opacity:.8}
+.tile.on{background:var(--pc);color:var(--onpc)}
+.tile.big{grid-column:span 1}
+.tile.sm{min-height:56px;border-radius:28px}
+.sl{display:flex;align-items:center;gap:12px;margin-top:14px}
+.sl .ico{width:34px;text-align:center;font-size:18px}
+.sl input{flex:1;-webkit-appearance:none;appearance:none;height:40px;border-radius:20px;background:linear-gradient(90deg,var(--pc) var(--v,50%),var(--tile) var(--v,50%));outline-offset:2px}
+.sl input::-webkit-slider-thumb{-webkit-appearance:none;width:0;height:0}
+.sl input::-moz-range-thumb{width:0;height:0;border:0}
+.qfoot{display:flex;align-items:center;gap:12px;margin-top:14px;font-size:13px}
+.rb{width:44px;height:36px;border-radius:18px;background:var(--tile);display:grid;place-items:center;font-size:16px}
+/* windows */
+.win{position:fixed;background:var(--panel);border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.4);z-index:20;display:flex;flex-direction:column;overflow:hidden;min-width:280px}
+.win.max{inset:0 0 48px 0!important;width:auto!important;height:auto!important;border-radius:0}
+.tb{height:40px;display:flex;align-items:center;gap:8px;padding:0 8px 0 12px;background:var(--tile);cursor:move;flex:none;font-size:14px}
+.tb .t{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.tb button{width:28px;height:28px;border-radius:50%}
+.tb button:hover{background:var(--hov)}
+.wb{flex:1;padding:20px;overflow:auto;font-size:14px;line-height:1.7;user-select:text}
+.btn{display:inline-block;margin-top:12px;padding:10px 20px;border-radius:20px;background:var(--acc);color:var(--panel);font-weight:600}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.sw{width:44px;height:26px;border-radius:13px;background:var(--tile);position:relative;border:2px solid var(--sub)}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:var(--sub);transition:.15s}
+.sw.on{background:var(--pc);border-color:var(--pc)}.sw.on::after{left:21px;background:var(--onpc)}
+#dim{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;z-index:90}
+#lock{position:fixed;inset:0;z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(160deg,var(--w2),var(--w3));color:#fff;cursor:pointer}
+#lock.open{display:flex}
+#lock b{font-size:72px;font-weight:400}
+#toast{position:fixed;left:50%;bottom:64px;transform:translateX(-50%);background:#303030;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;z-index:95;opacity:0;pointer-events:none;transition:.2s}
+#toast.show{opacity:1}
+@media (max-width:520px){.grid{grid-template-columns:repeat(4,1fr)}#pins .pin:nth-child(n+4){display:none}#dt{display:none}}
+</style>
+</head>
+<body>
+<svg class="wp" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M0 250C300 230 620 250 840 360S1120 600 1200 640V800H0Z" fill="#fff" opacity=".22"/><path d="M0 300C320 280 640 300 860 410S1130 640 1200 680V800H0Z" fill="#2a4bff" opacity=".28"/></svg>
+
+<div id="wins"></div>
+
+<section id="launcher" aria-label="ランチャー">
+  <div class="sb">
+    <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285f4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.6a4.8 4.8 0 0 1-2.1 3.1v2.6h3.4c2-1.8 3.1-4.500 3.100-7.500Z"/><path fill="#34a853" d="M12 22.500c2.800 0 5.200-.9 6.900-2.500l-3.400-2.600c-.9.600-2.100 1-3.500 1-2.700 0-5-1.800-5.800-4.300H2.700v2.700A10.500 10.500 0 0 0 12 22.500Z"/><path fill="#fbbc05" d="M6.200 14.100a6.300 6.300 0 0 1 0-4.100V7.300H2.700a10.500 10.500 0 0 0 0 9.400Z"/><path fill="#ea4335" d="M12 5.600c1.500 0 2.900.5 4 1.600l3-3A10.500 10.500 0 0 0 2.700 7.300L6.200 10c.8-2.500 3.100-4.400 5.800-4.400Z"/></svg>
+    <input id="q" placeholder="タブ、ファイル、アプリなどを検索..." autocomplete="off" aria-label="検索">
+    <span class="gdots"><b style="background:#4285f4"></b><b style="background:#ea4335;margin-top:8px"></b><b style="background:#fbbc05;margin-top:2px"></b></span>
+  </div>
+  <div id="body">
+    <div id="recent">
+      <div class="sec"><span>前回開いていたページを開く</span><button id="fold" aria-label="折りたたむ"><span class="ms">expand_less</span></button></div>
+      <div class="grid" id="rgrid"></div><hr>
+    </div>
+    <div class="grid" id="agrid"></div>
+  </div>
+</section>
+
+<section id="qs" aria-label="クイック設定">
+  <div class="tiles" id="tiles"></div>
+  <div class="sl"><span class="ico ms">volume_up</span><input type="range" id="vol" value="70" aria-label="音量"></div>
+  <div class="sl"><span class="ico ms">brightness_6</span><input type="range" id="bri" value="100" min="20" aria-label="明るさ"></div>
+  <div class="qfoot"><button class="rb" id="pwr" aria-label="ロック"><span class="ms">power_settings_new</span></button><span id="bat" style="flex:1;text-align:right">バッテリー 100%</span><button class="rb" id="gear" aria-label="設定"><span class="ms">settings</span></button></div>
+</section>
+
+<nav id="shelf">
+  <button id="lbtn" aria-label="ランチャー"><i></i></button>
+  <div id="pins"></div>
+  <div id="tray">
+    <button class="pill" id="dt"></button>
+    <button class="pill" id="tm"></button>
+  </div>
+</nav>
+<div id="welcome"><h1>ChromeOS Flex へようこそ</h1><p style="font-size:20px">高速。安全。簡単。</p><div><span class="wchip"><span class="ms" style="font-size:18px">language</span>日本語</span><span class="wchip"><span class="ms" style="font-size:18px">accessibility_new</span>ユーザー補助機能</span></div><svg viewBox="0 0 520 300" style="position:absolute;right:5vw;bottom:8vh;width:min(520px,55vw)" aria-hidden="true"><rect x="200" y="200" width="110" height="60" rx="30" fill="#f6d90a"/><g fill="none" stroke="#1a56db" stroke-width="2"><circle cx="255" cy="120" r="14"/><path d="M225 160q30-20 60 0v40q-30 22-60 0z"/><circle cx="90" cy="70" r="16"/><path d="M75 100h30l8 150H67z"/><circle cx="430" cy="80" r="14"/><path d="M410 110h40l6 150h-52z"/></g><circle cx="335" cy="150" r="14" fill="none" stroke="#999"/></svg><button class="cb" id="wstart">始める</button></div>
+<div id="dim"></div>
+<div id="lock"><b id="lt"></b><span id="ld"></span><small>クリックしてロック解除</small></div>
+<div id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const sv=(k,v)=>{try{localStorage.setItem('cros-'+k,v)}catch{}},ld=k=>{try{return localStorage.getItem('cros-'+k)}catch{return null}},jl=(k,d)=>{try{return JSON.parse(ld(k))??d}catch{return d}};
+const S=Object.assign({acc:'',h24:1,ah:0,na:0,zoom:100,kb:'US'},jl('S',{}));const saveS=()=>sv('S',JSON.stringify(S));
+const tf=d=>{const h=d.getHours(),m=String(d.getMinutes()).padStart(2,'0');return S.h24?String(h).padStart(2,'0')+':'+m:(h<12?'午前 ':'午後 ')+((h%12)||12)+':'+m};
+const A=[
+["Chrome","Chrome","#e8f0fe","language","https://www.google.com/chrome/","#1a73e8"],
+["設定","設定","#e1e3e8","settings","","#444746"],
+["使い方・ヒント","使い方・ヒント","#e8def8","tips_and_updates","https://support.google.com/chromebook","#4f378b"],
+["Chrome 描画","Chrome Canvas","#ffdad6","brush","https://canvas.apps.chrome/","#ba1a1a"],
+["カメラ","カメラ","#2b2d31","photo_camera","","#8ab4f8"],
+["写真","写真","#fff1c2","photo_library","","#e37400"],
+["ファイル","ファイル","#d3e3fd","folder","","#0b57d0"],
+["天気","天気","#bfe0ff","partly_cloudy_day","","#f29900"],
+["時計","時計","#e8def8","schedule","","#4f378b"],
+["Play Books","Play Books","#d3e3fd","menu_book","https://play.google.com/store/books","#0b57d0"],
+["Messages","Messages","#d3e3fd","chat","https://messages.google.com/web","#0b57d0"],
+["Play Movies","Play Movies","#ffdad6","movie","https://play.google.com/store/movies","#ba1a1a"],
+["Gmail","Gmail","#fad2cf","mail","https://mail.google.com","#c5221f"],
+["Google Meet","Google Meet","#c4eed0","videocam","https://meet.google.com","#0b6a2b"],
+["Google Chat","Google Chat","#c4eed0","forum","https://chat.google.com","#0b6a2b"],
+["ドキュメント","Google ドキュメント","#d3e3fd","description","https://docs.google.com/document","#0b57d0"],
+["スライド","Google スライド","#ffe8a3","slideshow","https://docs.google.com/presentation","#a06500"],
+["スプレッドシート","Google スプレッドシート","#c4eed0","table_chart","https://docs.google.com/spreadsheets","#0b6a2b"],
+["YouTube Music","YouTube Music","#ffdad6","music_note","https://music.youtube.com","#ba1a1a"],
+["Google ドライブ","Google ドライブ","#c4eed0","cloud","https://drive.google.com","#0b6a2b"],
+["Google Keep","Google Keep","#ffe8a3","lightbulb","https://keep.google.com","#a06500"],
+["Google カレンダー","Google カレンダー","#d3e3fd","calendar_month","https://calendar.google.com","#0b57d0"],
+["YouTube","YouTube","#ffdad6","smart_display","https://www.youtube.com","#ba1a1a"],
+["ウェブストア","Chrome ウェブストア","#e8def8","storefront","https://chromewebstore.google.com","#4f378b"],
+["電卓","電卓","#c4eed0","calculate","","#0b6a2b"],
+["ターミナル","ターミナル","#2b2d31","terminal","","#c4eed0"],
+["Google マップ","Google マップ","#c4eed0","map","https://maps.google.com","#0b6a2b"],
+["Google 翻訳","Google 翻訳","#d3e3fd","translate","https://translate.google.com","#0b57d0"]
+].map(([n,full,bg,g,u,fg])=>({n,full,bg,g,u,fg}));
+let pinned=jl('pins',["Chrome","Gmail","カメラ","写真","ファイル","天気"]);
+let recents=["Chrome","設定","使い方・ヒント","Chrome 描画","カメラ"];
+const ico=(a,s)=>`<div class="ic ${s?'s':''}" style="background:${a.bg};color:${a.fg}"><span class="ms">${a.g}</span></div>`;
+const by=n=>A.find(a=>a.n===n);
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),1800)}
+function cell(a,i=0){return `<button class="app" style="animation-delay:${i*14}ms" data-n="${a.n}" title="${a.full}">${ico(a)}<span>${a.n}</span></button>`}
+function render(){
+  const q=$('#q').value.trim().toLowerCase();
+  const list=A.filter(a=>!q||(a.n+a.full).toLowerCase().includes(q));
+  $('#recent').style.display=q?'none':'';
+  $('#rgrid').innerHTML=recents.map((n,i)=>cell(by(n),i)).join('');
+  $('#agrid').innerHTML=list.length?list.map(cell).join(''):`<div class="empty" style="grid-column:1/-1">「${$('#q').value}」に一致するアプリはありません。Enter キーでウェブ検索できます。</div>`;
+}
+$('#q').addEventListener('input',render);
+$('#q').addEventListener('keydown',e=>{
+  if(e.key!=='Enter')return;const q=$('#q').value.trim();if(!q)return;
+  const m=A.filter(a=>(a.n+a.full).toLowerCase().includes(q.toLowerCase()));
+  if(m.length){launch(m[0].n)}else{window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank','noopener');closeAll()}
+});
+$('#fold').onclick=()=>{const g=$('#rgrid'),h=g.style.display==='none';g.style.display=h?'':'none';$('#fold').firstChild.textContent=h?'expand_less':'expand_more'};
+document.addEventListener('click',e=>{const a=e.target.closest('[data-n]');if(a)launch(a.dataset.n)});
+/* shelf */
+function renderPins(){$('#pins').innerHTML=pinned.filter(n=>by(n)).map(n=>`<button class="pin" data-n="${n}" title="${n}">${ico(by(n),1)}</button>`).join('')}renderPins();
+function closeAll(){$('#launcher').classList.remove('open');$('#qs').classList.remove('open');$('#tm').classList.remove('on')}
+function togL(){const o=!$('#launcher').classList.contains('open');closeAll();if(o){const L=$('#launcher');L.classList.add('open','stag');setTimeout(()=>L.classList.remove('stag'),800);$('#q').value='';render();$('#q').focus()}}
+$('#lbtn').onclick=e=>{e.stopPropagation();togL()};
+$('#tm').onclick=e=>{e.stopPropagation();const o=!$('#qs').classList.contains('open');closeAll();if(o){$('#qs').classList.add('open');$('#tm').classList.add('on')}};
+$('#dt').onclick=e=>{e.stopPropagation();$('#tm').click()};
+document.addEventListener('click',e=>{if(!e.target.closest('#launcher,#qs,#shelf'))closeAll()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();if(e.key==='Meta'||(e.key==='/'&&e.target.tagName!=='INPUT'&&!e.target.closest('.wb'))){}});
+/* clock */
+function tick(){const d=new Date(),p=n=>String(n).padStart(2,'0');
+  $('#dt').textContent=`${d.getMonth()+1}月${d.getDate()}日`;
+  $('#tm').innerHTML=`${tf(d)} <span>${S.kb}</span> <span class="ms" style="font-size:18px">${wifi?'wifi':'wifi_off'}</span><span class="ms" style="font-size:18px">${bIcon}</span>`;
+  $('#lt').textContent=`${p(d.getHours())}:${p(d.getMinutes())}`;
+  $('#ld').textContent=d.toLocaleDateString('ja-JP',{month:'long',day:'numeric',weekday:'long'})}
+/* quick settings */
+let wifi=true,bIcon='battery_full';
+const T=[
+["wifi","wifi","Wi-Fi","接続済み",1],["cap","screenshot_region","画面キャプチャ","",0,1],
+["bt","bluetooth","Bluetooth","オン",1],["cast","cast","画面をキャスト","",0],
+["acc","accessibility_new","ユーザー補助","",0],["focus","center_focus_strong","集中モード","",0],
+["qsh","share","クイック共有","全員 (オフ)",0],["vpn","vpn_key","VPN","オフ",0],
+["dnd","do_not_disturb_on","サイレント","",0,1],["dark","dark_mode","ダークテーマ","",0]
+];
+const st={};T.forEach(t=>st[t[0]]=!!t[4]);
+const subOf=k=>{const t=T.find(x=>x[0]===k),on=st[k];return k==='wifi'?(on?'接続済み':'オフ'):k==='bt'||k==='vpn'?(on?'オン':'オフ'):k==='qsh'?(on?'全員 (オン)':'全員 (オフ)'):t[3]};
+function tiles(){$('#tiles').innerHTML=T.map(t=>{const k=t[0],on=st[k],sub=subOf(k);return `<button class="tile ${on?'on':''} ${t[5]?'sm':''}" data-k="${k}"><span class="ms">${t[1]}</span><span>${t[2]}${sub?`<small>${sub}</small>`:''}</span>${'wifi bt cast acc focus vpn'.includes(k)?'<span class="ms" style="margin-left:auto;font-size:18px">chevron_right</span>':''}</button>`}).join('')}
+$('#tiles').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(!b)return;const k=b.dataset.k;
+  if(k==='cap'){closeAll();shot();return}
+  st[k]=!st[k];if(k==='wifi'){wifi=st[k];tick()}
+  if(k==='dark')setTheme(st[k]?'dark':'light');b.classList.toggle('on',st[k]);const sm=b.querySelector('small');if(sm)sm.textContent=subOf(k)});
+function setTheme(t){const r=document.documentElement;if(!t||t==='auto'){delete r.dataset.theme;st.dark=matchMedia('(prefers-color-scheme:dark)').matches}else{r.dataset.theme=t;st.dark=t==='dark'}sv('theme',t||'auto');$('[data-k=dark]')?.classList.toggle('on',st.dark);applyAccent()}
+function setWp(k){k?document.body.dataset.wp=k:delete document.body.dataset.wp;sv('wp',k)}
+function fill(el){el.style.setProperty('--v',((el.value-el.min)/(el.max-el.min)*100)+'%')}
+['#vol','#bri'].forEach(s=>{const el=$(s);el.min=el.min||0;fill(el);el.oninput=()=>{fill(el);if(s==='#bri')$('#dim').style.opacity=(100-el.value)/100*.7}});
+$('#pwr').onclick=()=>{closeAll();$('#lock').classList.add('open')};
+$('#lock').onclick=()=>$('#lock').classList.remove('open');
+$('#gear').onclick=()=>{closeAll();launch('設定')};
+if(navigator.getBattery)navigator.getBattery().then(b=>{const u=()=>{const p=Math.round(b.level*100),ct=b.chargingTime;bIcon=b.charging?'battery_charging_full':p>85?'battery_full':p>60?'battery_5_bar':p>35?'battery_4_bar':p>15?'battery_2_bar':'battery_alert';$('#bat').textContent=`${p}%`+(b.charging&&isFinite(ct)&&ct>0?` - 満充電まで ${Math.floor(ct/3600)}:${String(Math.floor(ct%3600/60)).padStart(2,'0')}`:b.charging?' - 充電中':'');tick()};u();b.onlevelchange=b.onchargingchange=u}).catch(()=>{});
+/* windows */
+let z=20;const open={};
+function launch(n){
+  const a=by(n);closeAll();document.querySelector(`.pin[data-n="${n}"] .ic`)?.animate([{transform:'translateY(0)'},{transform:'translateY(-10px)'},{transform:'translateY(0)'}],{duration:380,easing:'ease-out'});
+  recents=[n,...recents.filter(x=>x!==n)].slice(0,5);
+  if(a.u&&!(n in NAT)){window.open(a.u,'_blank','popup,width=1100,height=760');toast(a.full+' を開きました');return}
+  if(open[n]){open[n].style.zIndex=++z;open[n].style.display='flex';requestAnimationFrame(()=>open[n].classList.remove('min'));mark();return}
+  const w=document.createElement('div');w.className='win';
+  const k=Object.keys(open).length,big=n in NAT;
+  w.style.cssText=`left:${Math.min(80+k*30,innerWidth-330)}px;top:${50+k*30}px;width:min(${big?720:560}px,calc(100% - 20px));height:min(${big?560:400}px,calc(100% - 100px));z-index:${++z}`;
+  w.innerHTML=`<div class="tb">${ico(a,1)}<span class="t">${a.full}</span><button data-a="min" aria-label="最小化"><span class="ms">remove</span></button><button data-a="max" aria-label="最大化"><span class="ms">crop_square</span></button><button data-a="x" aria-label="閉じる"><span class="ms">close</span></button></div><div class="wb"></div>`;
+  w.querySelector('.wb').innerHTML=body(a);if(big)w.classList.add('app0');NAT[n]?.(w);
+  $('#wins').appendChild(w);open[n]=w;mark();
+  w.addEventListener('pointerdown',()=>w.style.zIndex=++z);
+  w.querySelector('.tb').addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t)return;const x=t.dataset.a;
+    if(x==='x'){w.cleanup&&w.cleanup();w.classList.add('out');delete open[n];mark();setTimeout(()=>w.remove(),200)}if(x==='min'){w.classList.add('min');setTimeout(()=>{if(w.classList.contains('min'))w.style.display='none'},220);mark()}if(x==='max')w.classList.toggle('max')});
+  const tb=w.querySelector('.tb');
+  tb.addEventListener('pointerdown',e=>{if(e.target.closest('button')||w.classList.contains('max'))return;
+    const dx=e.clientX-w.offsetLeft,dy=e.clientY-w.offsetTop;tb.setPointerCapture(e.pointerId);
+    tb.onpointermove=m=>{w.style.left=Math.max(0,m.clientX-dx)+'px';w.style.top=Math.max(0,Math.min(innerHeight-88,m.clientY-dy))+'px'};
+    tb.onpointerup=e=>{tb.onpointermove=null;const S=(l,wd)=>Object.assign(w.style,{left:l,top:'0',width:wd,height:'calc(100% - 48px)'});if(e.clientY<6)w.classList.add('max');else if(e.clientX<6)S('0','50%');else if(e.clientX>innerWidth-6)S('50%','50%')}});tb.ondblclick=e=>{if(!e.target.closest('button'))w.classList.toggle('max')};
+  w.querySelector('.wb').addEventListener('click',e=>{
+    const s=e.target.closest('[data-sw]');if(s){setTheme(st.dark?'light':'dark');s.classList.toggle('on',st.dark)}});
+  if(n==='電卓')calc(w);
+}
+function mark(){document.querySelectorAll('.pin').forEach(p=>p.classList.toggle('run',!!open[p.dataset.n]))}
+function body(a){
+  if(a.n==='設定')return `<h3 style="font-weight:500;font-size:20px">設定</h3><div class="row"><span>ダークテーマ</span><button class="sw ${st.dark?'on':''}" data-sw aria-label="ダークテーマ"></button></div><div class="row" style="flex-direction:column;align-items:flex-start;gap:10px"><span>壁紙</span><div style="display:flex;gap:10px">${[['','#5ab4ff'],['sunset','#ff8a65'],['forest','#4fae8a'],['night','#2b3a67']].map(([k,c])=>`<button data-wp="${k}" aria-label="壁紙" style="width:56px;height:40px;border-radius:10px;background:${c};border:3px solid ${(document.body.dataset.wp||'')===k?'var(--acc)':'transparent'}"></button>`).join('')}</div></div><div class="row"><span>言語</span><span>日本語</span></div><div class="row"><span>キーボード</span><span>US</span></div><div class="row"><span>セットアップ画面</span><button class="cb t" data-welcome>再表示</button></div>`;
+  if(a.n==='電卓')return `<input id="cd" readonly value="0" style="width:100%;font-size:32px;text-align:right;padding:8px;border:0;background:var(--tile);color:var(--txt);border-radius:12px"><div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:10px">${"C ( ) ÷ 7 8 9 × 4 5 6 − 1 2 3 + 0 . ⌫ =".split(' ').map(k=>`<button class="tile sm" style="justify-content:center;min-height:44px;border-radius:14px" data-c="${k}">${k}</button>`).join('')}</div>`;
+  if(a.n==='ターミナル')return `<pre style="font-family:monospace;color:var(--txt)">chronos@localhost:~$ echo "ChromeOS"\nChromeOS\nchronos@localhost:~$ ▌</pre>`;
+  if(a.u)return `<h3 style="font-weight:500;font-size:20px">${a.full}</h3><p style="color:var(--sub)">セキュリティ上の理由で、Webアプリはこのウィンドウ内に埋め込めません。新しいタブで開きます。</p><a class="btn" href="${a.u}" target="_blank" rel="noopener">${a.full}を開く</a>`;
+  return `<h3 style="font-weight:500;font-size:20px">${a.full}</h3><p style="color:var(--sub)">このアプリはデモ用です。</p>`;
+}
+function calc(w){let s='';const d=w.querySelector('#cd');
+  w.querySelector('.wb').addEventListener('click',e=>{const k=e.target.closest('[data-c]')?.dataset.c;if(!k)return;
+    if(k==='C')s='';else if(k==='⌫')s=s.slice(0,-1);else if(k==='='){try{s=String(Function('return '+s.replace(/÷/g,'/').replace(/×/g,'*').replace(/−/g,'-'))());}catch{s='エラー'}}else s+=k;
+    d.value=s||'0'})}
+/* storage */
+async function shot(){try{const s=await navigator.mediaDevices.getDisplayMedia({video:true,preferCurrentTab:true});const v=document.createElement('video');v.srcObject=s;await v.play();await new Promise(r=>setTimeout(r,300));const c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);s.getTracks().forEach(t=>t.stop());c.toBlob(async x=>{await put('photos',{id:Date.now(),blob:x,name:'Screenshot_'+Date.now()+'.png'});document.dispatchEvent(new Event('photos'));toast('スクリーンショットを写真に保存しました')})}catch{toast('画面キャプチャをキャンセルしました')}}
+let idb=null;const mem={photos:[],files:[]};
+const ready=new Promise(r=>{try{const q=indexedDB.open('cros',1);q.onupgradeneeded=()=>{q.result.createObjectStore('photos',{keyPath:'id'});q.result.createObjectStore('files',{keyPath:'id'})};q.onsuccess=()=>{idb=q.result;r()};q.onerror=()=>r()}catch{r()}});
+async function put(s,o){await ready;mem[s]=mem[s].filter(x=>x.id!==o.id).concat(o);if(idb)try{idb.transaction(s,'readwrite').objectStore(s).put(o)}catch{}}
+async function all(s){await ready;if(!idb)return mem[s].slice();return new Promise(r=>{try{const q=idb.transaction(s).objectStore(s).getAll();q.onsuccess=()=>r(q.result);q.onerror=()=>r(mem[s].slice())}catch{r(mem[s].slice())}})}
+async function del(s,id){await ready;mem[s]=mem[s].filter(x=>x.id!==id);if(idb)try{idb.transaction(s,'readwrite').objectStore(s).delete(id)}catch{}}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* camera */
+function camera(w){
+  const b=w.querySelector('.wb');
+  b.innerHTML=`<div class="cam"><video playsinline muted autoplay></video><div id="cm" style="color:#fff;padding:20px;text-align:center;position:absolute"></div><div class="flash" style="position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none"></div><div class="rec" hidden style="position:absolute;top:12px;left:12px;color:#fff;background:#d93025;border-radius:12px;padding:2px 10px;font-size:12px">● 00:00</div></div><div class="bar" style="justify-content:center;gap:14px;border:0"><button class="cb t" data-o aria-label="写真を開く" style="padding:0;width:44px;height:44px;overflow:hidden;border-radius:50%;justify-content:center"><span class="ms">photo_library</span></button><button class="cb t" data-m aria-label="モード切替"><span class="ms">photo_camera</span><span>写真</span></button><button class="shut" aria-label="シャッター"></button><button class="cb t" data-f aria-label="カメラ切替"><span class="ms">cameraswitch</span></button><label class="cb t" title="端末で撮影"><span class="ms">add_a_photo</span><input type="file" accept="image/*" capture="environment" hidden></label></div>`;
+  const q=x=>b.querySelector(x),v=q('video'),m=q('#cm'),fx=q('.flash'),rc=q('.rec'),sh=q('.shut'),mb=q('[data-m]');
+  let face='user',st=null,mode='photo',mr=null,ch=[],t0=0,tm=null;
+  const gm=async a=>{try{return await navigator.mediaDevices.getUserMedia({video:{facingMode:face},audio:a})}catch(e){if(a)return gm(false);throw e}};
+  function stop(){if(mr&&mr.state==='recording')mr.stop();st&&st.getTracks().forEach(t=>t.stop());st=null}
+  async function start(){stop();try{st=await gm(mode==='video');v.srcObject=st;v.style.transform=face==='user'?'scaleX(-1)':'';m.textContent=''}catch{m.textContent='カメラを使用できません。ブラウザの権限を確認するか、「端末で撮影」を使ってください。'}}
+  const save=async(blob,ext)=>{await put('photos',{id:Date.now()+Math.random(),blob,name:(ext==='jpg'?'IMG_':'VID_')+new Date().toISOString().replace(/\D/g,'').slice(0,14)+'.'+ext});document.dispatchEvent(new Event('photos'));toast(ext==='jpg'?'写真を保存しました':'動画を保存しました');if(ext==='jpg')q('[data-o]').innerHTML=`<img src="${URL.createObjectURL(blob)}" style="width:100%;height:100%;object-fit:cover" alt="">`};
+  sh.onclick=()=>{
+    if(!st||!v.videoWidth)return toast('カメラが起動していません');
+    if(mode==='photo'){const c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);c.toBlob(x=>save(x,'jpg'),'image/jpeg',.92);fx.animate([{opacity:.85},{opacity:0}],{duration:300})}
+    else if(mr&&mr.state==='recording')mr.stop();
+    else{ch=[];mr=new MediaRecorder(st);const ex=/mp4/.test(mr.mimeType)?'mp4':'webm';mr.ondataavailable=e=>e.data.size&&ch.push(e.data);mr.onstop=()=>{clearInterval(tm);rc.hidden=true;sh.style.background='';if(ch.length)save(new Blob(ch,{type:mr.mimeType||'video/webm'}),ex)};mr.start();t0=Date.now();rc.hidden=false;sh.style.background='#d93025';tm=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);rc.textContent='● '+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')},500)}};
+  mb.onclick=()=>{mode=mode==='photo'?'video':'photo';mb.innerHTML=mode==='photo'?'<span class="ms">photo_camera</span><span>写真</span>':'<span class="ms">videocam</span><span>動画</span>';start()};
+  q('[data-f]').onclick=()=>{face=face==='user'?'environment':'user';start()};
+  q('[data-o]').onclick=()=>launch('写真');
+  q('input').onchange=e=>{[...e.target.files].forEach(f=>save(f,'jpg'));e.target.value=''};
+  w.cleanup=stop;start()}
+/* photos */
+function photos(w){
+  const b=w.querySelector('.wb');
+  b.innerHTML=`<div class="bar"><b style="flex:1;font-weight:500">写真</b><label class="cb"><span class="ms">upload</span>アップロード<input type="file" accept="image/*,video/*" multiple hidden></label></div><div class="scroll"><div class="ph"></div><div class="empty" hidden>写真がありません。カメラで撮影するか、アップロードしてください。</div></div>`;
+  const g=b.querySelector('.ph'),em=b.querySelector('.empty');let list=[],urls=[];
+  const isV=p=>/^video/.test(p.blob.type);
+  async function load(){urls.forEach(u=>URL.revokeObjectURL(u));list=(await all('photos')).sort((a,c)=>c.id-a.id);urls=list.map(p=>URL.createObjectURL(p.blob));g.innerHTML=urls.map((u,i)=>isV(list[i])?`<video src="${u}#t=0.1" muted playsinline preload="metadata" data-i="${i}"></video>`:`<img src="${u}" data-i="${i}" alt="${esc(list[i].name)}">`).join('');em.hidden=!!list.length}
+  b.querySelector('input').onchange=async e=>{let i=0;for(const f of e.target.files)await put('photos',{id:Date.now()+i++,blob:f,name:f.name});e.target.value='';load()};
+  g.onclick=e=>{if(e.target.dataset.i!=null)view(+e.target.dataset.i)};
+  function view(i){const l=document.createElement('div');l.className='lb';
+    const draw=()=>{l.innerHTML=`<div class="bar" style="border:0"><button class="cb t" data-x aria-label="戻る"><span class="ms">arrow_back</span></button><span style="flex:1;text-align:center;font-size:13px">${esc(list[i].name)}</span><button class="cb t" data-p aria-label="前へ"><span class="ms">chevron_left</span></button><button class="cb t" data-n aria-label="次へ"><span class="ms">chevron_right</span></button><button class="cb t" data-d aria-label="削除"><span class="ms">delete</span></button></div>${isV(list[i])?`<video src="${urls[i]}" controls autoplay></video>`:`<img src="${urls[i]}" alt="">`}`};
+    draw();b.appendChild(l);
+    l.onclick=async e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset;
+      if(d.x!=null)l.remove();else if(d.p!=null){i=(i-1+list.length)%list.length;draw()}else if(d.n!=null){i=(i+1)%list.length;draw()}else if(d.d!=null){await del('photos',list[i].id);l.remove();load()}}}
+  document.addEventListener('photos',load);w.cleanup=()=>document.removeEventListener('photos',load);load()}
+/* files */
+function files(w){
+  const b=w.querySelector('.wb');
+  b.innerHTML=`<div class="bar"><b style="flex:1;font-weight:500">マイファイル</b><label class="cb"><span class="ms">upload_file</span>アップロード<input type="file" multiple hidden></label></div><div class="scroll"><div class="fl"></div><div class="pv" hidden style="margin-top:8px"></div></div><div class="bar pl" hidden style="border:0;border-top:1px solid var(--line)"><span class="eq"><i></i><i></i><i></i></span><span class="np" style="width:110px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:13px"></span><audio controls style="flex:1;height:36px;min-width:0"></audio></div>`;
+  const fl=b.querySelector('.fl'),pv=b.querySelector('.pv'),pl=b.querySelector('.pl'),au=b.querySelector('audio');let list=[],cur=-1;
+  const kind=f=>/^video/.test(f.blob.type)||/\.(mp4|webm|mov)$/i.test(f.name)?'v':/^audio/.test(f.blob.type)||/\.(mp3|wav|m4a|ogg|flac|aac)$/i.test(f.name)?'a':/^image/.test(f.blob.type)?'i':/^text|json|xml/.test(f.blob.type)||/\.(txt|md|csv|json|js|html|css|log|py|xml)$/i.test(f.name)?'t':'o';
+  const sz=n=>n>1e6?(n/1e6).toFixed(1)+' MB':Math.ceil(n/1e3)+' KB';
+  const G={v:'video_file',a:'audio_file',i:'image',t:'description',o:'draft'};
+  async function load(){list=(await all('files')).sort((a,c)=>a.id-c.id);fl.innerHTML=list.length?list.map((f,i)=>`<div class="fr ${i===cur?'sel':''}" data-i="${i}"><span class="ms">${G[kind(f)]}</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(f.name)}</span><small>${sz(f.blob.size)}</small><button data-d aria-label="削除"><span class="ms" style="color:var(--sub)">delete</span></button></div>`).join(''):'<div class="empty">ファイルがありません。アップロードするか、ここにドラッグ＆ドロップしてください。<br>音楽の再生とテキストの表示ができます。</div>'}
+  async function add(fs){let i=0;for(const f of fs)await put('files',{id:Date.now()+i++,name:f.name,blob:f});load()}
+  b.querySelector('input').onchange=e=>{add([...e.target.files]);e.target.value=''};
+  w.ondragover=e=>e.preventDefault();w.ondrop=e=>{e.preventDefault();add([...e.dataTransfer.files])};
+  fl.onclick=async e=>{const r=e.target.closest('.fr');if(!r)return;const i=+r.dataset.i,f=list[i];
+    if(e.target.closest('[data-d]')){await del('files',f.id);if(i===cur){au.pause();pl.hidden=true;pv.hidden=true;cur=-1}return load()}
+    cur=i;const k=kind(f);pv.hidden=true;
+    if(k==='a'){au.src=URL.createObjectURL(f.blob);au.play().catch(()=>{});pl.hidden=false;b.querySelector('.np').textContent=f.name}
+    else if(k==='t'){pv.hidden=false;pv.innerHTML='<pre style="white-space:pre-wrap;word-break:break-word;font:13px/1.6 monospace;padding:12px;background:var(--tile);border-radius:12px;max-height:230px;overflow:auto"></pre>';pv.firstChild.textContent=await f.blob.slice(0,2e5).text()}
+    else if(k==='v'){pv.hidden=false;pv.innerHTML=`<video controls src="${URL.createObjectURL(f.blob)}" style="max-width:100%;max-height:260px;border-radius:12px"></video>`}else if(k==='i'){pv.hidden=false;pv.innerHTML=`<img src="${URL.createObjectURL(f.blob)}" style="max-width:100%;max-height:240px;border-radius:12px" alt="">`}
+    else toast('このファイルは開けません');
+    load()};
+  au.onended=()=>{const n=list.findIndex((f,j)=>j>cur&&kind(f)==='a');if(n>=0)fl.querySelector(`[data-i="${n}"]`).click()};
+  const eqe=b.querySelector('.eq');au.volume=$('#vol').value/100;au.onplay=()=>eqe.classList.add('on');au.onpause=()=>eqe.classList.remove('on');w.cleanup=()=>au.pause();load()}
+/* weather */
+const WX=c=>c==0?['快晴','clear_day']:c<3?['晴れ時々曇り','partly_cloudy_day']:c==3?['曇り','cloud']:c<50?['霧','foggy']:c<58?['霧雨','rainy_light']:c<68?['雨','rainy']:c<78?['雪','weather_snowy']:c<83?['にわか雨','rainy']:c<87?['にわか雪','snowing']:['雷雨','thunderstorm'];
+const GR=(c,day)=>!day?'#1b2a5e,#0b1030':c<3?'#2f80ed,#6fc3ff':c<50?'#6b7f99,#a3b4c7':c<68||c>=80&&c<83?'#4a5a70,#2f3c50':c<78||c>=85&&c<87?'#8fa7bf,#d3e2ef':'#3b3a55,#1e1d33';
+const FX=c=>{const rain=c>=51&&c<68||c>=80&&c<83||c>=95,snow=c>=71&&c<78||c>=85&&c<87;if(!rain&&!snow)return'';return `<div class="pt ${snow?'sn':''}">`+Array.from({length:snow?26:30},()=>`<i style="left:${Math.random()*100}%;animation-delay:${-Math.random()*2}s;animation-duration:${snow?3+Math.random()*3:.7+Math.random()*.5}s"></i>`).join('')+'</div>'};
+function weather(w){
+  const b=w.querySelector('.wb');
+  b.innerHTML=`<div class="bar"><input placeholder="都市名を検索（例: 大阪）" aria-label="都市検索"><button class="cb" data-s aria-label="検索"><span class="ms">search</span></button><button class="cb t" data-g aria-label="現在地"><span class="ms">my_location</span></button></div><div class="scroll"></div>`;
+  const sc=b.querySelector('.scroll'),inp=b.querySelector('input');let cand=[];
+  const J=async u=>{const r=await fetch(u);if(!r.ok)throw 0;return r.json()};
+  const err=m=>sc.innerHTML=`<div class="empty">${m}</div>`;
+  const nm=p=>[p.name,p.admin1,p.country].filter(Boolean).join('、');
+  async function show(lat,lon,name){
+    sc.innerHTML='<div class="empty">読み込み中…</div>';
+    try{const [d,aq]=await Promise.all([J(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,dew_point_2m,precipitation,weather_code,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,wind_gusts_10m,is_day&hourly=temperature_2m,precipitation_probability,weather_code,visibility&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max&timezone=auto&forecast_days=7`),J(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=us_aqi,pm2_5`).catch(()=>null)]);
+      draw(d,name,aq);sv('wxplace',JSON.stringify({lat,lon,name}))}
+    catch{err('天気データを取得できませんでした。通信環境を確認してください。')}}
+  function draw(d,name,aq){const c=d.current,[t,s0]=WX(c.weather_code),r=Math.round,H=d.hourly,D=d.daily;
+    const s=c.weather_code<3&&!c.is_day?(c.weather_code?'partly_cloudy_night':'clear_night'):s0;
+    const i0=Math.max(0,H.time.findIndex(x=>x>=c.time.slice(0,13)));
+    const dir=['北','北東','東','南東','南','南西','西','北西'][r(c.wind_direction_10m/45)%8];
+    const hrs=H.time.slice(i0,i0+24).map((x,k)=>{const j=i0+k;return `<div style="text-align:center;min-width:52px;font-size:12px"><div>${k?x.slice(11,13)+'時':'今'}</div><span class="ms" style="color:var(--acc)">${WX(H.weather_code[j])[1]}</span><div style="font-size:14px">${r(H.temperature_2m[j])}°</div><div style="color:var(--acc)">${H.precipitation_probability[j]??0}%</div></div>`}).join('');
+    const lo=Math.min(...D.temperature_2m_min),hi=Math.max(...D.temperature_2m_max),sp=hi-lo||1;
+    const days=D.time.map((x,k)=>`<div style="display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13.5px"><span style="width:46px">${k?'日月火水木金土'[new Date(x+'T00:00').getDay()]+'曜':'今日'}</span><span class="ms" style="color:var(--acc)">${WX(D.weather_code[k])[1]}</span><span style="width:36px;color:var(--acc);font-size:12px">${D.precipitation_probability_max[k]??0}%</span><span style="width:30px;text-align:right;color:var(--sub)">${r(D.temperature_2m_min[k])}°</span><span style="flex:1;height:6px;border-radius:3px;background:var(--panel);position:relative"><i style="position:absolute;top:0;bottom:0;border-radius:3px;background:var(--acc);left:${(D.temperature_2m_min[k]-lo)/sp*100}%;right:${100-(D.temperature_2m_max[k]-lo)/sp*100}%"></i></span><span style="width:30px">${r(D.temperature_2m_max[k])}°</span></div>`).join('');
+    const box=(ic,l,v)=>`<div class="wxc" style="animation:up .4s both"><div style="color:var(--sub);font-size:12px"><span class="ms" style="font-size:16px">${ic}</span> ${l}</div><div style="font-size:20px;margin-top:4px">${v}</div></div>`;
+    sc.innerHTML=`<div style="position:relative;overflow:hidden;border-radius:28px;padding:20px;margin-bottom:10px;color:#fff;text-align:center;background:linear-gradient(160deg,${GR(c.weather_code,c.is_day)});animation:fade .5s">${FX(c.weather_code)}<div style="position:relative"><div style="font-size:15px">${esc(name)}</div><div style="font-size:68px;font-weight:300;line-height:1.1">${r(c.temperature_2m)}°</div><div><span class="ms" style="font-size:32px;animation:flt 3s ease-in-out infinite">${s}</span> ${t}</div><div style="font-size:13px;opacity:.9">最高 ${r(D.temperature_2m_max[0])}° / 最低 ${r(D.temperature_2m_min[0])}°　体感 ${r(c.apparent_temperature)}°</div></div></div><div class="wxc" style="display:flex;gap:8px;overflow:auto;margin-bottom:10px">${hrs}</div><div class="wxc" style="margin-bottom:10px">${days}</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px">${box('humidity_percentage','湿度',c.relative_humidity_2m+'%')}${box('air','風',dir+' '+r(c.wind_speed_10m)+' km/h<div style="font-size:12px;color:var(--sub)">最大瞬間 '+r(c.wind_gusts_10m)+' km/h</div>')}${box('wb_sunny','紫外線指数',r(D.uv_index_max[0]))}${box('speed','気圧',r(c.pressure_msl)+' hPa')}${box('cloud','雲量',c.cloud_cover+'%')}${box('water_drop','降水量',c.precipitation+' mm')}${box('thermometer','露点',r(c.dew_point_2m)+'°')}${box('visibility','視程',(H.visibility[i0]/1000).toFixed(1)+' km')}${aq?box('masks','大気質 (US AQI)',aq.current.us_aqi+'<div style="font-size:12px;color:var(--sub)">PM2.5 '+aq.current.pm2_5+' µg/m³</div>'):''}${box('wb_twilight','日の出 / 日の入',D.sunrise[0].slice(11)+' / '+D.sunset[0].slice(11))}</div>`}
+  const pick=p=>{inp.value='';show(p.latitude,p.longitude,nm(p))};
+  sc.onclick=e=>{const r=e.target.closest('[data-i]');if(r&&cand[+r.dataset.i])pick(cand[+r.dataset.i])};
+  async function search(){const q=inp.value.trim();if(!q)return;
+    try{const g=await J(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=6&language=ja`);
+      if(!g.results)return err('「'+esc(q)+'」は見つかりませんでした。');
+      cand=g.results;if(cand.length===1)return pick(cand[0]);
+      sc.innerHTML=cand.map((p,i)=>`<div class="fr" data-i="${i}" style="animation:up .3s both;animation-delay:${i*40}ms"><span class="ms">location_on</span><span>${esc(nm(p))}</span></div>`).join('')}catch{err('検索に失敗しました。通信環境を確認してください。')}}
+  b.querySelector('[data-s]').onclick=search;inp.onkeydown=e=>{if(e.key==='Enter')search()};
+  b.querySelector('[data-g]').onclick=()=>{if(!navigator.geolocation)return err('位置情報を利用できません。');sc.innerHTML='<div class="empty">現在地を取得中…</div>';navigator.geolocation.getCurrentPosition(async p=>{const la=p.coords.latitude,lo=p.coords.longitude;let n='現在地';try{const r=await J(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${la}&longitude=${lo}&localityLanguage=ja`);n=[r.city||r.locality,r.principalSubdivision].filter(Boolean).join('、')||n}catch{}show(la,lo,n)},()=>err('現在地を取得できませんでした。位置情報の許可を確認するか、都市名で検索してください。'),{timeout:10000})};
+  let pl=null;try{pl=JSON.parse(ld('wxplace'))}catch{}
+  show(pl?.lat??35.6895,pl?.lon??139.6917,pl?.name??'東京都、日本')}
+/* ===== native apps ===== */
+const NAT={'Chrome':browser,'設定':settings,'Chrome 描画':paint,'カメラ':camera,'写真':photos,'ファイル':files,'天気':weather,'Google カレンダー':calendar,'Google Keep':keep,'ドキュメント':docs,'スプレッドシート':sheet,'Google マップ':maps,'Google 翻訳':translate,'YouTube':youtube,'YouTube Music':music,'Play Movies':movies,'ターミナル':term,'時計':clock};
+const syncTile=k=>{const t=$(`[data-k="${k}"]`);if(!t)return;t.classList.toggle('on',st[k]);const sm=t.querySelector('small');if(sm)sm.textContent=subOf(k)};
+function applyAccent(){const r=document.documentElement.style,h=S.acc;
+  if(h===''||h==null){['--pc','--onpc','--acc','--tile','--panel'].forEach(x=>r.removeProperty(x));return}
+  const d=st.dark;r.setProperty('--pc',d?`hsl(${h} 100% 80%)`:`hsl(${h} 85% 88%)`);r.setProperty('--onpc',`hsl(${h} 100% 12%)`);
+  r.setProperty('--acc',d?`hsl(${h} 100% 80%)`:`hsl(${h} 80% 36%)`);r.setProperty('--tile',d?`hsl(${h} 18% 25%)`:`hsl(${h} 45% 92%)`);r.setProperty('--panel',d?`hsl(${h} 14% 15%)`:`hsl(${h} 60% 97%)`)}
+function applyS(){const r=document.documentElement,b=document.body,im=ld('wpimg');
+  applyAccent();r.style.zoom=S.zoom==100?'':S.zoom/100;b.classList.toggle('ah',!!S.ah);b.classList.toggle('na',!!S.na);
+  b.style.background=im?`center/cover url(${im})`:'';document.querySelector('svg.wp').style.display=im?'none':'';tick()}
+/* browser */
+function browser(w){
+  const b=w.querySelector('.wb');
+  b.innerHTML=`<div class="bar"><button class="cb t" data-a="back" aria-label="戻る"><span class="ms">arrow_back</span></button><button class="cb t" data-a="re" aria-label="再読み込み"><span class="ms">refresh</span></button><button class="cb t" data-a="home" aria-label="ホーム"><span class="ms">home</span></button><input placeholder="Google で検索、または URL を入力" aria-label="アドレスバー"><button class="cb t" data-a="ext" aria-label="新しいタブで開く"><span class="ms">open_in_new</span></button></div><div class="bv" style="flex:1;position:relative;min-height:0;overflow:auto"></div>`;
+  const bv=b.querySelector('.bv'),ad=b.querySelector('.bar input');let h=[],p=-1;
+  const SC=[['Wikipedia','https://ja.wikipedia.org/','menu_book'],['Wikipedia EN','https://en.wikipedia.org/','public'],['MDN','https://developer.mozilla.org/ja/','code'],['Commons','https://commons.wikimedia.org/','photo_library']];
+  const url=v=>/^https?:\/\//.test(v)?v:/^[\w-]+(\.[\w-]+)+(\/\S*)?$/.test(v)?'https://'+v:null;
+  const ntp=()=>{bv.innerHTML=`<div style="text-align:center;padding:40px 16px;animation:up .4s both"><div style="font-size:54px;letter-spacing:-2px">Google</div><div class="bar" style="border:0;max-width:560px;margin:20px auto"><input class="gs" placeholder="Google で検索（新しいタブで開きます）"></div><div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">${SC.map((s,i)=>`<button class="app" data-i="${i}" style="width:96px"><div class="ic" style="background:var(--tile);color:var(--acc)"><span class="ms">${s[2]}</span></div><span>${s[0]}</span></button>`).join('')}</div></div>`;ad.value=''};
+  function go(u,push=true){if(push){h=h.slice(0,p+1);h.push(u);p=h.length-1}ad.value=u;bv.innerHTML=`<iframe src="${u}" style="width:100%;height:100%;border:0;animation:fade .3s"></iframe><div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:#303030;color:#fff;font-size:12px;padding:6px 14px;border-radius:14px;pointer-events:none;white-space:nowrap">表示されないサイトは右上のボタンで新しいタブに開けます</div>`}
+  const enter=v=>{v=v.trim();if(!v)return;const u=url(v);u?go(u):window.open('https://www.google.com/search?q='+encodeURIComponent(v),'_blank','noopener')};
+  ad.onkeydown=e=>{if(e.key==='Enter')enter(ad.value)};
+  bv.onkeydown=e=>{if(e.key==='Enter'&&e.target.classList.contains('gs'))enter(e.target.value)};
+  b.onclick=e=>{const t=e.target.closest('[data-a],[data-i]');if(!t)return;
+    if(t.dataset.i!=null)return go(SC[+t.dataset.i][1]);const a=t.dataset.a;
+    if(a==='back'){if(p>0){p--;go(h[p],false)}else{p=-1;h=[];ntp()}}
+    else if(a==='re'&&p>=0)go(h[p],false);
+    else if(a==='home'){p=-1;h=[];ntp()}
+    else if(a==='ext')window.open(p>=0?h[p]:'https://www.google.com','_blank','noopener')};
+  ntp()}
+/* clock */
+function clock(w){
+  const b=w.querySelector('.wb');let tab='c',tm={end:0,dur:300000,run:0},sw={t0:0,acc:0,run:0,laps:[]};
+  const Z=[['東京','Asia/Tokyo'],['ロンドン','Europe/London'],['ニューヨーク','America/New_York'],['ロサンゼルス','America/Los_Angeles'],['シドニー','Australia/Sydney']],f2=n=>String(n).padStart(2,'0');
+  b.innerHTML=`<div class="bar">${[['c','schedule','時計'],['t','timer','タイマー'],['s','timer_play','ストップウォッチ']].map(([k,i,l])=>`<button class="cb ${k==='c'?'':'t'}" data-tab="${k}"><span class="ms">${i}</span>${l}</button>`).join('')}</div><div class="scroll" style="text-align:center"></div>`;
+  const sc=b.querySelector('.scroll'),q=x=>sc.querySelector(x);
+  const beep=()=>{try{const a=new AudioContext(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=880;o.start();o.stop(a.currentTime+.7)}catch{}};
+  const btn=(a,i,l,t)=>`<button class="cb ${t?'t':''}" data-a="${a}"><span class="ms">${i}</span>${l}</button>`;
+  function view(){b.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('t',x.dataset.tab!==tab));
+    sc.innerHTML=tab==='c'?`<svg viewBox="-100 -100 200 200" style="width:min(240px,60%);animation:up .4s both"><circle r="96" fill="var(--tile)"/>${[...Array(12)].map((_,i)=>`<line y1="-88" y2="-80" stroke="var(--sub)" stroke-width="3" transform="rotate(${i*30})"/>`).join('')}<line id="hh" y2="-50" stroke="var(--txt)" stroke-width="6" stroke-linecap="round"/><line id="mh" y2="-72" stroke="var(--txt)" stroke-width="4" stroke-linecap="round"/><line id="sh" y1="14" y2="-80" stroke="var(--acc)" stroke-width="2"/><circle r="5" fill="var(--acc)"/></svg><div id="dg" style="font-size:36px;margin:8px 0"></div><div style="max-width:420px;margin:auto;text-align:left">${Z.map(([n,z])=>`<div class="row"><span>${n}</span><span data-z="${z}"></span></div>`).join('')}</div>`
+    :tab==='t'?`<svg viewBox="-100 -100 200 200" style="width:220px;animation:up .4s both"><circle r="90" fill="none" stroke="var(--tile)" stroke-width="10"/><circle id="rg" r="90" fill="none" stroke="var(--acc)" stroke-width="10" stroke-linecap="round" stroke-dasharray="565.5" stroke-dashoffset="0" transform="rotate(-90)"/><text id="tt" text-anchor="middle" dy=".35em" style="font-size:34px" fill="var(--txt)">--:--</text></svg><div style="display:flex;gap:6px;justify-content:center;align-items:center;margin:8px"><input class="num" id="tmn" type="number" min="0" max="999" value="${Math.floor(tm.dur/60000)}" style="width:70px">分<input class="num" id="tsc" type="number" min="0" max="59" value="${tm.dur/1000%60}" style="width:70px">秒</div><div style="display:flex;gap:8px;justify-content:center">${btn('ts','play_arrow','開始/一時停止')}${btn('tr','restart_alt','リセット',1)}</div>`
+    :`<div id="sd" style="font-size:52px;margin:24px 0;font-variant-numeric:tabular-nums;animation:up .4s both">00:00.00</div><div style="display:flex;gap:8px;justify-content:center">${btn('ss','play_arrow','開始/停止')}${btn('sl','flag','ラップ',1)}${btn('sr','restart_alt','リセット',1)}</div><div id="lp" style="max-width:320px;margin:16px auto;text-align:left"></div>`;upd()}
+  const swt=()=>sw.acc+(sw.run?Date.now()-sw.t0:0),fs=t=>f2(Math.floor(t/60000))+':'+f2(Math.floor(t/1000)%60)+'.'+f2(Math.floor(t/10)%100);
+  function upd(){const d=new Date();
+    if(tab==='c'&&q('#hh')){const s=d.getSeconds()+d.getMilliseconds()/1000,m=d.getMinutes()+s/60,h=d.getHours()%12+m/60;q('#hh').setAttribute('transform',`rotate(${h*30})`);q('#mh').setAttribute('transform',`rotate(${m*6})`);q('#sh').setAttribute('transform',`rotate(${s*6})`);q('#dg').textContent=d.toLocaleTimeString('ja-JP');sc.querySelectorAll('[data-z]').forEach(x=>x.textContent=d.toLocaleTimeString('ja-JP',{timeZone:x.dataset.z,hour:'2-digit',minute:'2-digit'}))}
+    if(tab==='t'&&q('#tt')){let left=tm.run?tm.end-Date.now():tm.left??tm.dur;if(tm.run&&left<=0){tm.run=0;left=0;tm.left=tm.dur;beep();toast('タイマーが終了しました');try{if(Notification.permission==='granted')new Notification('タイマー終了')}catch{}}
+      q('#tt').textContent=f2(Math.floor(Math.ceil(left/1000)/60))+':'+f2(Math.ceil(left/1000)%60);q('#rg').setAttribute('stroke-dashoffset',565.5*(1-left/tm.dur))}
+    if(tab==='s'&&q('#sd'))q('#sd').textContent=fs(swt())}
+  const iv=setInterval(upd,50);w.cleanup=()=>clearInterval(iv);
+  b.onclick=e=>{const t=e.target.closest('button');if(!t)return;const a=t.dataset.a;
+    if(t.dataset.tab){tab=t.dataset.tab;view();return}
+    if(a==='ts'){if(tm.run){tm.left=tm.end-Date.now();tm.run=0}else{if(tm.left==null||tm.left<=0||!tm.started){const d=(+q('#tmn').value*60+ +q('#tsc').value)*1000;if(d<=0)return;tm.dur=d;tm.left=d}tm.started=1;tm.end=Date.now()+tm.left;tm.run=1}}
+    if(a==='tr'){tm.run=0;tm.left=null;tm.started=0;tm.dur=Math.max(1000,(+q('#tmn').value*60+ +q('#tsc').value)*1000)}
+    if(a==='ss'){if(sw.run){sw.acc=swt();sw.run=0}else{sw.t0=Date.now();sw.run=1}}
+    if(a==='sl'&&(sw.run||sw.acc)){sw.laps.unshift(fs(swt()));q('#lp').innerHTML=sw.laps.map((l,i)=>`<div class="row" style="animation:up .25s both"><span>ラップ ${sw.laps.length-i}</span><span>${l}</span></div>`).join('')}
+    if(a==='sr'){sw={t0:0,acc:0,run:0,laps:[]};q('#lp').innerHTML=''}};
+  view()}
+/* calendar */
+function calendar(w){
+  const b=w.querySelector('.wb'),ev=jl('cal',{}),pd=n=>String(n).padStart(2,'0'),key=(y,m,d)=>`${y}-${pd(m+1)}-${pd(d)}`,T=new Date();
+  let y=T.getFullYear(),m=T.getMonth(),sel=key(y,m,T.getDate());
+  b.innerHTML=`<div class="bar"><button class="cb t" data-a="today">今日</button><button class="cb t" data-a="prev" aria-label="前の月"><span class="ms">chevron_left</span></button><button class="cb t" data-a="next" aria-label="次の月"><span class="ms">chevron_right</span></button><b class="ttl" style="flex:1;font-weight:500;font-size:18px"></b></div><div class="scroll" style="display:flex;gap:16px;flex-wrap:wrap;align-content:flex-start"><div class="cg" style="flex:2 1 300px"></div><div style="flex:1 1 200px"><div class="sd" style="font-weight:500;margin-bottom:6px"></div><div class="el"></div><div class="bar" style="border:0;padding:8px 0"><input placeholder="予定を追加"><button class="cb" data-a="add" aria-label="追加"><span class="ms">add</span></button></div></div></div>`;
+  const cg=b.querySelector('.cg'),el=b.querySelector('.el'),inp=b.querySelector('input'),save=()=>sv('cal',JSON.stringify(ev));
+  function side(){b.querySelector('.sd').textContent=sel.replace(/-/g,'/')+' の予定';const l=ev[sel]||[];el.innerHTML=l.length?l.map((t,i)=>`<div class="row" style="animation:up .25s both"><span>${esc(t)}</span><button data-x="${i}" aria-label="削除"><span class="ms" style="color:var(--sub)">close</span></button></div>`).join(''):'<div class="empty" style="padding:16px">予定はありません</div>'}
+  function draw(dir=0){b.querySelector('.ttl').textContent=`${y}年${m+1}月`;
+    const f=new Date(y,m,1).getDay(),n=new Date(y,m+1,0).getDate(),tk=key(T.getFullYear(),T.getMonth(),T.getDate());
+    let h='日月火水木金土'.split('').map(c=>`<div style="text-align:center;font-size:12px;color:var(--sub);padding:4px">${c}</div>`).join('');
+    for(let i=0;i<f;i++)h+='<div></div>';
+    for(let d=1;d<=n;d++){const k=key(y,m,d);h+=`<button data-d="${d}" style="aspect-ratio:1;border-radius:50%;position:relative;font-size:14px;${k===tk?'background:var(--pc);color:var(--onpc);':''}${k===sel?'outline:2px solid var(--acc);':''}">${d}${ev[k]?.length?'<i style="position:absolute;bottom:6px;left:50%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--acc)"></i>':''}</button>`}
+    cg.innerHTML=`<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">${h}</div>`;
+    if(dir)cg.animate([{opacity:0,transform:`translateX(${dir*30}px)`},{opacity:1,transform:'none'}],{duration:250,easing:'ease-out'});side()}
+  const add=()=>{const v=inp.value.trim();if(!v)return;(ev[sel]=ev[sel]||[]).push(v);inp.value='';save();draw()};
+  b.onclick=e=>{const t=e.target.closest('button');if(!t)return;const a=t.dataset.a;
+    if(t.dataset.d){sel=key(y,m,+t.dataset.d);draw()}
+    else if(t.dataset.x!=null){ev[sel].splice(+t.dataset.x,1);save();draw()}
+    else if(a==='add')add();
+    else if(a==='today'){y=T.getFullYear();m=T.getMonth();sel=key(y,m,T.getDate());draw()}
+    else if(a==='prev'||a==='next'){const dd=a==='prev'?-1:1;m+=dd;if(m<0){m=11;y--}if(m>11){m=0;y++}draw(dd)}};
+  inp.onkeydown=e=>{if(e.key==='Enter')add()};draw()}
+/* keep */
+function keep(w){
+  const b=w.querySelector('.wb'),C=['','#fff1c2','#ffd6d6','#d3f0d6','#d3e3fd','#e8d9ff'];let N=jl('keep',[]),col='';
+  b.innerHTML=`<div class="bar"><input class="qs" placeholder="メモを検索" aria-label="検索"></div><div class="scroll"><div class="wxc" style="max-width:520px;margin:0 auto 14px"><input class="kt" placeholder="タイトル" style="width:100%;background:none;border:0;color:inherit;font:inherit;font-size:16px;outline:0;margin-bottom:6px"><textarea class="kb" placeholder="メモを入力…" rows="3" style="width:100%;background:none;border:0;color:inherit;font:inherit;outline:0;resize:vertical"></textarea><div style="display:flex;align-items:center;gap:6px">${C.map((c,i)=>`<button data-c="${c}" aria-label="色${i+1}" style="width:24px;height:24px;border-radius:50%;background:${c||'var(--panel)'};border:2px solid var(--line)"></button>`).join('')}<span style="flex:1"></span><button class="cb" data-a="add">追加</button></div></div><div class="kg" style="column-width:190px;column-gap:12px"></div></div>`;
+  const kg=b.querySelector('.kg'),qs=b.querySelector('.qs'),kt=b.querySelector('.kt'),kb=b.querySelector('.kb'),save=()=>sv('keep',JSON.stringify(N));
+  function draw(){const q=qs.value.toLowerCase(),L=N.map((n,i)=>({...n,i})).filter(n=>(n.t+n.b).toLowerCase().includes(q)).sort((a,c)=>(c.p|0)-(a.p|0));
+    kg.innerHTML=L.map((n,k)=>`<div style="break-inside:avoid;margin-bottom:12px;padding:12px 14px;border-radius:16px;background:${n.c||'var(--tile)'};color:${n.c?'#1f1f1f':'inherit'};animation:up .3s both;animation-delay:${k*30}ms"><div style="font-weight:500;margin-bottom:4px">${esc(n.t)}</div><div style="white-space:pre-wrap;font-size:13.5px">${esc(n.b)}</div><div style="display:flex;justify-content:flex-end;gap:4px;margin-top:8px"><button data-p="${n.i}" aria-label="ピン留め"><span class="ms" style="opacity:${n.p?1:.4}">push_pin</span></button><button data-x="${n.i}" aria-label="削除"><span class="ms">delete</span></button></div></div>`).join('')||'<div class="empty">メモがありません</div>'}
+  b.onclick=e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset;
+    if(d.c!=null){col=d.c;b.querySelectorAll('[data-c]').forEach(x=>x.style.borderColor=x===t?'var(--acc)':'var(--line)')}
+    else if(d.a==='add'){if(!kt.value.trim()&&!kb.value.trim())return;N.unshift({t:kt.value,b:kb.value,c:col,p:0});kt.value=kb.value='';save();draw()}
+    else if(d.p!=null){N[+d.p].p=N[+d.p].p?0:1;save();draw()}
+    else if(d.x!=null){N.splice(+d.x,1);save();draw()}};
+  qs.oninput=draw;draw()}
+/* docs */
+function docs(w){
+  const b=w.querySelector('.wb'),D=jl('doc',{t:'無題のドキュメント',h:'<h2>タイトル</h2><p>ここに入力してください。</p>'});
+  const TB=[['undo','undo'],['redo','redo'],['bold','format_bold'],['italic','format_italic'],['underline','format_underlined'],['insertUnorderedList','format_list_bulleted'],['insertOrderedList','format_list_numbered'],['justifyLeft','format_align_left'],['justifyCenter','format_align_center'],['justifyRight','format_align_right'],['removeFormat','format_clear']];
+  b.innerHTML=`<div class="bar" style="flex-wrap:wrap"><input class="dt" value="${esc(D.t)}" style="flex:0 1 200px" aria-label="タイトル"><select class="num" data-blk style="width:auto"><option value="p">本文</option><option value="h1">見出し1</option><option value="h2">見出し2</option><option value="h3">見出し3</option></select>${TB.map(([c,i])=>`<button class="cb t" data-c="${c}" style="padding:0 8px" aria-label="${c}"><span class="ms">${i}</span></button>`).join('')}<button class="cb" data-a="dl"><span class="ms">download</span>保存</button></div><div class="scroll" style="background:var(--tile)"><div class="pg" contenteditable="true" spellcheck="false" style="background:#fff;color:#1f1f1f;max-width:760px;min-height:100%;margin:0 auto;padding:44px 52px;border-radius:6px;outline:0;box-shadow:0 1px 6px rgba(0,0,0,.25);line-height:1.8;animation:up .4s both"></div></div><div class="bar" style="border:0;border-top:1px solid var(--line);font-size:12px;color:var(--sub)"><span class="wc"></span><span style="flex:1"></span><span>自動保存</span></div>`;
+  const pg=b.querySelector('.pg'),dt=b.querySelector('.dt');pg.innerHTML=D.h;let tm;
+  const wc=()=>b.querySelector('.wc').textContent=pg.innerText.replace(/\s/g,'').length+' 文字';
+  const sav=()=>{clearTimeout(tm);tm=setTimeout(()=>{D.h=pg.innerHTML;D.t=dt.value;sv('doc',JSON.stringify(D))},400);wc()};
+  pg.oninput=dt.oninput=sav;wc();
+  b.addEventListener('mousedown',e=>{if(e.target.closest('[data-c]'))e.preventDefault()});
+  b.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.c){document.execCommand(t.dataset.c);sav()}
+    else if(t.dataset.a==='dl'){const u=URL.createObjectURL(new Blob([`<!DOCTYPE html><meta charset="utf-8"><title>${esc(dt.value)}</title>${pg.innerHTML}`],{type:'text/html'})),a=document.createElement('a');a.href=u;a.download=(dt.value||'document')+'.html';a.click();URL.revokeObjectURL(u)}});
+  b.querySelector('[data-blk]').onchange=e=>{pg.focus();document.execCommand('formatBlock',false,e.target.value);sav()}}
+/* sheet */
+function sheet(w){
+  const b=w.querySelector('.wb'),C=10,N=30,D=jl('sheet',{}),cl=i=>String.fromCharCode(65+i);
+  b.innerHTML=`<div class="bar"><input class="ad" readonly style="flex:0 0 70px" aria-label="セル"><input class="fi" placeholder="値、または =SUM(A1:A5) のような数式" aria-label="数式バー"><button class="cb t" data-a="csv"><span class="ms">download</span>CSV</button><button class="cb t" data-a="clr" aria-label="クリア"><span class="ms">delete_sweep</span></button></div><div class="scroll" style="padding:0"><table class="sh"><thead><tr><th></th>${[...Array(C)].map((_,i)=>`<th>${cl(i)}</th>`).join('')}</tr></thead><tbody>${[...Array(N)].map((_,r)=>`<tr><th>${r+1}</th>${[...Array(C)].map((_,c)=>`<td><input data-c="${cl(c)}${r+1}"></td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const ins=[...b.querySelectorAll('td input')],ad=b.querySelector('.ad'),fi=b.querySelector('.fi'),save=()=>sv('sheet',JSON.stringify(D));let cur='';
+  const rc=id=>{const m=id.match(/^([A-Z]+)(\d+)$/);return [m[1].charCodeAt(0)-65,+m[2]]};
+  function ev(id,dep=0){const raw=D[id];if(raw==null||raw==='')return '';if(raw[0]!=='=')return raw.trim()!==''&&!isNaN(raw)?+raw:raw;if(dep>30)return '#循環';
+    try{const V=x=>{const v=ev(x,dep+1);return typeof v==='number'?v:(v===''||isNaN(v)?0:+v)},
+      R=(a,z)=>{const [c1,r1]=rc(a),[c2,r2]=rc(z),o=[];for(let c=Math.min(c1,c2);c<=Math.max(c1,c2);c++)for(let r=Math.min(r1,r2);r<=Math.max(r1,r2);r++){const v=ev(cl(c)+r,dep+1);if(typeof v==='number')o.push(v)}return o},
+      fl=a=>a.flat(),SUM=(...a)=>fl(a).reduce((x,y)=>x+y,0),COUNT=(...a)=>fl(a).length,AVERAGE=(...a)=>SUM(...a)/COUNT(...a),MIN=(...a)=>Math.min(...fl(a)),MAX=(...a)=>Math.max(...fl(a)),ROUND=(x,n=0)=>Math.round(x*10**n)/10**n,IF=(c,a,b)=>c?a:b,ABS=Math.abs,SQRT=Math.sqrt;
+      const f=raw.slice(1).toUpperCase().replace(/([A-Z]+\d+):([A-Z]+\d+)|([A-Z]+\d+)/g,(m,a,z,s)=>a?`R("${a}","${z}")`:`V("${s}")`);
+      const r=Function('V','R','SUM','COUNT','AVERAGE','MIN','MAX','ROUND','IF','ABS','SQRT',`return (${f})`)(V,R,SUM,COUNT,AVERAGE,MIN,MAX,ROUND,IF,ABS,SQRT);
+      return typeof r==='number'?Math.round(r*1e10)/1e10:r}catch{return '#エラー'}}
+  const refresh=()=>ins.forEach(i=>{if(document.activeElement!==i)i.value=ev(i.dataset.c)});
+  const commit=v=>{if(!cur)return;v===''?delete D[cur]:D[cur]=v;save();refresh()};
+  const tb=b.querySelector('table');
+  tb.addEventListener('focusin',e=>{const i=e.target;cur=i.dataset.c;ad.value=cur;i.value=D[cur]||'';fi.value=i.value});
+  tb.addEventListener('input',e=>{fi.value=e.target.value});
+  tb.addEventListener('focusout',e=>commit(e.target.value));
+  tb.addEventListener('keydown',e=>{if(e.key==='Enter'){const k=ins.indexOf(e.target)+C;commit(e.target.value);ins[k]?.focus()}});
+  fi.onchange=()=>{const i=ins.find(x=>x.dataset.c===cur);if(i)i.value=fi.value;commit(fi.value)};
+  b.addEventListener('click',e=>{const a=e.target.closest('[data-a]')?.dataset.a;
+    if(a==='clr'&&confirm('すべてのセルを消去しますか？')){Object.keys(D).forEach(k=>delete D[k]);save();refresh()}
+    if(a==='csv'){const rows=[...Array(N)].map((_,r)=>[...Array(C)].map((_,c)=>`"${String(ev(cl(c)+(r+1))).replace(/"/g,'""')}"`).join(','));const u=URL.createObjectURL(new Blob(['\ufeff'+rows.join('\n')],{type:'text/csv'})),x=document.createElement('a');x.href=u;x.download='sheet.csv';x.click();URL.revokeObjectURL(u)}});
+  refresh()}
+/* paint */
+function paint(w){
+  const b=w.querySelector('.wb');
+  b.innerHTML=`<div class="bar" style="flex-wrap:wrap"><input type="color" value="#1a73e8" style="width:40px;height:36px;border:0;background:none;padding:0" aria-label="色"><input type="range" min="1" max="60" value="6" style="width:100px" aria-label="太さ"><button class="cb" data-t="pen" aria-label="ペン"><span class="ms">edit</span></button><button class="cb t" data-t="hl" aria-label="蛍光ペン"><span class="ms">ink_highlighter</span></button><button class="cb t" data-t="er" aria-label="消しゴム"><span class="ms">ink_eraser</span></button><span style="flex:1"></span><button class="cb t" data-a="undo" aria-label="元に戻す"><span class="ms">undo</span></button><button class="cb t" data-a="clr" aria-label="全消去"><span class="ms">delete</span></button><button class="cb" data-a="save"><span class="ms">save</span>写真に保存</button></div><div style="flex:1;min-height:0;display:grid;place-items:center;background:var(--tile);padding:8px"><canvas width="1100" height="720" style="max-width:100%;max-height:100%;background:#fff;border-radius:8px;touch-action:none;cursor:crosshair;box-shadow:0 1px 6px rgba(0,0,0,.3)"></canvas></div>`;
+  const cv=b.querySelector('canvas'),g=cv.getContext('2d'),col=b.querySelector('[type=color]'),sz=b.querySelector('[type=range]');let tool='pen',dn=false,U=[];
+  g.fillStyle='#fff';g.fillRect(0,0,cv.width,cv.height);g.lineCap=g.lineJoin='round';
+  const P=e=>{const r=cv.getBoundingClientRect();return [(e.clientX-r.left)*cv.width/r.width,(e.clientY-r.top)*cv.height/r.height]};
+  const pen=()=>{g.globalAlpha=tool==='hl'?.3:1;g.strokeStyle=tool==='er'?'#fff':col.value;g.lineWidth=tool==='hl'?+sz.value*2:+sz.value};
+  cv.onpointerdown=e=>{U.push(g.getImageData(0,0,cv.width,cv.height));if(U.length>25)U.shift();dn=true;cv.setPointerCapture(e.pointerId);const [x,y]=P(e);g.beginPath();g.moveTo(x,y);g.lineTo(x+.01,y);pen();g.stroke()};
+  cv.onpointermove=e=>{if(!dn)return;const [x,y]=P(e);g.lineTo(x,y);pen();g.stroke();g.beginPath();g.moveTo(x,y)};
+  cv.onpointerup=cv.onpointercancel=()=>{dn=false;g.globalAlpha=1};
+  b.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+    if(t.dataset.t){tool=t.dataset.t;b.querySelectorAll('[data-t]').forEach(x=>x.classList.toggle('t',x!==t))}
+    const a=t.dataset.a;if(a==='undo'&&U.length)g.putImageData(U.pop(),0,0);
+    if(a==='clr'){U.push(g.getImageData(0,0,cv.width,cv.height));g.fillStyle='#fff';g.fillRect(0,0,cv.width,cv.height)}
+    if(a==='save')cv.toBlob(async x=>{await put('photos',{id:Date.now(),blob:x,name:'Drawing_'+Date.now()+'.png'});document.dispatchEvent(new Event('photos'));toast('写真に保存しました')})})}
+/* maps */
+function maps(w){
+  const b=w.querySelector('.wb');let la=35.681,lo=139.767,z=.02;
+  b.innerHTML=`<div class="bar"><input placeholder="場所を検索（例: 東京タワー）" aria-label="場所"><button class="cb" data-a="s" aria-label="検索"><span class="ms">search</span></button><button class="cb t" data-a="g" aria-label="現在地"><span class="ms">my_location</span></button><button class="cb t" data-a="in" aria-label="拡大"><span class="ms">add</span></button><button class="cb t" data-a="out" aria-label="縮小"><span class="ms">remove</span></button></div><div class="rs" hidden style="padding:6px 12px;border-bottom:1px solid var(--line);max-height:150px;overflow:auto"></div><iframe style="flex:1;border:0;width:100%;min-height:0" title="地図"></iframe>`;
+  const f=b.querySelector('iframe'),inp=b.querySelector('input'),rs=b.querySelector('.rs');
+  const set=()=>{f.src=`https://www.openstreetmap.org/export/embed.html?bbox=${lo-z},${la-z*.6},${lo+z},${la+z*.6}&layer=mapnik&marker=${la},${lo}`};
+  async function srch(){const q=inp.value.trim();if(!q)return;try{const r=await(await fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=5&accept-language=ja&q=${encodeURIComponent(q)}`)).json();rs.hidden=!r.length;rs.innerHTML=r.map((p,i)=>`<div class="fr" data-i="${i}"><span class="ms">location_on</span><span>${esc(p.display_name)}</span></div>`).join('');rs._r=r;if(!r.length)toast('見つかりませんでした')}catch{toast('検索に失敗しました')}}
+  b.onclick=e=>{const r=e.target.closest('[data-i]');if(r){const p=rs._r[+r.dataset.i];la=+p.lat;lo=+p.lon;z=.01;rs.hidden=true;set();return}
+    const a=e.target.closest('[data-a]')?.dataset.a;if(a==='s')srch();if(a==='in'){z/=2;set()}if(a==='out'){z*=2;set()}
+    if(a==='g')navigator.geolocation?.getCurrentPosition(p=>{la=p.coords.latitude;lo=p.coords.longitude;z=.01;set()},()=>toast('現在地を取得できませんでした'))};
+  inp.onkeydown=e=>{if(e.key==='Enter')srch()};set()}
+/* translate */
+function translate(w){
+  const b=w.querySelector('.wb'),L=[['ja','日本語'],['en','English'],['zh-CN','中文'],['ko','한국어'],['es','Español'],['fr','Français'],['de','Deutsch']];
+  const opt=s=>L.map(([c,n])=>`<option value="${c}" ${c===s?'selected':''}>${n}</option>`).join('');
+  b.innerHTML=`<div class="bar"><select class="num" data-f style="width:auto">${opt('ja')}</select><button class="cb t" data-a="sw" aria-label="入れ替え"><span class="ms">swap_horiz</span></button><select class="num" data-t style="width:auto">${opt('en')}</select></div><div class="scroll" style="display:flex;gap:12px;flex-wrap:wrap"><textarea placeholder="翻訳するテキストを入力" style="flex:1 1 240px;min-height:200px;border-radius:16px;border:1px solid var(--line);background:var(--tile);color:var(--txt);padding:14px;font:inherit;font-size:16px;outline:0;resize:none"></textarea><div style="flex:1 1 240px;min-height:200px;border-radius:16px;background:var(--pc);color:var(--onpc);padding:14px;font-size:16px;position:relative"><div class="out" style="white-space:pre-wrap"></div><div style="position:absolute;right:8px;bottom:8px;display:flex;gap:4px"><button data-a="cp" aria-label="コピー"><span class="ms">content_copy</span></button><button data-a="sp" aria-label="読み上げ"><span class="ms">volume_up</span></button></div></div></div>`;
+  const ta=b.querySelector('textarea'),out=b.querySelector('.out'),sf=b.querySelector('[data-f]'),sto=b.querySelector('[data-t]');let tm;
+  async function go(){const q=ta.value.trim();if(!q){out.textContent='';return}out.textContent='翻訳中…';try{const r=await(await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(q)}&langpair=${sf.value}|${sto.value}`)).json();out.textContent=r.responseData.translatedText}catch{out.textContent='翻訳できませんでした。通信環境を確認してください。'}}
+  ta.oninput=()=>{clearTimeout(tm);tm=setTimeout(go,600)};sf.onchange=sto.onchange=go;
+  b.onclick=e=>{const a=e.target.closest('[data-a]')?.dataset.a;
+    if(a==='sw'){[sf.value,sto.value]=[sto.value,sf.value];ta.value=out.textContent==='翻訳中…'?'':out.textContent;go()}
+    if(a==='cp'){navigator.clipboard?.writeText(out.textContent);toast('コピーしました')}
+    if(a==='sp'&&out.textContent){const u=new SpeechSynthesisUtterance(out.textContent);u.lang=sto.value;speechSynthesis.speak(u)}}}
+/* youtube */
+function youtube(w){
+  const b=w.querySelector('.wb');let H=jl('yt',[]);
+  b.innerHTML=`<div class="bar"><input placeholder="動画のURL、またはキーワード（検索は新しいタブ）" aria-label="URL"><button class="cb" data-a="go"><span class="ms">play_arrow</span>再生</button></div><div class="scroll"><div class="yp" style="aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;max-height:60vh;margin:0 auto;display:grid;place-items:center;color:#fff"><span class="ms" style="font-size:64px;opacity:.5">smart_display</span></div><div class="yh" style="margin-top:12px"></div></div>`;
+  const inp=b.querySelector('input'),yp=b.querySelector('.yp'),yh=b.querySelector('.yh');
+  const gid=s=>(s.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/)||s.match(/^([\w-]{11})$/)||[])[1];
+  const draw=()=>{yh.innerHTML=H.length?'<div style="font-size:13px;color:var(--sub);margin-bottom:4px">履歴</div>'+H.map((h,i)=>`<div class="fr" data-i="${i}"><span class="ms">history</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(h.t||h.id)}</span></div>`).join(''):''};
+  async function play(id){yp.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="width:100%;height:100%;border:0"></iframe>`;
+    if(!H.find(h=>h.id===id)){const h={id,t:''};H.unshift(h);H=H.slice(0,15);draw();try{h.t=(await(await fetch('https://noembed.com/embed?url='+encodeURIComponent('https://www.youtube.com/watch?v='+id))).json()).title||''}catch{}sv('yt',JSON.stringify(H));draw()}}
+  const go=()=>{const v=inp.value.trim();if(!v)return;const id=gid(v);id?play(id):window.open('https://www.youtube.com/results?search_query='+encodeURIComponent(v),'_blank','noopener')};
+  b.onclick=e=>{if(e.target.closest('[data-a]'))go();const r=e.target.closest('[data-i]');if(r)play(H[+r.dataset.i].id)};
+  inp.onkeydown=e=>{if(e.key==='Enter')go()};draw()}
+/* music */
+function music(w){
+  const b=w.querySelector('.wb');let L=[],cur=-1,shuf=false,ac=null,an=null,raf=0;
+  b.innerHTML=`<div class="bar"><b style="flex:1;font-weight:500">ミュージック</b><label class="cb"><span class="ms">library_add</span>曲を追加<input type="file" accept="audio/*" multiple hidden></label></div><div class="scroll" style="display:flex;gap:18px;flex-wrap:wrap;align-content:flex-start"><div style="flex:1 1 230px;text-align:center"><div class="disc"><span class="ms">album</span></div><canvas class="viz" width="240" height="56" style="width:100%;max-width:240px"></canvas><div class="mt" style="margin:8px 0;font-size:15px;min-height:22px">曲を選択してください</div><input type="range" class="sk" min="0" max="1000" value="0" style="width:100%" aria-label="シーク"><div class="tt" style="font-size:12px;color:var(--sub)">0:00 / 0:00</div><div style="display:flex;justify-content:center;gap:8px;margin-top:6px"><button class="cb t" data-a="prev" aria-label="前の曲"><span class="ms">skip_previous</span></button><button class="cb" data-a="pp" aria-label="再生"><span class="ms">play_arrow</span></button><button class="cb t" data-a="next" aria-label="次の曲"><span class="ms">skip_next</span></button><button class="cb t" data-a="sh" aria-label="シャッフル"><span class="ms">shuffle</span></button></div></div><div class="ml" style="flex:1 1 230px"></div></div><audio></audio>`;
+  const q=x=>b.querySelector(x),au=q('audio'),ds=q('.disc'),sk=q('.sk'),cv=q('.viz'),g=cv.getContext('2d'),pb=q('[data-a=pp] .ms');au.volume=$('#vol').value/100;
+  const isA=f=>/^audio/.test(f.blob.type)||/\.(mp3|wav|m4a|ogg|flac|aac)$/i.test(f.name),fm=t=>isFinite(t)?Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0'):'0:00';
+  async function load(){L=(await all('files')).filter(isA).sort((a,c)=>a.id-c.id);q('.ml').innerHTML=L.length?L.map((f,i)=>`<div class="fr ${i===cur?'sel':''}" data-i="${i}" style="animation:up .3s both;animation-delay:${i*30}ms"><span class="ms">${i===cur?'graphic_eq':'music_note'}</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(f.name.replace(/\.[^.]+$/,''))}</span></div>`).join(''):'<div class="empty">曲がありません。「曲を追加」から音楽ファイルを追加してください。ファイルアプリの音楽も表示されます。</div>'}
+  function viz(){if(ac)return;try{ac=new AudioContext();const s=ac.createMediaElementSource(au);an=ac.createAnalyser();an.fftSize=64;s.connect(an);an.connect(ac.destination)}catch{ac=null;return}
+    const D=new Uint8Array(an.frequencyBinCount),fr=()=>{raf=requestAnimationFrame(fr);an.getByteFrequencyData(D);g.clearRect(0,0,240,56);g.fillStyle=getComputedStyle(cv).getPropertyValue('--acc')||'#888';const bw=240/D.length;D.forEach((v,i)=>{const h=v/255*56;g.fillRect(i*bw+1,56-h,bw-2,h)})};fr()}
+  function play(i){if(!L.length)return;cur=(i+L.length)%L.length;au.src=URL.createObjectURL(L[cur].blob);viz();ac?.resume?.();au.play();q('.mt').textContent=L[cur].name.replace(/\.[^.]+$/,'');load()}
+  au.onplay=()=>{ds.classList.add('spin');pb.textContent='pause'};au.onpause=()=>{ds.classList.remove('spin');pb.textContent='play_arrow'};
+  au.ontimeupdate=()=>{if(au.duration)sk.value=au.currentTime/au.duration*1000;q('.tt').textContent=fm(au.currentTime)+' / '+fm(au.duration)};
+  sk.oninput=()=>{if(au.duration)au.currentTime=sk.value/1000*au.duration};
+  au.onended=()=>play(shuf?Math.floor(Math.random()*L.length):cur+1);
+  b.onclick=e=>{const r=e.target.closest('[data-i]');if(r)return play(+r.dataset.i);const a=e.target.closest('[data-a]')?.dataset.a;
+    if(a==='pp'){if(cur<0)play(0);else au.paused?(ac?.resume?.(),au.play()):au.pause()}
+    if(a==='next')play(shuf?Math.floor(Math.random()*L.length):cur+1);if(a==='prev')play(cur-1);
+    if(a==='sh'){shuf=!shuf;e.target.closest('button').classList.toggle('t',!shuf)}};
+  q('input[type=file]').onchange=async e=>{let i=0;for(const f of e.target.files)await put('files',{id:Date.now()+i++,name:f.name,blob:f});e.target.value='';load()};
+  w.cleanup=()=>{cancelAnimationFrame(raf);au.pause();ac?.close?.()};load()}
+/* movies */
+function movies(w){
+  const b=w.querySelector('.wb');let L=[];
+  b.innerHTML=`<div class="bar"><b style="flex:1;font-weight:500">動画</b><label class="cb"><span class="ms">video_library</span>動画を追加<input type="file" accept="video/*" multiple hidden></label></div><div class="scroll" style="display:flex;gap:14px;flex-wrap:wrap;align-content:flex-start"><div style="flex:3 1 320px"><video controls style="width:100%;max-height:60vh;background:#000;border-radius:16px"></video><div class="mt" style="margin-top:8px"></div></div><div class="ml" style="flex:1 1 200px"></div></div>`;
+  const v=b.querySelector('video');v.volume=$('#vol').value/100;
+  const isV=f=>/^video/.test(f.blob.type)||/\.(mp4|webm|mov|mkv)$/i.test(f.name);
+  async function load(){L=[...await all('files'),...await all('photos')].filter(isV);b.querySelector('.ml').innerHTML=L.length?L.map((f,i)=>`<div class="fr" data-i="${i}" style="animation:up .3s both;animation-delay:${i*30}ms"><span class="ms">movie</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(f.name)}</span></div>`).join(''):'<div class="empty">動画がありません。「動画を追加」から追加するか、カメラで録画してください。</div>'}
+  b.onclick=e=>{const r=e.target.closest('[data-i]');if(!r)return;const f=L[+r.dataset.i];v.src=URL.createObjectURL(f.blob);v.play();b.querySelector('.mt').textContent=f.name};
+  b.querySelector('input').onchange=async e=>{let i=0;for(const f of e.target.files)await put('files',{id:Date.now()+i++,name:f.name,blob:f});e.target.value='';load()};
+  w.cleanup=()=>v.pause();load()}
+/* terminal */
+function term(w){
+  const b=w.querySelector('.wb');
+  b.innerHTML=`<div class="tm"><div class="to"></div><div style="display:flex;gap:8px"><span style="color:#8ab4f8">chronos@localhost:~$</span><input class="ti" autocomplete="off" spellcheck="false" aria-label="コマンド" style="flex:1;background:none;border:0;outline:0;color:inherit;font:inherit"></div></div>`;
+  const o=b.querySelector('.to'),ti=b.querySelector('.ti'),tm=b.querySelector('.tm');let hs=[],hi=0;
+  const out=(t,c)=>{const d=document.createElement('div');d.style.whiteSpace='pre-wrap';if(c)d.style.color=c;d.textContent=t;o.appendChild(d);tm.scrollTop=1e9};
+  out('ChromeOS Flex ターミナル — "help" でコマンド一覧を表示します');
+  const CMD={help:()=>'help clear echo date whoami hostname uname ls cat open theme calc neofetch history reboot',
+    clear:()=>{o.innerHTML='';return ''},echo:a=>a.join(' '),date:()=>new Date().toString(),whoami:()=>'chronos',hostname:()=>'localhost',uname:()=>'Linux localhost 6.6 ChromeOS Flex x86_64',
+    ls:async()=>[...(await all('files')),...(await all('photos'))].map(x=>x.name).join('\n')||'(空)',
+    cat:async a=>{const f=(await all('files')).find(x=>x.name===a[0]);return f?await f.blob.slice(0,2e5).text():'cat: '+(a[0]||'')+': ファイルがありません'},
+    open:a=>{const q=a.join(' ').toLowerCase(),m=q&&A.find(x=>(x.n+x.full).toLowerCase().includes(q));if(!m)return 'open: アプリが見つかりません';launch(m.n);return m.n+' を開きました'},
+    theme:a=>{if(!['dark','light','auto'].includes(a[0]))return 'theme <dark|light|auto>';setTheme(a[0]);return 'テーマ: '+a[0]},
+    calc:a=>{const e=a.join(' ');if(!/^[\d+\-*/().%\s]+$/.test(e))return 'calc: 数式のみ使用できます';try{return String(Function('return '+e)())}catch{return 'calc: エラー'}},
+    neofetch:()=>`chronos@localhost\n-----------------\nOS: ChromeOS Flex\nBrowser: ${navigator.userAgent.match(/(Chrom\w+|Firefox|Safari)\/[\d.]+/)?.[0]||'?'}\nCPU: ${navigator.hardwareConcurrency} cores\nMemory: ${navigator.deviceMemory||'?'} GB\nResolution: ${screen.width}x${screen.height}\nTheme: ${st.dark?'Dark':'Light'}`,
+    history:()=>hs.map((h,i)=>(i+1)+'  '+h).join('\n'),reboot:()=>{location.reload();return ''}};
+  ti.onkeydown=async e=>{if(e.key==='Enter'){const l=ti.value.trim();ti.value='';out('$ '+l,'#8ab4f8');if(!l)return;hs.push(l);hi=hs.length;const [c,...a]=l.split(/\s+/),f=CMD[c];if(!f)return out(c+': コマンドが見つかりません','#f28b82');const r=await f(a);if(r)out(r)}
+    else if(e.key==='ArrowUp'){hi=Math.max(hi-1,0);ti.value=hs[hi]??''}else if(e.key==='ArrowDown'){hi=Math.min(hi+1,hs.length);ti.value=hs[hi]??''}};
+  tm.onclick=()=>ti.focus();ti.focus()}
+/* settings */
+function settings(w){
+  const b=w.querySelector('.wb'),PG=[['net','wifi','ネットワーク'],['bt','bluetooth','Bluetooth'],['dev','tune','デバイス'],['sty','palette','壁紙とスタイル'],['prs','dock_to_bottom','個人設定'],['ntf','notifications','通知'],['prv','lock','プライバシーとセキュリティ'],['sto','storage','ストレージ'],['app','apps','アプリ'],['sys','info','ChromeOS について']];
+  b.innerHTML=`<div class="bar"><span class="ms">settings</span><b style="font-weight:500">設定</b><input placeholder="設定を検索" aria-label="設定を検索"></div><div class="set"><nav class="snav">${PG.map(([k,i,l])=>`<button data-pg="${k}"><span class="ms">${i}</span><span>${l}</span></button>`).join('')}</nav><main class="spg scroll"></main></div>`;
+  const pg=b.querySelector('.spg'),nv=b.querySelector('.snav');let btd=[];
+  const R=(t,d,c)=>`<div class="row"><div><div>${t}</div>${d?`<div style="font-size:12px;color:var(--sub)">${d}</div>`:''}</div><div>${c}</div></div>`;
+  const SW=(k,on)=>`<button class="sw ${on?'on':''}" data-t="${k}" role="switch" aria-checked="${!!on}" aria-label="${k}"></button>`;
+  const CH=(a,v,l,on)=>`<button class="cb ${on?'':'t'}" data-${a}="${v}">${l}</button>`;
+  const WP=[['','#5ab4ff'],['sunset','#ff8a65'],['forest','#4fae8a'],['night','#2b3a67']];
+  const P={
+   net:()=>{const c=navigator.connection;return R('Wi-Fi',navigator.onLine?'オンライン':'オフライン',SW('wifi',st.wifi))+R('接続の種類',c?`${c.effectiveType} / 下り ${c.downlink} Mbps / RTT ${c.rtt} ms`:'情報を取得できません','')+R('データセーバー',c?.saveData?'オン':'オフ','')},
+   bt:()=>R('Bluetooth','',SW('bt',st.bt))+R('デバイスを追加',navigator.bluetooth?'近くのデバイスを検索します':'このブラウザは対応していません',CH('a','btadd','追加',1))+btd.map(n=>R(esc(n),'このセッションで検出','')).join(''),
+   dev:()=>R('音量','',`<div class="sl" style="margin:0;width:200px"><input type="range" data-r="vol" value="${$('#vol').value}"></div>`)+R('明るさ','',`<div class="sl" style="margin:0;width:200px"><input type="range" data-r="bri" min="20" value="${$('#bri').value}"></div>`)+R('キーボード配列','',`<select class="num" data-sel="kb" style="width:auto">${['US','JP'].map(k=>`<option ${S.kb===k?'selected':''}>${k}</option>`).join('')}</select>`)+R('表示サイズ',`画面 ${screen.width}×${screen.height} / DPR ${devicePixelRatio}`,`<select class="num" data-sel="zoom" style="width:auto">${[80,90,100,110,125].map(z=>`<option value="${z}" ${S.zoom==z?'selected':''}>${z}%</option>`).join('')}</select>`),
+   sty:()=>R('テーマ','',[['light','ライト'],['dark','ダーク'],['auto','自動']].map(([v,l])=>CH('th',v,l,(ld('theme')||'auto')===v)).join(' '))
+    +R('アクセントカラー','',`<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:260px">${['',0,25,50,140,190,220,270,320].map(h=>`<button data-ac="${h}" aria-label="アクセントカラー" style="width:28px;height:28px;border-radius:50%;background:${h===''?'linear-gradient(135deg,#c2e7ff,#ffb59a)':`hsl(${h} 80% 55%)`};border:3px solid ${String(S.acc)===String(h)?'var(--txt)':'transparent'}"></button>`).join('')}</div>`)
+    +R('壁紙','',`<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:300px">${WP.map(([k,c])=>`<button data-wp="${k}" aria-label="壁紙" style="width:52px;height:38px;border-radius:10px;background:${c};border:3px solid ${!ld('wpimg')&&(document.body.dataset.wp||'')===k?'var(--txt)':'transparent'}"></button>`).join('')}<label class="cb t"><span class="ms">add_photo_alternate</span>画像<input type="file" accept="image/*" hidden data-wpf></label></div>`),
+   prs:()=>R('24時間表示','',SW('h24',S.h24))+R('シェルフを自動的に隠す','画面下端にカーソルを置くと表示します',SW('ah',S.ah))+R('アニメーション','オフにすると動きを省略します',SW('na',!S.na)),
+   ntf:()=>R('サイレント モード','通知を表示しません',SW('dnd',st.dnd))+R('通知の許可',typeof Notification==='undefined'?'非対応':({granted:'許可済み',denied:'ブロック中',default:'未設定'})[Notification.permission],CH('a','ntreq','許可する',1))+R('テスト通知','',CH('a','nttest','送信',0)),
+   prv:async()=>{const r=await Promise.all(['camera','microphone','geolocation','notifications'].map(async n=>{try{return [n,(await navigator.permissions.query({name:n})).state]}catch{return [n,'不明']}})),L={camera:'カメラ',microphone:'マイク',geolocation:'位置情報',notifications:'通知'},T={granted:'許可',denied:'ブロック',prompt:'確認する'};return r.map(([n,s])=>R(L[n],'',`<span class="cb t">${T[s]||s}</span>`)).join('')+R('サイトデータ','保存した写真・ファイル・設定を削除します',CH('a','wipe','消去',0))},
+   sto:async()=>{const e=(await navigator.storage?.estimate?.())||{},u=e.usage||0,q=e.quota||1;return `<div class="wxc"><div>${(u/1e6).toFixed(1)} MB / ${(q/1e9).toFixed(1)} GB 使用中</div><div style="height:10px;border-radius:5px;background:var(--panel);margin-top:8px;overflow:hidden"><i style="display:block;height:100%;width:${Math.max(1,u/q*100)}%;background:var(--acc);border-radius:5px"></i></div></div>`+R('写真と動画',(await all('photos')).length+' 件','')+R('ファイル',(await all('files')).length+' 件','')},
+   app:()=>A.map(a=>R(`<span style="display:inline-flex;align-items:center;gap:10px">${ico(a,1)}${a.n}</span>`,a.n in NAT?'':'外部ウィンドウで開きます',SW('pin:'+a.n,pinned.includes(a.n)))).join(''),
+   sys:()=>R('バージョン','ChromeOS Flex（デモ）','')+R('ブラウザ',navigator.userAgent.match(/(Chrom\w+|Firefox|Safari)\/[\d.]+/)?.[0]||'-','')+R('プラットフォーム',navigator.platform||'-','')+R('CPU コア数',navigator.hardwareConcurrency||'-','')+R('メモリ',(navigator.deviceMemory||'-')+' GB','')+R('言語',navigator.language,'')+R('バッテリー',$('#bat').textContent,'')+R('稼働時間',Math.round(performance.now()/60000)+' 分','')+R('セットアップ画面','',CH('a','wel','再表示',0))+R('初期化（Powerwash）','すべてのデータと設定を削除します',CH('a','wipe','初期化',0))};
+  async function show(k){nv.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.pg===k));pg.innerHTML=`<h2 style="font-weight:400;font-size:22px;margin-bottom:8px">${PG.find(x=>x[0]===k)[2]}</h2>`+await P[k]();pg.querySelectorAll('.sl input').forEach(fill);pg.animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:260,easing:'ease-out'})}
+  nv.onclick=e=>{const x=e.target.closest('[data-pg]');if(x)show(x.dataset.pg)};
+  b.querySelector('.bar input').oninput=e=>{const q=e.target.value.toLowerCase();nv.querySelectorAll('button').forEach(x=>x.style.display=x.textContent.toLowerCase().includes(q)?'':'none')};
+  pg.onclick=async e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset;
+    if(d.t){const k=d.t;
+      if(k.startsWith('pin:')){const n=k.slice(4);pinned=pinned.includes(n)?pinned.filter(x=>x!==n):[...pinned,n];sv('pins',JSON.stringify(pinned));renderPins();mark()}
+      else if(['h24','ah','na'].includes(k)){S[k]=S[k]?0:1;saveS();applyS()}
+      else{st[k]=!st[k];if(k==='wifi'){wifi=st.wifi;tick()}syncTile(k)}
+      t.classList.toggle('on');t.setAttribute('aria-checked',t.classList.contains('on'))}
+    else if(d.th!=null){setTheme(d.th);show('sty')}
+    else if(d.ac!=null){S.acc=d.ac;saveS();applyAccent();show('sty')}
+    else if(d.wp!=null){try{localStorage.removeItem('cros-wpimg')}catch{}setWp(d.wp);applyS();show('sty')}
+    else if(d.a==='btadd'){try{const dv=await navigator.bluetooth.requestDevice({acceptAllDevices:true});btd.push(dv.name||'不明なデバイス');toast((dv.name||'デバイス')+' を検出しました');show('bt')}catch{toast('デバイスは追加されませんでした')}}
+    else if(d.a==='ntreq'){try{await Notification.requestPermission()}catch{}show('ntf')}
+    else if(d.a==='nttest'){if(typeof Notification!=='undefined'&&Notification.permission==='granted')new Notification('ChromeOS',{body:'これはテスト通知です'});else toast('通知が許可されていません')}
+    else if(d.a==='wel'){$('#welcome').classList.remove('gone')}
+    else if(d.a==='wipe'&&confirm('保存した写真・ファイル・設定をすべて削除します。よろしいですか？')){try{localStorage.clear()}catch{}try{indexedDB.deleteDatabase('cros')}catch{}location.reload()}};
+  pg.onchange=e=>{const t=e.target,d=t.dataset;
+    if(d.sel==='kb'){S.kb=t.value;saveS();tick()}
+    else if(d.sel==='zoom'){S.zoom=+t.value;saveS();applyS()}
+    else if(d.wpf!=null&&t.files[0]){const u=URL.createObjectURL(t.files[0]),im=new Image();im.onload=()=>{const c=document.createElement('canvas'),r=Math.min(1,1600/im.width);c.width=im.width*r;c.height=im.height*r;c.getContext('2d').drawImage(im,0,0,c.width,c.height);sv('wpimg',c.toDataURL('image/jpeg',.82));URL.revokeObjectURL(u);applyS();show('sty')};im.src=u}};
+  pg.oninput=e=>{const t=e.target;if(t.dataset.r){const m=$('#'+t.dataset.r);m.value=t.value;m.dispatchEvent(new Event('input'));fill(t)}};
+  show('net')}
+/* first-run welcome */
+function init(){const th=ld('theme');if(th)setTheme(th);setWp(ld('wp')||'');$('#vol').addEventListener('input',()=>document.querySelectorAll('audio,video').forEach(a=>a.volume=$('#vol').value/100));$('#wstart').onclick=()=>{$('#welcome').classList.add('gone');sv('welcome','1')};if(ld('welcome'))$('#welcome').classList.add('gone');tiles();applyS();render();tick();setInterval(tick,10000);mark()}
+init();
+</script>
+</body>
+</html>
