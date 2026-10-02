@@ -344,6 +344,34 @@ body.cw #shelf{background:#173b1e!important;backdrop-filter:none}body.cw .tb,bod
 .hint2{padding:6px 16px;font-size:12px;color:var(--sub)}
 .wsg{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}.wc{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:var(--surf2)}.wc small{display:block;color:var(--sub);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @container (max-width:560px){.tn{width:64px;padding:8px 6px}.tn button{padding:0;justify-content:center}.tn button span:last-child{display:none}}
+
+/* v9 */
+#lbtn{background:#fff!important;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.v2d{}#v2d{position:fixed;inset:0;z-index:140;background:rgba(0,0,0,.4);display:grid;place-items:center}
+#v2d>div{background:var(--panel);color:var(--txt);border-radius:24px;padding:24px;width:min(380px,calc(100% - 24px));display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+#v2d h3{font-weight:400;font-size:20px}#v2d label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--sub)}#v2d .ac{display:flex;gap:8px;justify-content:flex-end}
+#npops{position:fixed;right:12px;bottom:calc(var(--sh) + var(--sb) + 12px);display:flex;flex-direction:column-reverse;gap:8px;z-index:96;width:min(340px,calc(100% - 24px))}
+.npop{display:flex;gap:12px;align-items:center;background:var(--surf);backdrop-filter:blur(20px);color:var(--txt);border-radius:20px;padding:12px 14px;box-shadow:0 6px 24px rgba(0,0,0,.35);animation:fade .25s}.npop small{display:block;color:var(--sub);font-size:12px}.npop button{width:28px;height:28px;border-radius:50%;display:grid;place-items:center}
+#snp{position:fixed;z-index:30;background:rgba(138,180,248,.35);border:2px solid rgba(138,180,248,.9);border-radius:12px;display:none;pointer-events:none}#snp.on{display:block}
+#capbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--sh) + var(--sb) + 16px);z-index:98;display:flex;align-items:center;gap:6px;background:var(--surf);backdrop-filter:blur(20px);color:var(--txt);border-radius:28px;padding:8px;box-shadow:0 6px 24px rgba(0,0,0,.4);max-width:calc(100% - 16px);overflow-x:auto}
+#capbar button{display:flex;gap:6px;align-items:center;height:40px;padding:0 16px;border-radius:20px;font-size:14px;flex:none}#capbar button.on{background:var(--pc);color:var(--onpc)}#capbar .go{background:var(--acc);color:var(--panel)}#capbar .sep{width:1px;height:24px;background:var(--line)}
+#ssv{position:fixed;inset:0;z-index:150;background:#000;color:#fff;display:none}#ssv.on{display:block}#ssv .sc{position:absolute;transition:left 1.5s,top 1.5s;display:flex;flex-direction:column}#ssv b{font-size:min(18vw,160px);font-weight:300;line-height:1}#ssv span{font-size:min(4vw,28px);opacity:.8}
+#pop{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--sh) + var(--sb) + 12px);width:min(380px,calc(100% - 16px));background:var(--surf);backdrop-filter:blur(20px);color:var(--txt);border-radius:20px;box-shadow:0 6px 24px rgba(0,0,0,.4);z-index:97;padding:10px}
+#pop>b{display:block;font-weight:500;padding:6px 8px}.pi{display:block;width:100%;text-align:left;padding:10px 12px;border-radius:12px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pi:hover,.pg button:hover{background:var(--hov)}
+.pt{display:flex;gap:4px;margin-bottom:6px;overflow-x:auto}.pt button{padding:6px 12px;border-radius:16px;font-size:13px;flex:none}.pt .on{background:var(--pc);color:var(--onpc)}.pg{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;max-height:200px;overflow:auto}.pg button{font-size:22px;height:40px;border-radius:10px}
+#qx{grid-column:1/-1;display:flex;flex-direction:column;margin-top:8px}#qx button{display:flex;gap:14px;align-items:center;padding:12px 24px;border-radius:14px;font-size:15px;text-align:left}#qx button:hover{background:var(--hov)}#qx small{margin-left:auto;color:var(--sub)}
+.vr{display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px}.rec{width:84px;height:84px;border-radius:50%;background:#d93025;color:#fff;display:grid;place-items:center}.rec .ms{font-size:40px}.rec.on{animation:pulse 1.2s infinite}@keyframes pulse{50%{box-shadow:0 0 0 14px rgba(217,48,37,.25)}}.vt{font-size:32px;font-variant-numeric:tabular-nums}
+
+/* v10 */
+#lbtn{background:rgba(95,99,104,.92)!important;box-shadow:none}
+#nb{position:relative}.bd{position:absolute;top:3px;right:8px;min-width:16px;height:16px;border-radius:8px;background:#d93025;color:#fff;font:600 11px/16px sans-serif;font-style:normal;text-align:center;padding:0 4px}
+#ncp{position:fixed;right:8px;bottom:calc(var(--sh) + var(--sb) + 8px);width:min(380px,calc(100% - 16px));z-index:40;display:none;max-height:calc(100% - var(--sh) - var(--sb) - 24px);overflow:auto}#ncp.open{display:block;animation:fade .2s}
+.cg button{height:46px;display:grid;place-items:center;font-size:15px;position:relative;border-radius:50%}.cg button:hover{background:var(--hov)}.cg .sl{outline:2px solid var(--acc);outline-offset:-4px}.cg i{position:absolute;bottom:5px;width:5px;height:5px;border-radius:50%;background:var(--acc)}.cg .td i{background:var(--onpc)}
+button.ch{display:flex}
+#off{position:fixed;inset:0;z-index:300;background:#000;display:none;align-items:center;justify-content:center}#off.on{display:flex}#off button{width:72px;height:72px;border-radius:50%;background:#2b2d31;color:#fff;display:grid;place-items:center}#off .ms{font-size:32px}.sp{width:44px;height:44px;border:4px solid #444;border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+#castv{position:fixed;right:12px;bottom:calc(var(--sh) + var(--sb) + 12px);width:min(320px,calc(100% - 24px));background:#202124;color:#fff;border-radius:16px;overflow:hidden;z-index:96;box-shadow:0 6px 24px rgba(0,0,0,.5)}#castv video{width:100%;display:block}
+.sub0{font-size:12px;color:var(--sub);margin:10px 8px 4px}
+.sl .rb.on{background:var(--pc);color:var(--onpc)}.sl .rb.off{background:#d93025;color:#fff}
 </style>
 </head>
 <body>
@@ -850,7 +878,7 @@ function term(w){
   tm.onclick=()=>ti.focus();ti.focus()}
 /* settings */
 function settings(w){w.classList.add('wset');
-  const b=w.querySelector('.wb'),PG=[['net','wifi','ネットワーク','guest-h2'],['bt','bluetooth','Bluetooth','オン'],['acct','face','アカウント','guest@chromeos.demo'],['dev','laptop','デバイス','音量、明るさ'],['ime','keyboard','入力方法','キーボード、日本語入力'],['disp','desktop_windows','ディスプレイ','明るさ、夜間モード、表示サイズ'],['tp','touch_app','タッチパッドとマウス','タップ、スクロール'],['print','print','印刷','プリンタ'],['sty','palette','壁紙とスタイル','ダークモード、壁紙'],['prs','dock_to_bottom','個人設定','シェルフ'],['dtm','schedule','日付と時刻','24時間表示、タイムゾーン'],['pwr','battery_full','電源','バッテリー'],['lang','language','言語','表示言語'],['ntf','notifications','通知','サイレント モード'],['prv','shield','プライバシーとセキュリティ','ロック画面、コントロール'],['app','apps','アプリ','通知、ピン留め'],['a11y','accessibility_new','ユーザー補助機能','スクリーン リーダー、拡大'],['sto','storage','システム環境設定','ストレージ'],['sys','info','ChromeOS について','更新、ヘルプ、デベロッパー オプション']];
+  const b=w.querySelector('.wb'),PG=[['net','wifi','ネットワーク','guest-h2'],['bt','bluetooth','Bluetooth','オン'],['acct','face','アカウント','guest@chromeos.demo'],['dev','laptop','デバイス','音量、明るさ'],['ime','keyboard','入力方法','キーボード、日本語入力'],['disp','desktop_windows','ディスプレイ','明るさ、夜間モード、表示サイズ'],['tp','touch_app','タッチパッドとマウス','タップ、スクロール'],['print','print','印刷','プリンタ'],['sty','palette','壁紙とスタイル','ダークモード、壁紙'],['ss','hourglass_top','スクリーン セーバー','待機時間、自動ロック'],['prs','dock_to_bottom','個人設定','シェルフ'],['dtm','schedule','日付と時刻','24時間表示、タイムゾーン'],['pwr','battery_full','電源','バッテリー'],['lang','language','言語','表示言語'],['ntf','notifications','通知','サイレント モード'],['prv','shield','プライバシーとセキュリティ','ロック画面、コントロール'],['app','apps','アプリ','通知、ピン留め'],['a11y','accessibility_new','ユーザー補助機能','スクリーン リーダー、拡大'],['sto','storage','システム環境設定','ストレージ'],['sys','info','ChromeOS について','更新、ヘルプ、デベロッパー オプション']];
   b.innerHTML=`<div class="bar"><span class="ms">settings</span><b style="font-weight:500">設定</b><input placeholder="設定を検索" aria-label="設定を検索"></div><div class="set"><nav class="snav">${PG.map(([k,i,l,sb])=>`<button data-pg="${k}"><span class="ms">${i}</span><span>${l}${sb?`<small>${sb}</small>`:''}</span></button>`).join('')}</nav><main class="spg scroll"></main></div>`;
   const pg=b.querySelector('.spg'),nv=b.querySelector('.snav');let btd=[];
   const R=(t,d,c)=>`<div class="row"><div><div>${t}</div>${d?`<div style="font-size:12px;color:var(--sub)">${d}</div>`:''}</div><div>${c}</div></div>`;
@@ -876,6 +904,7 @@ function settings(w){w.classList.add('wset');
    dtm:()=>R('24時間表示','',SW('h24',S.h24))+R('現在の日時',new Date().toLocaleString('ja-JP'),'')+R('タイムゾーン',Intl.DateTimeFormat().resolvedOptions().timeZone,''),
    pwr:async()=>{let b;try{b=await navigator.getBattery()}catch{}return b?R('バッテリー残量',Math.round(b.level*100)+'%','')+R('状態',b.charging?'充電中':'電池使用中','')+R(b.charging?'充電完了まで':'残り時間',isFinite(b.charging?b.chargingTime:b.dischargingTime)?Math.round((b.charging?b.chargingTime:b.dischargingTime)/60)+' 分':'不明',''):R('バッテリー','このブラウザでは詳細を取得できません','')+R('表示',$('#bat').textContent,'')},
    lang:()=>R('デバイスの言語','日本語','')+R('ブラウザの言語',navigator.language,'')+R('優先する言語',(navigator.languages||[]).join(', '),''),
+   ss:()=>R('スクリーン セーバー','操作がない状態が続くと時計を表示します',`<select class="num" data-sel="ss" style="width:auto">${[[0,'オフ'],[1,'1 分'],[5,'5 分'],[10,'10 分']].map(([v,l])=>`<option value="${v}" ${(+S.ss||0)===v?'selected':''}>${l}</option>`).join('')}</select>`)+R('自動ロック','スクリーン セーバーの代わりに画面をロックします',SW('idlock',S.idlock))+R('プレビュー','',CH('a','sspv','表示',1)),
    acct:()=>R('ゲスト','guest@chromeos.demo','')+R('同期と Google サービス','オフ','')+R('セットアップ画面','',CH('a','wel','再表示',0)),
    a11y:()=>R('画面の拡大','',`<select class="num" data-sel="zoom" style="width:auto">${[80,90,100,110,125].map(z=>`<option value="${z}" ${S.zoom==z?'selected':''}>${z}%</option>`).join('')}</select>`)+R('スクリーン リーダー','ChromeVox はこのデモでは利用できません',''),
    sys:()=>`<div class="ab"><div class="abh"><svg width="44" height="44" viewBox="0 0 48 48"><path d="M6.68 14A20 20 0 0 1 41.32 14L32.66 19A10 10 0 0 0 15.34 19Z" fill="#ea4335"/><path d="M41.32 14A20 20 0 0 1 24 44V34A10 10 0 0 0 32.66 19Z" fill="#fbbc04"/><path d="M24 44A20 20 0 0 1 6.68 14L15.34 19A10 10 0 0 0 24 34Z" fill="#34a853"/><circle cx="24" cy="24" r="9" fill="#fff"/><circle cx="24" cy="24" r="7" fill="#4285f4"/></svg><b style="font-weight:500">Google ChromeOS</b></div><div class="abr"><span class="ms" style="color:var(--acc)">autorenew</span><span style="flex:1">バージョン 155.0.8059.18（公式ビルド）beta （64 ビット）</span><button class="cb" data-ab="upd">アップデートを確認</button></div>${[['explore','新機能を確認する','自動更新により最新機能が提供されます。最近の主な更新内容をご確認ください。','new'],['help','ヘルプ','ヘルプ記事やデバイスのサポートを確認できます','help'],['feedback','フィードバックを送信','フィードバックを送信したり、問題を報告したりできます','fb'],['monitor_heart','診断','バッテリー、CPU、メモリ、接続などをテストできます','diag'],['system_update_alt','ファームウェア アップデート','ファームウェアは最新の状態です','fw']].map(([i,t,d,k])=>`<button class="abr" data-ab="${k}"><span class="ms">${i}</span><span style="flex:1;text-align:left">${t}<small>${d}</small></span><span class="ms" style="font-size:20px">open_in_new</span></button>`).join('')}</div><div style="margin:16px 4px 6px;font-size:14px;color:var(--acc)">デベロッパー</div>`+R('Linux 開発環境','デベロッパー ツール、IDE、エディタを実行します',CH('a','btadd0','設定',0))+R('ブラウザ',navigator.userAgent.match(/(Chrom\w+|Firefox|Safari)\/[\d.]+/)?.[0]||'-','')+R('プラットフォーム',navigator.platform||'-','')+R('CPU コア数',navigator.hardwareConcurrency||'-','')+R('メモリ',(navigator.deviceMemory||'-')+' GB','')+R('言語',navigator.language,'')+R('バッテリー',$('#bat').textContent,'')+R('稼働時間',Math.round(performance.now()/60000)+' 分','')+R('セットアップ画面','',CH('a','wel','再表示',0))+R('初期化（Powerwash）','すべてのデータと設定を削除します',CH('a','wipe','初期化',0))};
@@ -885,7 +914,7 @@ function settings(w){w.classList.add('wset');
   pg.onclick=async e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset;
     if(d.t){const k=d.t;
       if(k.startsWith('pin:')){const n=k.slice(4);pinned=pinned.includes(n)?pinned.filter(x=>x!==n):[...pinned,n];sv('pins',JSON.stringify(pinned));renderPins();mark()}
-      else if(['h24','ah','na','tap','nat','ac'].includes(k)){S[k]=S[k]?0:1;saveS();applyS()}
+      else if(['h24','ah','na','tap','nat','ac','idlock'].includes(k)){S[k]=S[k]?0:1;saveS();applyS()}
       else{st[k]=!st[k];if(k==='wifi'){wifi=st.wifi;tick()}syncTile(k);if(k==='night')$('#night').style.opacity=st.night?.35:0}
       t.classList.toggle('on');t.setAttribute('aria-checked',t.classList.contains('on'))}
     else if(d.th!=null){setTheme(d.th);show('sty')}
@@ -894,14 +923,16 @@ function settings(w){w.classList.add('wset');
     else if(d.a==='btadd'){try{const dv=await navigator.bluetooth.requestDevice({acceptAllDevices:true});btd.push(dv.name||'不明なデバイス');toast((dv.name||'デバイス')+' を検出しました');show('bt')}catch{toast('デバイスは追加されませんでした')}}
     else if(d.a==='ntreq'){try{await Notification.requestPermission()}catch{}show('ntf')}
     else if(d.a==='nttest'){if(typeof Notification!=='undefined'&&Notification.permission==='granted')new Notification('ChromeOS',{body:'これはテスト通知です'});else toast('通知が許可されていません')}
-    else if(d.ab){if(d.ab==='diag')launch('診断');else if(d.ab==='help')window.open('https://support.google.com/chromebook','_blank','noopener');else if(d.ab==='upd')toast('ChromeOS は最新の状態です');else toast('このデモでは利用できません')}
-    else if(d.a==='btadd0')toast('Linux 開発環境はこのデモでは利用できません')
+    else if(d.ab){if(d.ab==='diag')launch('診断');else if(d.ab==='help')window.open('https://support.google.com/chromebook','_blank','noopener');else if(d.ab==='upd'){toast('アップデートを確認しています…');setTimeout(()=>toast('ChromeOS は最新の状態です'),1400)}else if(d.ab==='fb')v2fb();else if(d.ab==='new')v2info('新機能','<ul style="padding-left:20px"><li>通知センターとカレンダーの予定</li><li>画面録画・スクリーンショット</li><li>クリップボード履歴（Meta+V）・絵文字ピッカー</li><li>ウィンドウのスナップ、ピン留めの並べ替え</li><li>Gmail・Meet・スライドなどの独自アプリ</li></ul>');else if(d.ab==='fw')v2info('ファームウェア アップデート','ファームウェアは最新の状態です。')}
+    else if(d.a==='btadd0')launch('ターミナル')
     else if(d.a==='prn')window.print()
+    else if(d.a==='sspv')v2ssOn()
     else if(d.a==='wel'){$('#welcome').classList.remove('gone')}
     else if(d.a==='wipe'&&confirm('保存した写真・ファイル・設定をすべて削除します。よろしいですか？')){try{localStorage.clear()}catch{}try{indexedDB.deleteDatabase('cros')}catch{}location.reload()}};
   pg.onchange=e=>{const t=e.target,d=t.dataset;
     if(d.sel==='kb'){S.kb=t.value;saveS();tick()}
     else if(d.sel==='ime'){S.ime=t.value;saveS();tick()}
+    else if(d.sel==='ss'){S.ss=+t.value;saveS();v2idle()}
     else if(d.sel==='zoom'){S.zoom=+t.value;saveS();applyS()}
     else if(d.wpf!=null&&t.files[0]){const u=URL.createObjectURL(t.files[0]),im=new Image();im.onload=()=>{const c=document.createElement('canvas'),r=Math.min(1,1600/im.width);c.width=im.width*r;c.height=im.height*r;c.getContext('2d').drawImage(im,0,0,c.width,c.height);sv('wpimg',c.toDataURL('image/jpeg',.82));URL.revokeObjectURL(u);applyS();show('sty')};im.src=u}};
   pg.oninput=e=>{const t=e.target;if(t.dataset.r){const m=$('#'+t.dataset.r);m.value=t.value;m.dispatchEvent(new Event('input'));fill(t)}};
@@ -942,7 +973,7 @@ function v2lock(){closeAll();v2lk.classList.add('open');setTimeout(()=>$('#pw').
 $('#pwr').onclick=v2lock;
 /* ショートカット一覧 */
 function v2sc(){const o=$('#scd');if(o)return o.remove();const d=document.createElement('div');d.id='scd';d.onclick=()=>d.remove();
-  d.innerHTML='<div><h3 style="font-weight:400;margin-bottom:8px">キーボード ショートカット</h3>'+[['Meta（Search）','ランチャーを開く / 閉じる'],['Alt + Tab','次のウィンドウへ切り替え'],['Alt + [ / ]','ウィンドウを左 / 右に寄せる'],['Alt + =','最大化 / 元に戻す'],['Alt + -','最小化'],['Shift + Esc','タスク マネージャー'],['Ctrl + Shift + L','画面をロック'],['Ctrl + Space','入力方法の切り替え（あ / A）'],['Ctrl + Alt + /','この一覧を表示'],['右クリック','デスクトップ・シェルフ・アプリのメニュー']].map(([a,b])=>`<div class="row"><span>${b}</span><kbd>${a}</kbd></div>`).join('')+'</div>';document.body.append(d)}
+  d.innerHTML='<div><h3 style="font-weight:400;margin-bottom:8px">キーボード ショートカット</h3>'+[['Meta（Search）','ランチャーを開く / 閉じる'],['Alt + Tab','次のウィンドウへ切り替え'],['Alt + [ / ]','ウィンドウを左 / 右に寄せる'],['Alt + =','最大化 / 元に戻す'],['Alt + -','最小化'],['Shift + Esc','タスク マネージャー'],['Ctrl + Shift + L','画面をロック'],['Ctrl + Space','入力方法の切り替え（あ / A）'],['Meta + V','クリップボード履歴'],['Ctrl + Alt + E','絵文字ピッカー'],['ウィンドウを端へドラッグ','左右に寄せる / 最大化'],['Ctrl + Alt + /','この一覧を表示'],['右クリック','デスクトップ・シェルフ・アプリのメニュー']].map(([a,b])=>`<div class="row"><span>${b}</span><kbd>${a}</kbd></div>`).join('')+'</div>';document.body.append(d)}
 /* キーボード操作 */
 let v2m=0;
 addEventListener('keydown',e=>{v2m=e.key==='Meta';const k=e.key;if(k==='Escape')$('#scd')?.remove();if(v2lk.classList.contains('open'))return;const l=v2z(),w=l[0];
@@ -1344,6 +1375,154 @@ function v2store(w){const b=w.querySelector('.wb');
     draw()};draw()}
 Object.assign(NAT,{'Gmail':v2gmail,'Messages':v2chat('chatM','メッセージ',[['母','#e8a','今日の夜ごはん、何がいい？'],['田中さん','#1a73e8','資料、ありがとうございました！'],['佐藤さん','#0b6a2b','週末の予定、空いてますか？']]),'Google Chat':v2chat('chatG','チャット',[['チーム全体','#a142f4','今週のリリースについて共有です'],['プロジェクト A','#e37400','レビューをお願いします'],['ランチ部','#d93025','今日は 12:15 に集合しましょう']]),'Google Meet':v2meet,'スライド':v2slides,'Google ドライブ':v2drive,'Play Books':v2books,'使い方・ヒント':v2tips,'ウェブストア':v2store});
 A.filter(a=>a.u&&!(a.n in NAT)).forEach(a=>NAT[a.n]=v2pwa(a));
+
+/* ===== v9: 本物の G / 機能追加 ===== */
+$('#lbtn').innerHTML='<svg viewBox="0 0 48 48" width="26" height="26" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
+/* 汎用ダイアログ */
+function v2dlg(title,fields,ok,lab='OK'){$('#v2d')?.remove();const d=document.createElement('div');d.id='v2d';d.innerHTML=`<div><h3>${esc(title)}</h3>${fields.map(([k,l,t,v])=>`<label>${l}<input class="fi" data-k="${k}" type="${t||'text'}" value="${esc(v||'')}"></label>`).join('')}<div class="ac"><button class="cb t" data-x>キャンセル</button><button class="cb" data-ok>${lab}</button></div></div>`;
+  d.onclick=e=>{if(e.target===d||e.target.closest('[data-x]'))d.remove();else if(e.target.closest('[data-ok]')){const o={};d.querySelectorAll('input').forEach(i=>o[i.dataset.k]=i.value);d.remove();ok(o)}};d.onkeydown=e=>{if(e.key==='Enter')d.querySelector('[data-ok]').click()};document.body.append(d);d.querySelector('input').focus()}
+/* Wi-Fi パスワード入力 */
+qd.addEventListener('click',e=>{const t=e.target.closest('[data-n2]');if(!t)return;const n=t.dataset.n2,sec=v2net.find(x=>x[0]===n)[2],kn=v2j('wk',[]);if(sec&&!kn.includes(n)){e.stopImmediatePropagation();v2dlg(n+' に接続',[['pw','パスワード','password']],o=>{if(!o.pw)return toast('パスワードを入力してください');kn.push(n);v2s('wk',kn);v2cur=n;v2n('Wi-Fi',n+' に接続しました');v2qd('wifi')},'接続')}},true);
+/* 通知ポップアップ */
+function v2n(t,b){v2NT.unshift({t,b,d:new Date()});v2nd();if(st.dnd)return;let c=$('#npops');if(!c){c=document.createElement('div');c.id='npops';document.body.append(c)}const e=document.createElement('div');e.className='npop';e.innerHTML=`<span class="ms" style="color:var(--acc)">notifications</span><div style="flex:1;min-width:0"><b>${esc(t)}</b><small>${esc(b||'')}</small></div><button aria-label="閉じる"><span class="ms" style="font-size:18px">close</span></button>`;e.querySelector('button').onclick=()=>e.remove();c.append(e);setTimeout(()=>e.remove(),5000)}
+/* ウィンドウのスナップ（端へドラッグ） */
+{const pv=document.createElement('div');pv.id='snp';document.body.append(pv);let d=null;
+  const zone=e=>e.clientY<=6?'max':e.clientX<=6?'l':e.clientX>=innerWidth-7?'r':'';
+  const G={max:{left:'0',top:'0',width:'100%',height:'calc(100% - var(--sh) - var(--sb))'},l:{left:'0',top:'0',width:'50%',height:'calc(100% - var(--sh) - var(--sb))'},r:{left:'50%',top:'0',width:'50%',height:'calc(100% - var(--sh) - var(--sb))'}};
+  document.addEventListener('pointerdown',e=>{const tb=e.target.closest('.win .tb');if(tb&&!e.target.closest('button')&&e.button===0)d={w:tb.parentElement,x:e.clientX,y:e.clientY,m:0}},true);
+  document.addEventListener('pointermove',e=>{if(!d)return;if(!d.m&&Math.hypot(e.clientX-d.x,e.clientY-d.y)<10)return;d.m=1;const z=zone(e);if(z){Object.assign(pv.style,G[z]);pv.classList.add('on')}else pv.classList.remove('on')},true);
+  document.addEventListener('pointerup',e=>{if(!d)return;const{w,m}=d;d=null;pv.classList.remove('on');if(!m)return;const z=zone(e);if(!z)return;w.classList.remove('max');if(z==='max')w.classList.add('max');else Object.assign(w.style,G[z])},true)}
+/* スクリーンキャプチャ（スクリーンショット / 画面録画） */
+async function shot(){closeAll();const o=$('#capbar');if(o)return o.remove();const d=document.createElement('div');d.id='capbar';let mode='s';
+  d.innerHTML='<button class="on" data-m="s"><span class="ms">screenshot_region</span>スクリーンショット</button><button data-m="r"><span class="ms">videocam</span>画面録画</button><span class="sep"></span><button class="go" data-m="go">キャプチャ</button><button data-m="x" aria-label="閉じる"><span class="ms">close</span></button>';
+  d.onclick=async e=>{const m=e.target.closest('[data-m]')?.dataset.m;if(!m)return;if(m==='x')return d.remove();if(m==='s'||m==='r'){mode=m;d.querySelectorAll('[data-m=s],[data-m=r]').forEach(x=>x.classList.toggle('on',x.dataset.m===mode));return}d.remove();
+    try{if(mode==='s'){const s=await navigator.mediaDevices.getDisplayMedia({video:true,preferCurrentTab:true}),v=document.createElement('video');v.srcObject=s;await v.play();await new Promise(r=>setTimeout(r,300));const c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);s.getTracks().forEach(t=>t.stop());c.toBlob(async x=>{await put('photos',{id:Date.now(),blob:x,name:'Screenshot_'+Date.now()+'.png'});document.dispatchEvent(new Event('photos'));v2n('スクリーンショットを保存しました','写真アプリで確認できます')})}
+      else{const s=await navigator.mediaDevices.getDisplayMedia({video:true,audio:true,preferCurrentTab:true}),ch=[],r=new MediaRecorder(s);r.ondataavailable=e=>e.data.size&&ch.push(e.data);
+        r.onstop=async()=>{s.getTracks().forEach(t=>t.stop());$('#recb')?.remove();await put('files',{id:Date.now(),name:'画面録画 '+new Date().toLocaleString('ja-JP').replace(/[\/: ]/g,'-')+'.webm',blob:new Blob(ch,{type:'video/webm'})});v2n('画面録画を保存しました','ファイル > Downloads')};
+        r.start();s.getVideoTracks()[0].onended=()=>r.state!=='inactive'&&r.stop();$('#tray').insertAdjacentHTML('afterbegin','<button class="pill" id="recb" style="color:#d93025;gap:6px"><span class="ms">stop_circle</span>停止</button>');$('#recb').onclick=()=>r.stop()}}catch{toast('キャプチャをキャンセルしました')}};
+  document.body.append(d)}
+/* スクリーン セーバー / 自動ロック */
+document.body.insertAdjacentHTML('beforeend','<div id="ssv"><div class="sc"><b></b><span></span></div></div>');
+let v2sti,v2it,v2st0=0;
+function v2ssOn(){closeAll();const o=$('#ssv'),c=o.querySelector('.sc');o.classList.add('on');v2st0=Date.now();const t=()=>{const d=new Date();c.querySelector('b').textContent=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');c.querySelector('span').textContent=d.toLocaleDateString('ja-JP',{month:'long',day:'numeric',weekday:'long'});c.style.left=(8+Math.random()*45)+'%';c.style.top=(10+Math.random()*55)+'%'};t();clearInterval(v2sti);v2sti=setInterval(t,10000)}
+function v2ssOff(){$('#ssv').classList.remove('on');clearInterval(v2sti)}
+function v2idle(){clearTimeout(v2it);const m=+S.ss||0;if(!m)return;v2it=setTimeout(()=>{S.idlock?v2lock():v2ssOn()},m*6e4)}
+['pointermove','pointerdown','keydown','touchstart'].forEach(k=>addEventListener(k,()=>{if($('#ssv').classList.contains('on')&&Date.now()-v2st0>800)v2ssOff();v2idle()},true));v2idle();
+/* クリップボード履歴 / 絵文字ピッカー */
+const v2cl=[];let v2fe=null;
+document.addEventListener('focusin',e=>{if(e.target.matches?.('input,textarea,[contenteditable]'))v2fe=e.target});
+const v2cap=()=>{let t=getSelection().toString();const a=document.activeElement;if(!t&&a&&a.value!=null&&a.selectionStart!=null)t=a.value.substring(a.selectionStart,a.selectionEnd);if(t&&t.trim()){const u=[t,...v2cl.filter(x=>x!==t)].slice(0,5);v2cl.length=0;v2cl.push(...u)}};
+document.addEventListener('copy',v2cap);document.addEventListener('cut',v2cap);
+function v2ins(t){const a=v2fe;if(!a||!a.isConnected)return toast('入力欄を選択してください');a.focus();if(a.isContentEditable)document.execCommand('insertText',false,t);else{a.setRangeText(t,a.selectionStart,a.selectionEnd,'end');a.dispatchEvent(new Event('input',{bubbles:true}))}}
+const v2em={'顔':'😀😃😄😁😆😅😂🤣😊😇🙂😉😍🥰😘😋😎🤩🥳😏😢😭😡😱🤔🙄😴🤗🥺😤','手':'👍👎👏🙌🙏💪👋🤝✌️🤞👌🤟👈👉☝️✋','物':'💻📱⌚📷🎧🎮📚✏️📌🔑💡🔔🎁🧭⏰📦','食':'🍎🍊🍌🍇🍓🍕🍔🍟🍣🍙🍜🍰☕🍺🍵🍩','自然':'🌸🌻🌳🌈☀️🌙⭐🔥💧🐶🐱🐼🦊🐧🐢🌊','記号':'❤️💙💚💛💜🧡🖤✔️❌✨💯❗❓➕➖'};
+function v2pop(mode,cat='顔'){const sw=!!cat.x;cat=String(cat);const o=$('#pop');if(o&&o.dataset.m===mode&&!sw){return o.remove()}o?.remove();const d=document.createElement('div');d.id='pop';d.dataset.m=mode;
+  d.innerHTML=mode==='c'?`<b>クリップボード</b>${v2cl.map((t,i)=>`<button class="pi" data-i="${i}">${esc(t.slice(0,80))}</button>`).join('')||'<div class="empty" style="padding:16px">コピーしたテキストがありません</div>'}`:`<div class="pt">${Object.keys(v2em).map(k=>`<button class="${k===cat?'on':''}" data-c="${k}">${k}</button>`).join('')}</div><div class="pg">${[...new Intl.Segmenter().segment(v2em[cat])].map(x=>`<button data-e="${x.segment}">${x.segment}</button>`).join('')}</div>`;
+  d.onpointerdown=e=>e.preventDefault();d.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.c)return v2pop('e',Object.assign(new String(b.dataset.c),{x:1}));if(b.dataset.e){v2ins(b.dataset.e)}else if(b.dataset.i){v2ins(v2cl[+b.dataset.i]);d.remove()}};document.body.append(d)}
+addEventListener('keydown',e=>{if($('#v2d')||v2lk.classList.contains('open'))return;if(e.ctrlKey&&e.altKey&&e.code==='KeyE'){e.preventDefault();v2pop('e')}else if(e.metaKey&&e.key.toLowerCase()==='v'){e.preventDefault();v2pop('c')}else if(e.key==='Escape')$('#pop')?.remove()});
+document.addEventListener('click',e=>{if(!e.target.closest('#pop'))$('#pop')?.remove()});
+addEventListener('keyup',e=>{if(e.key==='CapsLock')toast('Caps Lock '+(e.getModifierState('CapsLock')?'オン':'オフ'))});
+/* シェルフのピン留めを並べ替え（マウスでドラッグ） */
+let v2nd0=0;
+{let d=null;$('#pins').addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button)return;const p=e.target.closest('.pin');if(p&&pinned.includes(p.dataset.n))d={p,x:e.clientX,m:0}});
+  addEventListener('pointermove',e=>{if(!d)return;const dx=e.clientX-d.x;if(!d.m&&Math.abs(dx)<8)return;d.m=1;Object.assign(d.p.style,{transform:`translateX(${dx}px)`,zIndex:5,transition:'none'})});
+  addEventListener('pointerup',()=>{if(!d)return;const{p,m}=d;d=null;if(!m)return;const ps=[...$('#pins').children].filter(x=>x!==p&&pinned.includes(x.dataset.n)),cx=p.getBoundingClientRect().left+p.offsetWidth/2;let i=ps.findIndex(x=>x.getBoundingClientRect().left+x.offsetWidth/2>cx);const n=p.dataset.n,arr=pinned.filter(x=>x!==n);arr.splice(i<0?arr.length:arr.indexOf(ps[i].dataset.n),0,n);pinned=arr;sv('pins',JSON.stringify(pinned));$('#pins').dataset.k='';mark();v2nd0=1;setTimeout(()=>v2nd0=0,60)});
+  document.addEventListener('click',e=>{if(v2nd0){e.stopPropagation();e.preventDefault()}},true)}
+/* ファイルアプリの右クリックメニュー */
+document.addEventListener('contextmenu',e=>{const r=e.target.closest('.fsb [data-id]');if(!r)return;e.preventDefault();const id=+r.dataset.id,w=r.closest('.win'),cur=()=>w.querySelector(`[data-id="${id}"]`);r.click();
+  v2menu(e.clientX,e.clientY,[['open_in_new','開く',()=>cur()?.dispatchEvent(new MouseEvent('dblclick',{bubbles:true}))],['edit','名前を変更',async()=>{const f=(await all('files')).find(x=>x.id===id);v2dlg('名前を変更',[['n','新しい名前','text',f.name]],async o=>{if(o.n.trim()){await put('files',{...f,name:o.n.trim()});w.querySelector('.fsn .on')?.click()}},'変更')}],['delete','削除',()=>w.querySelector('[data-t=del]').click()]])},true);
+/* ランチャー検索: ウェブ / ファイル / 設定 */
+$('#q').addEventListener('input',async()=>{$('#qx')?.remove();const q=$('#q').value.trim();if(!q)return;const ql=q.toLowerCase(),F=(await all('files')).filter(f=>!f.tr&&f.name.toLowerCase().includes(ql)).slice(0,4),ST=['ネットワーク','Bluetooth','壁紙','入力方法','ディスプレイ','スクリーン セーバー','日付と時刻','電源','言語'].filter(x=>x.toLowerCase().includes(ql));
+  if($('#q').value.trim()!==q)return;$('#qx')?.remove();$('#agrid').insertAdjacentHTML('beforeend',`<div id="qx"><button data-w><span class="ms">search</span>Google で「${esc(q)}」を検索</button>${F.map(f=>`<button data-f><span class="ms">description</span>${esc(f.name)}<small>ファイル</small></button>`).join('')}${ST.map(s=>`<button data-s><span class="ms">settings</span>${s}<small>設定</small></button>`).join('')}</div>`)});
+$('#agrid').addEventListener('click',e=>{const b=e.target.closest('#qx button');if(!b)return;if(b.dataset.w!=null)window.open('https://www.google.com/search?q='+encodeURIComponent($('#q').value.trim()),'_blank','noopener');else if(b.dataset.f!=null)launch('ファイル');else launch('設定')});
+/* メディア プレーヤー */
+function v2media(w){const b=w.querySelector('.wb');let FL=[],cur=null;const isM=f=>/^(audio|video)/.test(f.blob.type)||/\.(mp3|wav|m4a|ogg|mp4|webm|mov)$/i.test(f.name),vid=f=>/video/.test(f.blob.type)||/\.(mp4|webm|mov)$/i.test(f.name);
+  const draw=()=>{const f=FL.find(x=>x.id===cur);b.innerHTML=`<div class="v2 ${f?'sel':''}"><div class="v2l"><div class="bar"><b style="flex:1;font-weight:500">プレイリスト</b><button class="cb" data-k="add"><span class="ms">add</span>追加</button><input type="file" accept="audio/*,video/*" multiple hidden data-up></div>${FL.map(x=>`<div class="mi ${x.id===cur?'on':''}" data-p="${x.id}"><span class="ms">${vid(x)?'movie':'music_note'}</span><div style="flex:1;min-width:0"><b>${esc(x.name)}</b></div></div>`).join('')||'<div class="empty">メディアがありません。「追加」でアップロードしてください。</div>'}</div><div class="v2r" style="align-items:center;justify-content:center;background:#111;color:#fff;position:relative">${f?`<button class="bk cb t" data-k="bk" aria-label="戻る" style="position:absolute;left:8px;top:8px;color:#fff"><span class="ms">arrow_back</span></button>${vid(f)?`<video controls autoplay src="${URL.createObjectURL(f.blob)}" style="max-width:100%;max-height:100%"></video>`:`<span class="ms" style="font-size:96px;opacity:.8">music_note</span><div style="margin:12px">${esc(f.name)}</div><audio controls autoplay src="${URL.createObjectURL(f.blob)}"></audio>`}`:'<div class="empty">再生するメディアを選択してください</div>'}</div></div>`};
+  const load=async()=>{FL=(await all('files')).filter(f=>!f.tr&&isM(f)).sort((a,c)=>c.id-a.id);draw()};
+  b.addEventListener('ended',()=>{const i=FL.findIndex(x=>x.id===cur);if(FL[i+1]){cur=FL[i+1].id;draw()}},true);
+  b.onchange=async e=>{if(e.target.dataset.up!=null){let i=0;for(const f of e.target.files)await put('files',{id:Date.now()+i++,name:f.name,blob:f});load()}};
+  b.onclick=e=>{const p=e.target.closest('[data-p]'),k=e.target.closest('[data-k]')?.dataset.k;if(p){cur=+p.dataset.p;draw()}else if(k==='add')b.querySelector('[data-up]').click();else if(k==='bk'){cur=null;draw()}};load()}
+/* ボイスレコーダー */
+function v2voice(w){const b=w.querySelector('.wb');let rec=null,ch=[],t0=0,iv,FL=[];
+  const draw=()=>{b.innerHTML=`<div class="vr"><button class="rec ${rec?'on':''}" data-k="rec" aria-label="${rec?'停止':'録音'}"><span class="ms">${rec?'stop':'mic'}</span></button><div class="vt" id="vt">0:00</div></div><div class="scroll" style="flex:1">${FL.map(f=>`<div class="fr"><span class="ms">graphic_eq</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(f.name)}</span><audio controls src="${URL.createObjectURL(f.blob)}" style="height:32px;max-width:200px"></audio><button data-x="${f.id}" aria-label="削除"><span class="ms" style="color:var(--sub)">delete</span></button></div>`).join('')||'<div class="empty">録音はまだありません</div>'}</div>`};
+  const load=async()=>{FL=(await all('files')).filter(f=>!f.tr&&/^録音/.test(f.name)).sort((a,c)=>c.id-a.id);draw()};
+  b.onclick=async e=>{const x=e.target.closest('[data-x]');if(x){await del('files',+x.dataset.x);return load()}if(!e.target.closest('[data-k=rec]'))return;if(rec){rec.stop();return}
+    try{const s=await navigator.mediaDevices.getUserMedia({audio:true});ch=[];rec=new MediaRecorder(s);rec.ondataavailable=e=>e.data.size&&ch.push(e.data);
+      rec.onstop=async()=>{s.getTracks().forEach(t=>t.stop());clearInterval(iv);rec=null;await put('files',{id:Date.now(),name:'録音 '+new Date().toLocaleString('ja-JP').replace(/[\/: ]/g,'-')+'.webm',blob:new Blob(ch,{type:'audio/webm'})});load()};
+      rec.start();t0=Date.now();draw();iv=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1e3),e=b.querySelector('#vt');if(e)e.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0')},500)}catch{toast('マイクを利用できません')}};
+  w.cleanup=()=>{clearInterval(iv);rec?.state==='recording'&&rec.stop()};load()}
+A.push(...[['メディア プレーヤー','#ffd8e4','play_circle','#8c1d52'],['ボイスレコーダー','#ffdad6','mic','#ba1a1a']].map(([n,bg,g,fg])=>({n,full:n,bg,g,u:'',fg})));
+Object.assign(NAT,{'メディア プレーヤー':v2media,'ボイスレコーダー':v2voice});
+
+/* ===== v10: 通知センター / 白い G / ボタンの実装 ===== */
+$('#lbtn').innerHTML='<svg viewBox="0 0 48 48" width="24" height="24" aria-hidden="true" fill="#fff"><path d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
+/* 情報 / フィードバック ダイアログ */
+function v2info(t,h){$('#v2d')?.remove();const d=document.createElement('div');d.id='v2d';d.innerHTML=`<div><h3>${esc(t)}</h3><div style="font-size:14px;line-height:1.7">${h}</div><div class="ac"><button class="cb" data-x>閉じる</button></div></div>`;d.onclick=e=>{if(e.target===d||e.target.closest('[data-x]'))d.remove()};document.body.append(d)}
+function v2fb(){v2dlg('フィードバックを送信',[['m','ご意見・不具合の内容']],o=>{o.m.trim()?v2n('フィードバックを送信しました','ご協力ありがとうございます'):toast('内容を入力してください')},'送信')}
+/* 通知センター（カレンダー左のボタン） */
+const v2ncp=document.createElement('div');v2ncp.id='ncp';document.body.append(v2ncp);
+function v2ncd(){v2ncp.innerHTML=`<div class="cc2"><div class="ch"><b style="flex:1;font-size:18px;font-weight:500">通知</b><span style="font-size:13px;color:var(--sub)">サイレント</span><button class="sw ${st.dnd?'on':''}" data-nd role="switch" aria-checked="${!!st.dnd}" aria-label="サイレント モード"></button>${v2NT.length?'<button class="cb t" data-nc="all">すべて消去</button>':''}</div>${v2NT.length?v2NT.map((n,i)=>`<div class="ntf"><span class="ms" style="color:var(--acc)">notifications</span><div style="flex:1;min-width:0"><div>${esc(n.t)}</div><small style="color:var(--sub)">${esc(n.b||'')}</small></div><small>${tf(n.d)}</small><button data-nc="${i}" aria-label="消去"><span class="ms" style="font-size:18px">close</span></button></div>`).join(''):'<div class="empty" style="padding:32px"><span class="ms" style="font-size:40px;display:block;margin-bottom:8px">notifications_off</span>通知はありません</div>'}</div>`}
+function v2nd(){const e=$('#nc');e.innerHTML=v2NT.length?`<div style="display:flex;justify-content:space-between;align-items:center;margin:0 4px 8px;font-size:13px"><b style="font-weight:500">通知 (${v2NT.length})</b><button class="cb t" data-nc="all" style="height:28px">すべて消去</button></div>`+v2NT.slice(0,4).map((n,i)=>`<div class="ntf"><span class="ms" style="color:var(--acc)">notifications</span><div style="flex:1;min-width:0"><div>${esc(n.t)}</div><small style="color:var(--sub)">${esc(n.b||'')}</small></div><small>${tf(n.d)}</small><button data-nc="${i}" aria-label="消去"><span class="ms" style="font-size:18px">close</span></button></div>`).join(''):'';
+  v2ncd();$('#nb').innerHTML=`<span class="ms">eject</span>${v2NT.length?`<i class="bd">${v2NT.length}</i>`:''}`}
+v2ncp.onclick=e=>{const k=e.target.closest('[data-nc]')?.dataset.nc;if(e.target.closest('[data-nd]')){st.dnd=!st.dnd;try{syncTile('dnd')}catch{}return v2ncd()}if(k==null)return;k==='all'?v2NT.length=0:v2NT.splice(+k,1);v2nd()};
+$('#nb').onclick=null;
+$('#nb').addEventListener('click',e=>{e.stopImmediatePropagation();const o=!v2ncp.classList.contains('open');closeAll();v2cal.classList.remove('open');if(o){v2ncd();v2ncp.classList.add('open')}},true);
+document.addEventListener('click',e=>{if(!e.target.closest('#ncp,#nb'))v2ncp.classList.remove('open')});
+v2nd();
+/* カレンダー: 日付の選択と予定 */
+let v2sdate=new Date();
+const v2key=d=>d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+function v2cald(){const y=v2cm.getFullYear(),m=v2cm.getMonth(),t=new Date(),f=new Date(y,m,1).getDay(),L=jl('todo',[]).map((x,i)=>({...x,i})).filter(x=>!x.d).slice(0,4),EV=v2j('cev',[]),sk=v2key(v2sdate),day=EV.map((e,i)=>({...e,i})).filter(e=>e.d===sk);
+  let c='';for(let i=0;i<42;i++){const d=new Date(y,m,1-f+i),td=d.toDateString()===t.toDateString(),sl=d.toDateString()===v2sdate.toDateString(),has=EV.some(e=>e.d===v2key(d));c+=`<button class="${td?'td':d.getMonth()!==m?'ot':''} ${sl&&!td?'sl':''}" data-d="${v2key(d)}">${d.getDate()}${has?'<i></i>':''}</button>`}
+  v2cal.innerHTML=`<div class="cc2"><button class="ch" data-tk style="width:100%;text-align:left"><span class="ms">task_alt</span><b>マイタスク</b><span class="ms" style="font-size:18px">open_in_new</span></button>${L.map(x=>`<div class="ct2" data-ti="${x.i}"><span class="ms">radio_button_unchecked</span>${esc(x.t)}</div>`).join('')}<div class="ta"><span class="ms">add_task</span><input class="tin" placeholder="タスクを追加" aria-label="タスクを追加"></div></div><div class="cc2"><div class="ch"><b style="font-size:20px;font-weight:400;flex:1">${m+1}月 ${y}年</b><button data-c="t" aria-label="今日"><span class="ms">calendar_today</span></button><button data-c="p" aria-label="前の月"><span class="ms">expand_less</span></button><button data-c="n" aria-label="次の月"><span class="ms">expand_more</span></button></div><div class="cg">${'日月火水木金土'.split('').map(d=>`<span class="wd">${d}</span>`).join('')}${c}</div></div><div class="cc2"><div class="ch"><b style="font-weight:500">${v2sdate.getMonth()+1}月${v2sdate.getDate()}日（${'日月火水木金土'[v2sdate.getDay()]}）の予定</b></div>${day.map(e=>`<div class="ct2"><span class="ms" style="color:var(--acc)">event</span><span style="flex:1">${esc(e.t)}</span><button data-ev="${e.i}" aria-label="削除"><span class="ms" style="font-size:18px;color:var(--sub)">close</span></button></div>`).join('')||'<div style="color:var(--sub);font-size:13px;padding:8px 0">予定はありません</div>'}<div class="ta"><span class="ms">event</span><input class="ein" placeholder="予定を追加" aria-label="予定を追加"></div></div>`}
+v2cal.onclick=e=>{const g=s=>e.target.closest(s),b=g('[data-c]')?.dataset.c,ti=g('[data-ti]'),dd=g('[data-d]'),ev=g('[data-ev]');
+  if(b){v2cm=b==='t'?new Date():new Date(v2cm.getFullYear(),v2cm.getMonth()+(b==='n'?1:-1),1);if(b==='t')v2sdate=new Date();v2cm.setDate(1);v2cald()}
+  else if(ti){const L=jl('todo',[]);L[+ti.dataset.ti].d=1;sv('todo',JSON.stringify(L));v2cald()}
+  else if(dd){const [y,m,d]=dd.dataset.d.split('-').map(Number);v2sdate=new Date(y,m-1,d);v2cald()}
+  else if(ev){const E=v2j('cev',[]);E.splice(+ev.dataset.ev,1);v2s('cev',E);v2cald()}
+  else if(g('[data-tk]')){v2cal.classList.remove('open');launch('ToDo')}};
+v2cal.onkeydown=e=>{if(e.key!=='Enter'||e.target.tagName!=='INPUT'||!e.target.value.trim())return;const v=e.target.value.trim();
+  if(e.target.classList.contains('ein')){const E=v2j('cev',[]);E.push({d:v2key(v2sdate),t:v});v2s('cev',E);v2cald();v2cal.querySelector('.ein').focus()}
+  else{const L=jl('todo',[]);L.push({t:v,d:0});sv('todo',JSON.stringify(L));v2cald();v2cal.querySelector('.tin').focus()}};
+$('#dt').addEventListener('click',()=>{v2sdate=new Date();v2ncp.classList.remove('open')},true);
+/* 電源メニュー */
+const v2off=document.createElement('div');v2off.id='off';document.body.append(v2off);
+$('#pwr').onclick=e=>{e.stopPropagation();const r=$('#pwr').getBoundingClientRect();v2menu(r.left,r.top-4*38-24,[['lock','画面をロック',v2lock],['logout','サインアウト',()=>{Object.keys(open).forEach(v2close);v2lock()}],['restart_alt','再起動',()=>{v2off.innerHTML='<div class="sp"></div>';v2off.classList.add('on');setTimeout(()=>location.reload(),1400)}],['power_settings_new','シャットダウン',()=>{closeAll();v2off.innerHTML='<button aria-label="電源を入れる"><span class="ms">power_settings_new</span></button>';v2off.classList.add('on');v2off.querySelector('button').onclick=()=>v2off.classList.remove('on')}]])};
+/* クイック設定: ボタンの実装 */
+$('#qs .qh .rb').onclick=v2fb;
+const v2sls=[...document.querySelectorAll('#qs .sl')];
+const v2mu=()=>{v2sls[0].querySelector('.rb .ms').textContent=st.mute?'mic_off':'mic';v2sls[0].querySelector('.rb').classList.toggle('off',!!st.mute)};v2mu();
+const v2nl=()=>{try{syncTile('night')}catch{}$('#night').style.opacity=st.night?.35:0;v2sls[1].querySelector('.rb').classList.toggle('on',!!st.night)};
+v2sls[0].querySelector('.rb').onclick=()=>{st.mute=!st.mute;v2mu();toast(st.mute?'マイクをミュートしました':'マイクのミュートを解除しました')};
+v2sls[1].querySelector('.rb').onclick=()=>{st.night=!st.night;v2nl()};
+v2sls.forEach((s,i)=>{const c=[...s.children].find(x=>x.textContent==='chevron_right');if(c){c.style.cursor='pointer';c.setAttribute('role','button');c.onclick=()=>v2qd2(i?'display':'audio')}});
+let v2foc=null,v2fot;
+function v2fend(){clearTimeout(v2fot);v2foc=null;st.dnd=false;st.focus=false;try{syncTile('dnd');syncTile('focus')}catch{}}
+async function v2qd2(kind){[...$('#qs').children].forEach(c=>c.hidden=c!==qd);qd.hidden=false;qd.dataset.k=kind;
+  const sw=(on,a)=>`<button class="sw ${on?'on':''}" data-q2="${a}" role="switch" aria-checked="${!!on}"></button>`,hdr=t=>`<div class="qdh"><button data-b aria-label="戻る"><span class="ms">arrow_back</span></button><b>${t}</b></div>`,row=(i,t,s,r)=>`<div class="qdi" style="cursor:default"><span class="ms">${i}</span><span style="flex:1">${t}${s?`<small>${s}</small>`:''}</span>${r||''}</div>`,rd=(a,v,on)=>`<button class="qdi" data-q2="${a}" data-v="${esc(v)}"><span class="ms">${on?'radio_button_checked':'radio_button_unchecked'}</span><span style="flex:1">${esc(v)}</span></button>`;let h='';
+  if(kind==='audio'){let D=[];try{D=await navigator.mediaDevices.enumerateDevices()}catch{}const A2=v2j('aud',{o:'内蔵スピーカー',i:'内蔵マイク'}),outs=['内蔵スピーカー',...D.filter(d=>d.kind==='audiooutput'&&d.label).map(d=>d.label)],ins=['内蔵マイク',...D.filter(d=>d.kind==='audioinput'&&d.label).map(d=>d.label)];
+    h=hdr('オーディオ')+'<div class="sub0">出力</div>'+outs.map(o=>rd('o',o,A2.o===o)).join('')+'<div class="sub0">入力</div>'+ins.map(o=>rd('i',o,A2.i===o)).join('')+row('mic_off','マイクをミュート','',sw(st.mute,'mute'))}
+  else if(kind==='display'){const dk=document.querySelector('.tile[data-k=dark]');h=hdr('ディスプレイ')+row('brightness_6','明るさ','',`<input type="range" min="20" max="100" value="${$('#bri').value}" data-q2="bri" style="width:160px">`)+row('nightlight','夜間モード','画面を暖色にします',sw(st.night,'night'))+row('dark_mode','ダークモード','',sw(dk?.classList.contains('on'),'dark'))}
+  else if(kind==='cast')h=hdr('画面をキャスト')+'<div class="empty" style="padding:20px">近くの Cast デバイスが見つかりません</div><button class="qdi" data-q2="cast"><span class="ms">present_to_all</span><span>画面を共有してプレビュー<small>ブラウザの共有ダイアログで画面やタブを選びます</small></span></button>';
+  else if(kind==='focus'){const rem=v2foc?Math.max(0,Math.ceil((v2foc.end-Date.now())/6e4)):0;h=hdr('フォーカス モード')+(v2foc?row('timer','実行中',`残り約 ${rem} 分`,'<button class="cb" data-q2="fstop">終了</button>'):[15,25,45,60].map(m=>`<button class="qdi" data-q2="fgo" data-v="${m}"><span class="ms">timer</span>${m} 分</button>`).join(''))+'<p style="color:var(--sub);font-size:12px;margin:10px 6px">開始するとサイレント モードがオンになります。</p>'}
+  else if(kind==='kb')h=hdr('キーボード')+'<div class="sub0">入力方法</div>'+rd('ime','あ',S.ime==='あ').replace('>あ<','>日本語（あ）<')+rd('ime','A',S.ime==='A').replace('>A<','>英語（A）<')+'<div class="sub0">キーボード配列</div>'+['US','JP'].map(k=>rd('kbl',k,S.kb===k)).join('')+'<button class="qdi" data-q2="sc"><span class="ms">keyboard</span>キーボード ショートカットを表示</button>';
+  qd.innerHTML=h}
+qd.addEventListener('click',async e=>{const t=e.target.closest('[data-q2]');if(!t)return;const a=t.dataset.q2,v=t.dataset.v,k=qd.dataset.k;
+  if(a==='o'||a==='i'){const A2=v2j('aud',{o:'内蔵スピーカー',i:'内蔵マイク'});A2[a]=v;v2s('aud',A2)}
+  else if(a==='mute'){st.mute=!st.mute;v2mu()}else if(a==='night'){st.night=!st.night;v2nl()}
+  else if(a==='dark')document.querySelector('.tile[data-k=dark]')?.click();
+  else if(a==='bri')return;
+  else if(a==='cast'){try{const s=await navigator.mediaDevices.getDisplayMedia({video:true});$('#castv')?.remove();const d=document.createElement('div');d.id='castv';d.innerHTML='<div class="ch" style="padding:4px 8px"><span class="ms">cast_connected</span><b style="flex:1;font-size:13px;font-weight:500">キャスト中</b><button aria-label="停止"><span class="ms">close</span></button></div><video autoplay muted playsinline></video>';d.querySelector('video').srcObject=s;const stop=()=>{s.getTracks().forEach(x=>x.stop());d.remove()};d.querySelector('button').onclick=stop;s.getVideoTracks()[0].onended=stop;document.body.append(d);closeAll();v2n('画面をキャストしています','停止するには右下のウィンドウを閉じます')}catch{toast('キャストをキャンセルしました')}return}
+  else if(a==='fgo'){const m=+v;v2foc={end:Date.now()+m*6e4};st.dnd=true;st.focus=true;try{syncTile('dnd');syncTile('focus')}catch{}clearTimeout(v2fot);v2fot=setTimeout(()=>{v2fend();v2n('フォーカス モード','終了しました')},m*6e4);toast('フォーカス モードを開始しました')}
+  else if(a==='fstop')v2fend();
+  else if(a==='ime'){S.ime=v;saveS();tick()}else if(a==='kbl'){S.kb=v;saveS();tick()}else if(a==='sc'){closeAll();v2sc();return}
+  v2qd2(k)});
+qd.addEventListener('input',e=>{if(e.target.dataset.q2==='bri'){const b=$('#bri');b.value=e.target.value;b.dispatchEvent(new Event('input',{bubbles:true}))}});
+$('#tiles').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(!b)return;const k=b.dataset.k,chev=e.target.classList.contains('ms')&&e.target.textContent==='chevron_right';
+  if(k==='cast'||k==='kb'||(k==='focus'&&chev)){e.stopPropagation();v2qd2(k)}
+  else if(k==='focus'){e.stopPropagation();v2foc?v2fend():(()=>{v2foc={end:Date.now()+25*6e4};st.dnd=st.focus=true;try{syncTile('dnd');syncTile('focus')}catch{}clearTimeout(v2fot);v2fot=setTimeout(()=>{v2fend();v2n('フォーカス モード','終了しました')},25*6e4);toast('フォーカス モードを開始しました（25 分）')})()}},true);
+/* ランチャー右上アイコン / 設定・ファイルの未実装ボタン */
+{const ic=document.querySelectorAll('.sb>span:last-child svg');[['https://lens.google.com','Google レンズ'],['https://gemini.google.com','Gemini']].forEach(([u,l],i)=>{const s=ic[i];if(!s)return;s.style.cursor='pointer';s.setAttribute('role','button');s.setAttribute('aria-label',l);s.onclick=()=>window.open(u,'_blank','noopener')})}
+document.addEventListener('click',e=>{const b=e.target.closest('.fsn [data-s=drive]');if(b){e.stopImmediatePropagation();launch('Google ドライブ')}},true);
 
 init();
 </script>
