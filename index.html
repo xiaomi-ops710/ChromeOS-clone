@@ -394,6 +394,64 @@ button.ch{display:flex}
 @media(max-width:700px){.obb{flex-direction:column;gap:12px;padding:16px 20px}.obl{flex:none}.obl h1{font-size:24px}}
 /* v12b */
 body:has(#qs.open,#cal.open,#ncp.open) #npops{display:none}
+
+/* v13: Material 3 Expressive セットアップ */
+#welcome{background:var(--panel);color:var(--txt)}
+#welcome::before,#welcome::after{content:"";position:absolute;border-radius:42% 58% 63% 37%/45% 40% 60% 55%;background:color-mix(in srgb,var(--acc) 14%,transparent);animation:wzb 18s ease-in-out infinite alternate;pointer-events:none}
+#welcome::before{width:60vmax;height:60vmax;left:-22vmax;top:-26vmax}
+#welcome::after{width:46vmax;height:46vmax;right:-14vmax;bottom:-22vmax;background:color-mix(in srgb,var(--pc) 75%,transparent);animation-delay:-6s}
+@keyframes wzb{to{transform:rotate(60deg) scale(1.15);border-radius:60% 40% 35% 65%/55% 60% 40% 45%}}
+#welcome .ob{position:relative;z-index:1;background:transparent;box-shadow:none;border-radius:0;width:min(1040px,100%);height:min(680px,100%);gap:8px}
+#welcome .wv{width:100%;height:14px;flex:none;overflow:hidden;padding:0 4px}
+#welcome .wv .tr,#welcome .wv .wp2{fill:none;stroke-width:4;stroke-linecap:round;vector-effect:non-scaling-stroke}
+#welcome .wv .tr{stroke:var(--line)}#welcome .wv .wp2{stroke:var(--acc);animation:wzw 1.2s linear infinite}
+#welcome .wv rect{transition:width .7s cubic-bezier(.34,1.3,.64,1)}
+@keyframes wzw{to{transform:translateX(40px)}}
+#welcome .obb{padding:16px 24px;gap:40px;align-items:stretch}
+#welcome .obl{flex:0 0 40%;display:flex;flex-direction:column;justify-content:center;gap:18px}
+#welcome .obl h1{font-size:clamp(32px,5vw,54px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+#welcome .obl p{color:var(--sub);font-size:16px;line-height:1.7;margin:0}
+#welcome .hero{width:clamp(88px,15vw,140px);aspect-ratio:1;background:var(--pc);color:var(--onpc);display:grid;place-items:center;transition:border-radius .8s cubic-bezier(.34,1.56,.64,1),transform .8s cubic-bezier(.34,1.56,.64,1)}
+#welcome .hero .ms{font-size:clamp(44px,7vw,68px);width:1em;transition:transform .8s cubic-bezier(.34,1.56,.64,1)}
+#welcome .obr{justify-content:center;gap:3px;padding:4px;overflow:auto}
+#welcome .obr>.rw,#welcome .obr>label.rw{border:0;border-radius:8px;padding:14px 18px;background:var(--surf2);color:var(--txt);transition:border-radius .3s cubic-bezier(.34,1.56,.64,1),background .2s}
+#welcome .obr>.rw:first-child{border-radius:28px 28px 8px 8px}#welcome .obr>.rw:last-child{border-radius:8px 8px 28px 28px}#welcome .obr>.rw:only-child{border-radius:28px}
+#welcome .rw small{color:var(--sub)}
+#welcome .rw>.ms:first-child{width:40px;height:40px;display:grid;place-items:center;border-radius:14px;background:var(--pc);color:var(--onpc);font-size:22px;flex:none}
+#welcome .rw.net:hover{background:color-mix(in srgb,var(--acc) 12%,var(--surf2))}#welcome .rw.net:active{border-radius:22px!important}
+#welcome label.rw:has(input:checked){background:var(--pc);color:var(--onpc)}
+#welcome .obs{border:0;border-radius:16px;background:var(--tile);color:var(--txt);padding:12px 14px}#welcome .obs:focus{box-shadow:0 0 0 2px var(--acc)}
+#welcome input[type=checkbox],#welcome input[type=radio]{appearance:none;width:24px;height:24px;border-radius:8px;border:2px solid var(--sub);display:grid;place-items:center;flex:none;transition:all .25s cubic-bezier(.34,1.56,.64,1)}
+#welcome input[type=radio]{border-radius:50%}
+#welcome input:checked{background:var(--acc);border-color:var(--acc);border-radius:50%}
+#welcome input:checked::after{content:"✓";color:var(--panel);font-size:15px;font-weight:700}
+#welcome .terms{border:0;border-radius:28px;background:var(--surf2);color:var(--txt);max-height:250px;padding:20px}
+#welcome .sw{width:52px;height:32px;border-radius:16px;background:var(--tile);border:2px solid var(--sub);transition:background .25s}
+#welcome .sw::after{top:6px;left:6px;width:16px;height:16px;transition:all .3s cubic-bezier(.34,1.56,.64,1)}
+#welcome .sw.on{background:var(--acc);border-color:var(--acc)}#welcome .sw.on::after{top:2px;left:22px;width:24px;height:24px;background:var(--panel)}
+#welcome .avg{gap:14px}#welcome .avg button{border:0;transition:all .4s cubic-bezier(.34,1.56,.64,1)}
+#welcome .avg button:nth-child(4n+1){border-radius:50%}#welcome .avg button:nth-child(4n+2){border-radius:32%}#welcome .avg button:nth-child(4n+3){border-radius:50% 50% 16% 50%}#welcome .avg button:nth-child(4n){border-radius:42% 58% 60% 40%/50% 40% 60% 50%}
+#welcome .avg button.on{border-radius:50%!important;transform:scale(1.1);outline:4px solid var(--acc);outline-offset:3px;box-shadow:none}
+#welcome .wpg{gap:12px}#welcome .wpg button{height:100px;border:0;border-radius:28px;transition:border-radius .35s cubic-bezier(.34,1.56,.64,1)}
+#welcome .wpg button.on{border-radius:14px;outline:4px solid var(--acc);outline-offset:3px}
+#welcome .obr>.rw>.cb{flex:1;height:48px;justify-content:center;border-radius:12px}
+#welcome .obf{border:0;padding:0 8px 4px;gap:12px}
+#welcome .obf .cb{height:56px;padding:0 28px;font-size:16px;font-weight:600;border-radius:28px;transition:border-radius .3s cubic-bezier(.34,1.56,.64,1),transform .3s}
+#welcome .obf .cb:active{border-radius:14px;transform:scale(.95)}
+#welcome .obf .cb:not(.t){background:var(--acc);color:var(--panel)}
+#welcome .obf .cb.t{background:var(--tile);color:var(--txt)}
+.ldr{width:26px;height:26px;background:var(--acc);display:block;flex:none;animation:ldm 1.4s ease-in-out infinite}
+@keyframes ldm{0%{border-radius:50%;transform:rotate(0)}25%{border-radius:30%;transform:rotate(90deg)}50%{border-radius:8px 50% 8px 50%;transform:rotate(180deg)}75%{border-radius:40% 10%;transform:rotate(270deg)}100%{border-radius:50%;transform:rotate(360deg)}}
+@media(max-width:700px){#welcome .obb{flex-direction:column;gap:16px;overflow:auto}#welcome .obl{flex:none}#welcome .hero{width:72px}}
+/* v14 */
+.hint{pointer-events:auto}.hint button{margin-left:6px;padding:2px 10px;border-radius:12px;background:var(--pc);color:var(--onpc);font-size:12px}
+.tset b{font-weight:600}.tset .num{text-align:left}
+/* v15 */
+.glg{display:flex;justify-content:center}.glg img{width:272px;max-width:70%;height:auto}
+.glg span{font:500 76px "Product Sans","Google Sans",Outfit,"Segoe UI",sans-serif;letter-spacing:-3px}
+.ntp .bar{max-width:584px!important;border:0}
+.ntp .bar input.gs{height:46px;border-radius:24px;padding:0 90px 0 52px;border:1px solid var(--line);box-shadow:0 1px 6px rgba(32,33,36,.12);font-size:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%239aa0a6' d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E") no-repeat 16px center/22px,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234285f4' d='M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z'/%3E%3Cpath fill='%2334a853' d='M17.3 11c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72z'/%3E%3C/svg%3E") no-repeat right 20px center/22px,var(--tile)}
+.ntp .bar input.gs:hover,.ntp .bar input.gs:focus{box-shadow:0 1px 8px rgba(32,33,36,.28)}
 </style>
 </head>
 <body>
@@ -676,7 +734,7 @@ function applyAccent(){const r=document.documentElement.style,h=S.acc;
   if(h===''||h==null){['--pc','--onpc','--acc','--tile','--panel'].forEach(x=>r.removeProperty(x));return}
   const d=st.dark;r.setProperty('--pc',d?`hsl(${h} 100% 80%)`:`hsl(${h} 85% 88%)`);r.setProperty('--onpc',`hsl(${h} 100% 12%)`);
   r.setProperty('--acc',d?`hsl(${h} 100% 80%)`:`hsl(${h} 80% 36%)`);r.setProperty('--tile',d?`hsl(${h} 18% 25%)`:`hsl(${h} 45% 92%)`);r.setProperty('--panel',d?`hsl(${h} 14% 15%)`:`hsl(${h} 60% 97%)`)}
-function applyS(){const r=document.documentElement,b=document.body,im=ld('wpimg');
+function applyS(){setTimeout(v14,0);const r=document.documentElement,b=document.body,im=ld('wpimg');
   applyAccent();r.style.zoom=S.zoom==100?'':S.zoom/100;b.classList.toggle('ah',!!S.ah);b.classList.toggle('na',!!S.na);
   b.style.background=im?`center/cover url(${im})`:'';document.querySelector('svg.wp').style.display=im?'none':'';tick()}
 /* browser */
@@ -881,31 +939,83 @@ function movies(w){
   w.cleanup=()=>v.pause();load()}
 /* terminal */
 function term(w){
-  const b=w.querySelector('.wb');
-  b.innerHTML=`<div class="tm"><div class="to"></div><div style="display:flex;gap:8px"><span style="color:#8ab4f8">chronos@localhost:~$</span><input class="ti" autocomplete="off" spellcheck="false" aria-label="コマンド" style="flex:1;background:none;border:0;outline:0;color:inherit;font:inherit"></div></div>`;
-  const o=b.querySelector('.to'),ti=b.querySelector('.ti'),tm=b.querySelector('.tm');let hs=[],hi=0;
-  const out=(t,c)=>{const d=document.createElement('div');d.style.whiteSpace='pre-wrap';if(c)d.style.color=c;d.textContent=t;o.appendChild(d);tm.scrollTop=1e9};
-  out('ChromeOS Flex ターミナル — "help" でコマンド一覧を表示します');
-  const CMD={help:()=>'help clear echo date whoami hostname uname ls cat open theme calc neofetch history reboot',
-    clear:()=>{o.innerHTML='';return ''},echo:a=>a.join(' '),date:()=>new Date().toString(),whoami:()=>'chronos',hostname:()=>'localhost',uname:()=>'Linux localhost 6.6 ChromeOS Flex x86_64',
-    ls:async()=>[...(await all('files')),...(await all('photos'))].map(x=>x.name).join('\n')||'(空)',
-    cat:async a=>{const f=(await all('files')).find(x=>x.name===a[0]);return f?await f.blob.slice(0,2e5).text():'cat: '+(a[0]||'')+': ファイルがありません'},
-    open:a=>{const q=a.join(' ').toLowerCase(),m=q&&A.find(x=>(x.n+x.full).toLowerCase().includes(q));if(!m)return 'open: アプリが見つかりません';launch(m.n);return m.n+' を開きました'},
-    theme:a=>{if(!['dark','light','auto'].includes(a[0]))return 'theme <dark|light|auto>';setTheme(a[0]);return 'テーマ: '+a[0]},
-    calc:a=>{const e=a.join(' ');if(!/^[\d+\-*/().%\s]+$/.test(e))return 'calc: 数式のみ使用できます';try{return String(Function('return '+e)())}catch{return 'calc: エラー'}},
-    neofetch:()=>`chronos@localhost\n-----------------\nOS: ChromeOS Flex\nBrowser: ${navigator.userAgent.match(/(Chrom\w+|Firefox|Safari)\/[\d.]+/)?.[0]||'?'}\nCPU: ${navigator.hardwareConcurrency} cores\nMemory: ${navigator.deviceMemory||'?'} GB\nResolution: ${screen.width}x${screen.height}\nTheme: ${st.dark?'Dark':'Light'}`,
-    history:()=>hs.map((h,i)=>(i+1)+'  '+h).join('\n'),reboot:()=>{location.reload();return ''}};
-  ti.onkeydown=async e=>{if(e.key==='Enter'){const l=ti.value.trim();ti.value='';out('$ '+l,'#8ab4f8');if(!l)return;hs.push(l);hi=hs.length;const [c,...a]=l.split(/\s+/),f=CMD[c];if(!f)return out(c+': コマンドが見つかりません','#f28b82');const r=await f(a);if(r)out(r)}
-    else if(e.key==='ArrowUp'){hi=Math.max(hi-1,0);ti.value=hs[hi]??''}else if(e.key==='ArrowDown'){hi=Math.min(hi+1,hs.length);ti.value=hs[hi]??''}};
-  tm.onclick=()=>ti.focus();ti.focus()}
+  const b=w.querySelector('.wb'),K='cros-vfs',U='/home/user';let fs;try{fs=JSON.parse(localStorage.getItem(K))}catch{}
+  fs=fs||{'/':{d:1},'/home':{d:1},[U]:{d:1},[U+'/Downloads']:{d:1},[U+'/Documents']:{d:1},[U+'/readme.txt']:{c:'Linux (penguin) へようこそ。\n"help" でコマンド一覧を表示します。\n'},'/etc':{d:1},'/etc/os-release':{c:'PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"\nNAME="Debian GNU/Linux"\nID=debian\n'},'/tmp':{d:1}};
+  const sf=()=>{try{localStorage.setItem(K,JSON.stringify(fs))}catch{}},err=m=>{throw Error(m)},par=q=>q.slice(0,q.lastIndexOf('/'))||'/';
+  const res=(p,c)=>{p=p.replace(/^~/,U);if(p[0]!=='/')p=c+'/'+p;const o=[];p.split('/').forEach(s=>{if(s==='..')o.pop();else if(s&&s!=='.')o.push(s)});return '/'+o.join('/')};
+  const kids=p=>Object.keys(fs).filter(k=>k!=='/'&&par(k)===p).map(k=>k.slice(k.lastIndexOf('/')+1)).sort(),jn=(p,k)=>(p==='/'?'':p)+'/'+k;
+  const rf=(p,s)=>{const q=res(p,s.cwd),n=fs[q];if(!n)err(p+': そのようなファイルやディレクトリはありません');return [q,n]};
+  const flag=(a,f)=>a.some(x=>x[0]==='-'&&x.includes(f)),pos=a=>a.filter(x=>x[0]!=='-');
+  const txt=(a,i,s)=>pos(a).length?pos(a).map(x=>{const[,n]=rf(x,s);if(n.d)err(x+': ディレクトリです');return n.c}).join(''):i;
+  const cpf=(a,s,mv)=>{const[x,y]=pos(a),[q]=rf(x,s);let d=res(y,s.cwd);if(fs[d]?.d)d=jn(d,q.split('/').pop());if(d===q)return '';if(!fs[par(d)])err('パスが無効です: '+y);const ks=Object.keys(fs).filter(k=>k===q||k.startsWith(q+'/'));ks.forEach(k=>fs[d+k.slice(q.length)]=JSON.parse(JSON.stringify(fs[k])));if(mv)ks.forEach(k=>delete fs[k]);sf();return ''};
+  const CM={help:()=>'コマンド:\n'+Object.keys(CM).join(' ')+'\n\n> >> リダイレクト、| パイプ、$VAR 変数、Tab 補完、↑↓ 履歴、Ctrl+L/C/U、Ctrl+ +/- で文字サイズ',
+    pwd:(a,i,s)=>s.cwd,cd:(a,i,s)=>{const q=res(a[0]||'~',s.cwd);if(!fs[q]?.d)err('cd: '+a[0]+': ディレクトリがありません');s.cwd=q;return ''},
+    ls:(a,i,s)=>{const l=flag(a,'l'),h=flag(a,'a');return (pos(a).length?pos(a):['.']).map(x=>{const[q,n]=rf(x,s);if(!n.d)return x;let k=kids(q);if(!h)k=k.filter(y=>y[0]!=='.');return k.map(y=>{const f=fs[jn(q,y)];return l?`${f.d?'drwxr-xr-x':'-rw-r--r--'} user user ${String(f.d?4096:(f.c||'').length).padStart(6)} ${y}${f.d?'/':''}`:y+(f.d?'/':'')}).join(l?'\n':'  ')}).join('\n')},
+    mkdir:(a,i,s)=>{pos(a).forEach(x=>{const q=res(x,s.cwd);if(fs[q]&&!flag(a,'p'))err('mkdir: '+x+': ファイルが存在します');if(!fs[par(q)]&&!flag(a,'p'))err('mkdir: '+x+': 作成できません');let c='';q.split('/').filter(Boolean).forEach(y=>{c+='/'+y;fs[c]=fs[c]||{d:1}})});sf();return ''},
+    touch:(a,i,s)=>{pos(a).forEach(x=>{const q=res(x,s.cwd);if(!fs[par(q)])err('touch: '+x+': ディレクトリがありません');fs[q]=fs[q]||{c:''}});sf();return ''},
+    rm:(a,i,s)=>{pos(a).forEach(x=>{const[q,n]=rf(x,s);if(n.d&&!flag(a,'r'))err('rm: '+x+': ディレクトリです (-r が必要)');if(q==='/'||q===U)err('rm: 保護されています');Object.keys(fs).forEach(k=>{if(k===q||k.startsWith(q+'/'))delete fs[k]})});sf();return ''},
+    cp:(a,i,s)=>cpf(a,s,0),mv:(a,i,s)=>cpf(a,s,1),cat:txt,echo:a=>a.join(' '),
+    head:(a,i,s)=>{let n=10;const j=a.indexOf('-n');if(j>=0){n=+a[j+1];a=a.filter((_,k)=>k!==j&&k!==j+1)}return txt(a,i,s).split('\n').slice(0,n).join('\n')},
+    tail:(a,i,s)=>{let n=10;const j=a.indexOf('-n');if(j>=0){n=+a[j+1];a=a.filter((_,k)=>k!==j&&k!==j+1)}return txt(a,i,s).replace(/\n$/,'').split('\n').slice(-n).join('\n')},
+    wc:(a,i,s)=>{const t=txt(a,i,s);return `${(t.match(/\n/g)||[]).length} ${t.split(/\s+/).filter(Boolean).length} ${t.length}`},
+    grep:(a,i,s)=>{const P=pos(a),re=new RegExp(P[0],flag(a,'i')?'i':'');return txt(P.slice(1),i,s).split('\n').map((l,k)=>[l,k]).filter(([l])=>re.test(l)).map(([l,k])=>(flag(a,'n')?(k+1)+':':'')+l).join('\n')},
+    sort:(a,i,s)=>txt(a,i,s).split('\n').filter(Boolean).sort().join('\n'),uniq:(a,i,s)=>txt(a,i,s).split('\n').filter((l,k,A)=>l!==A[k-1]).join('\n'),rev:(a,i,s)=>txt(a,i,s).split('\n').map(l=>[...l].reverse().join('')).join('\n'),
+    find:(a,i,s)=>{const q=res(a[0]&&a[0][0]!=='-'?a[0]:'.',s.cwd),j=a.indexOf('-name'),re=j>=0&&new RegExp('^'+a[j+1].replace(/[.+^$(){}|\\]/g,'\\$&').replace(/\*/g,'.*').replace(/\?/g,'.')+'$');return Object.keys(fs).filter(k=>(k===q||k.startsWith(q+'/'))&&(!re||re.test(k.split('/').pop()))).sort().join('\n')},
+    tree:(a,i,s)=>{const q=res(a[0]||'.',s.cwd),f=(p,pf)=>kids(p).map((k,j,A)=>{const e=j==A.length-1,c=jn(p,k);return pf+(e?'└── ':'├── ')+k+'\n'+(fs[c].d?f(c,pf+(e?'    ':'│   ')):'')}).join('');return q+'\n'+f(q,'').trimEnd()},
+    date:()=>new Date().toString(),whoami:()=>'user',hostname:()=>'penguin',id:()=>'uid=1000(user) gid=1000(user) groups=1000(user),27(sudo)',
+    uname:a=>flag(a,'a')?'Linux penguin 6.6.30-crostini #1 SMP PREEMPT_DYNAMIC x86_64 GNU/Linux':'Linux',uptime:()=>`up ${Math.floor(performance.now()/6e4)} min,  1 user`,
+    free:()=>{const m=(navigator.deviceMemory||4)*1024;return '              total   used   free\nMem:'+String(m).padStart(12)+String(Math.round(m*.42)).padStart(7)+String(Math.round(m*.58)).padStart(7)},
+    ps:()=>'  PID NAME\n'+Object.keys(open).map((n,k)=>String(100+k*7).padStart(5)+' '+n).join('\n'),
+    kill:a=>{const n=a.join(' ');if(!open[n])err('kill: '+n+': プロセスがありません');open[n].querySelector('[data-a=x]').click();return ''},
+    env:(a,i,s)=>Object.entries(s.env).map(([k,v])=>k+'='+v).join('\n'),export:(a,i,s)=>{a.forEach(x=>{const[k,...v]=x.split('=');s.env[k]=v.join('=')});return ''},
+    clear:(a,i,s)=>{s.el.querySelector('.to').innerHTML='';return ''},history:(a,i,s)=>s.hs.map((h,k)=>String(k+1).padStart(4)+'  '+h).join('\n'),
+    sleep:a=>new Promise(r=>setTimeout(()=>r(''),(+a[0]||1)*1000)),seq:a=>{const[x,y]=a.length>1?a:[1,a[0]],o=[];for(let k=+x;k<=+y;k++)o.push(k);return o.join('\n')},
+    base64:(a,i,s)=>{const t=txt(a.filter(x=>x!=='-d'),i,s).replace(/\n$/,'');return a.includes('-d')?decodeURIComponent(escape(atob(t))):btoa(unescape(encodeURIComponent(t)))},
+    sha256sum:async(a,i,s)=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(txt(a,i,s))))].map(x=>x.toString(16).padStart(2,'0')).join('')+'  -',
+    curl:async a=>{try{return await (await fetch(pos(a)[0])).text()}catch{err('curl: 取得できません (CORS またはネットワーク)')}},
+    ping:async a=>{const h=a[0]||'localhost',o=[];for(let k=0;k<4;k++){const t=performance.now();try{await fetch('https://'+h,{mode:'no-cors',cache:'no-store'})}catch{}o.push(`64 bytes from ${h}: icmp_seq=${k+1} time=${(performance.now()-t).toFixed(1)} ms`)}return o.join('\n')},
+    open:a=>{const q=a.join(' ').toLowerCase(),m=q&&A.find(x=>(x.n+x.full).toLowerCase().includes(q));if(!m)err('open: アプリが見つかりません');launch(m.n);return m.n+' を開きました'},apps:()=>A.map(x=>x.n).join('\n'),
+    theme:a=>{if(!['dark','light','auto'].includes(a[0]))return 'theme <dark|light|auto>';setTheme(a[0]);return 'テーマ: '+a[0]},notify:a=>{v2n(a.join(' ')||'通知','ターミナルから');return ''},
+    calc:a=>{const e=a.join(' ');if(!/^[\d+\-*/().%\s]+$/.test(e))err('calc: 数式のみ使用できます');return String(Function('return '+e)())},
+    sudo:(a,i,s)=>CM[a[0]]?CM[a[0]](a.slice(1),i,s):err('sudo: '+a[0]+': command not found'),apt:a=>'パッケージ リストを読み込んでいます... 完了\n'+(a[0]==='install'?a.slice(1).join(' ')+' は最新です (デモ)':'すべてのパッケージは最新です。'),
+    neofetch:()=>`user@penguin\n------------\nOS: Debian GNU/Linux 12 (Crostini)\nHost: ChromeOS Flex\nKernel: 6.6.30\nShell: bash\nCPU: ${navigator.hardwareConcurrency} cores\nMemory: ${navigator.deviceMemory||'?'} GB\nResolution: ${screen.width}x${screen.height}\nTheme: ${st.dark?'Dark':'Light'}`,
+    exit:()=>{w.querySelector('[data-a=x]').click();return ''},reboot:()=>{location.reload();return ''}};
+  const CR={help:()=>'Chrome OS デベロッパー シェル (crosh)\nコマンド: help ping uptime top version shell clear exit',ping:CM.ping,uptime:CM.uptime,top:CM.ps,version:()=>'ChromeOS Flex 155.0.8059.18 (公式ビルド) beta (64 ビット)',shell:()=>{mk('penguin');return ''},clear:CM.clear,exit:CM.exit};
+  b.innerHTML=`<div class="bar" style="padding:0 8px;gap:2px;background:#202124;border:0"><span class="tabs" style="display:flex;gap:2px;flex:1;overflow:auto"></span><button class="cb t" data-p="penguin" aria-label="新しい penguin タブ" style="width:36px;padding:0;justify-content:center"><span class="ms">add</span></button><button class="cb t" data-g aria-label="ターミナルの設定" style="width:36px;padding:0;justify-content:center"><span class="ms">settings</span></button><button class="cb t" data-p="crosh" style="height:30px;font-size:12px">crosh</button></div><div class="tm" style="position:relative;padding:0"></div><div class="tset" hidden style="position:absolute;right:8px;top:44px;z-index:5;background:var(--panel);color:var(--txt);border-radius:20px;padding:14px;width:260px;box-shadow:0 4px 20px rgba(0,0,0,.35);font:13px sans-serif"></div>`;
+  const tb=b.querySelector('.tabs'),tm=b.querySelector('.tm');let T=[],cur,id=0;const TH={dark:['#1e1e1e','#d4d4d4','#8ab4f8'],light:['#ffffff','#202124','#1a73e8'],solar:['#002b36','#93a1a1','#268bd2'],green:['#000','#33ff33','#33ff33'],dracula:['#282a36','#f8f8f2','#bd93f9']};
+  const ap=()=>{const c=TH[S.tth||'dark']||TH.dark;tm.style.background=`color-mix(in srgb,${c[0]} ${S.top||100}%,transparent)`;tm.style.color=c[1];tm.style.setProperty('--tp',c[2]);tm.style.fontSize=(S.tfz||13)+'px';tm.style.fontFamily=S.tff||'monospace'};
+  const ps=b.querySelector('.tset'),rp=()=>{ps.innerHTML=`<b>ターミナルの設定</b><div style="margin:10px 0 4px">文字サイズ ${S.tfz||13}px</div><input type="range" data-k="tfz" min="9" max="28" value="${S.tfz||13}" style="width:100%"><div style="margin:10px 0 4px">フォント</div><select class="num" data-k="tff" style="width:100%">${['monospace','Courier New','Menlo','Consolas'].map(f=>`<option ${(S.tff||'monospace')===f?'selected':''}>${f}</option>`).join('')}</select><div style="margin:10px 0 4px">テーマ</div><div style="display:flex;gap:4px;flex-wrap:wrap">${Object.entries({dark:'ダーク',light:'ライト',solar:'Solarized',green:'グリーン',dracula:'Dracula'}).map(([k,l])=>`<button class="cb ${(S.tth||'dark')===k?'':'t'}" data-th="${k}" style="height:28px;padding:0 10px;font-size:12px">${l}</button>`).join('')}</div><div style="margin:10px 0 4px">背景の濃さ ${S.top||100}%</div><input type="range" data-k="top" min="30" max="100" value="${S.top||100}" style="width:100%"><button class="cb t" data-k2 style="margin-top:12px;width:100%;justify-content:center">既定に戻す</button>`};
+  ps.oninput=ps.onchange=e=>{const k=e.target.dataset.k;if(!k)return;S[k]=e.target.type==='range'?+e.target.value:e.target.value;saveS();ap();if(e.type==='change')rp()};
+  ps.onclick=e=>{const x=e.target.closest('[data-th]');if(x){S.tth=x.dataset.th;saveS();ap();rp()}if(e.target.closest('[data-k2]')){['tfz','tff','tth','top'].forEach(k=>delete S[k]);saveS();ap();rp()}};
+  const out=(s,t,c)=>{const d=document.createElement('div');d.style.whiteSpace='pre-wrap';if(c)d.style.color=c;d.textContent=t;s.el.querySelector('.to').appendChild(d);s.el.scrollTop=1e9};
+  const pr=s=>s.el.querySelector('.pr').textContent=s.kind==='crosh'?'crosh>':`user@penguin:${s.cwd===U?'~':s.cwd.replace(U,'~')}$`;
+  const rt=()=>tb.innerHTML=T.map(s=>`<button class="cb ${s===cur?'':'t'}" data-t="${s.id}" style="border-radius:12px 12px 0 0;height:34px"><span>${s.kind}</span><span class="ms" data-x="${s.id}" style="font-size:16px">close</span></button>`).join('');
+  const sw=s=>{cur=s;T.forEach(x=>x.el.hidden=x!==s);rt();s.el.querySelector('.ti').focus()};
+  async function run(s,line){line=line.replace(/\$(\w+)/g,(_,k)=>s.env[k]??'');const tk=[...line.matchAll(/"([^"]*)"|'([^']*)'|(>>|>|\||[^\s|>]+)/g)].map(m=>m[1]??m[2]??m[3]),sg=[[]];tk.forEach(x=>x==='|'?sg.push([]):sg.at(-1).push(x));let inp='';
+    for(let a of sg){let rd,ap;const ri=a.findIndex(x=>x==='>'||x==='>>');if(ri>=0){ap=a[ri]==='>>';rd=a[ri+1];a=a.slice(0,ri)}const [c,...ar]=a,F=(s.kind==='crosh'?CR:CM)[c];if(!c)continue;if(!F)err(c+': command not found');inp=String(await F(ar,inp,s)??'');
+      if(rd){const p=res(rd,s.cwd);if(!fs[par(p)])err(rd+': ディレクトリがありません');fs[p]={c:(ap&&fs[p]?fs[p].c:'')+inp+(inp.endsWith('\n')?'':'\n')};sf();inp=''}}return inp}
+  function mk(kind){const s={kind,cwd:U,hs:[],hi:0,id:++id,env:{USER:'user',HOME:U,SHELL:'/bin/bash',TERM:'xterm-256color'}};
+    s.el=document.createElement('div');s.el.style.cssText='position:absolute;inset:0;overflow:auto;padding:12px';s.el.innerHTML='<div class="to"></div><div style="display:flex;gap:8px"><span class="pr" style="color:var(--tp);white-space:nowrap"></span><input class="ti" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="コマンド" style="flex:1;background:none;border:0;outline:0;color:inherit;font:inherit;min-width:0"></div>';tm.appendChild(s.el);T.push(s);pr(s);
+    out(s,kind==='crosh'?"Welcome to crosh, the Chrome OS developer shell.\n\nType 'help' for a list of commands.":'penguin (Debian 12) — "help" でコマンド一覧を表示します');
+    const ti=s.el.querySelector('.ti');ti.onkeydown=async e=>{const k=e.key;
+      if(e.ctrlKey&&(k==='+'||k==='='||k==='-')){e.preventDefault();S.tfz=Math.max(9,Math.min(28,(+S.tfz||13)+(k==='-'?-1:1)));saveS();ap();return}
+      if(e.ctrlKey&&k==='l'){e.preventDefault();CM.clear(0,0,s);return}if(e.ctrlKey&&k==='c'){out(s,s.el.querySelector('.pr').textContent+' '+ti.value+'^C','var(--tp)');ti.value='';return}if(e.ctrlKey&&k==='u'){ti.value='';return}
+      if(k==='Tab'){e.preventDefault();const v=ti.value,sp=v.lastIndexOf(' ')+1,wd=v.slice(sp);let c;if(!sp)c=Object.keys(s.kind==='crosh'?CR:CM).filter(x=>x.startsWith(wd));else{const d=wd.includes('/')?wd.slice(0,wd.lastIndexOf('/')+1):'',q=res(d||'.',s.cwd);c=kids(q).filter(x=>x.startsWith(wd.slice(d.length))).map(x=>d+x+(fs[jn(q,x)].d?'/':''))}if(c.length===1)ti.value=v.slice(0,sp)+c[0]+(c[0].endsWith('/')?'':' ');else if(c.length>1)out(s,c.join('  '));return}
+      if(k==='ArrowUp'){s.hi=Math.max(s.hi-1,0);ti.value=s.hs[s.hi]??''}else if(k==='ArrowDown'){s.hi=Math.min(s.hi+1,s.hs.length);ti.value=s.hs[s.hi]??''}
+      else if(k==='Enter'){let l=ti.value.trim();ti.value='';out(s,s.el.querySelector('.pr').textContent+' '+l,'var(--tp)');if(!l)return;if(l==='!!')l=s.hs.at(-1)||'';s.hs.push(l);s.hi=s.hs.length;try{const r=await run(s,l);if(r)out(s,r)}catch(x){out(s,x.message,'#f28b82')}pr(s);s.el.scrollTop=1e9}};
+    sw(s)}
+  b.onclick=e=>{if(e.target.closest('[data-g]')){ps.hidden=!ps.hidden;rp();return}const x=e.target.closest('[data-x]');if(x){e.stopPropagation();const s=T.find(y=>y.id==x.dataset.x);if(T.length===1)return w.querySelector('[data-a=x]').click();s.el.remove();T=T.filter(y=>y!==s);return sw(cur===s?T.at(-1):cur)}
+    const t=e.target.closest('[data-t]');if(t)return sw(T.find(y=>y.id==t.dataset.t));const p=e.target.closest('[data-p]');if(p)return mk(p.dataset.p);cur&&cur.el.querySelector('.ti').focus()};
+  mk('penguin');ap()}
 /* settings */
 function settings(w){w.classList.add('wset');
-  const b=w.querySelector('.wb'),PG=[['net','wifi','ネットワーク','guest-h2'],['bt','bluetooth','Bluetooth','オン'],['acct','face','アカウント',(ld('uemail')||'guest@chromeos.demo')],['dev','laptop','デバイス','音量、明るさ'],['ime','keyboard','入力方法','キーボード、日本語入力'],['disp','desktop_windows','ディスプレイ','明るさ、夜間モード、表示サイズ'],['tp','touch_app','タッチパッドとマウス','タップ、スクロール'],['print','print','印刷','プリンタ'],['sty','palette','壁紙とスタイル','ダークモード、壁紙'],['ss','hourglass_top','スクリーン セーバー','待機時間、自動ロック'],['prs','dock_to_bottom','個人設定','シェルフ'],['dtm','schedule','日付と時刻','24時間表示、タイムゾーン'],['pwr','battery_full','電源','バッテリー'],['lang','language','言語','表示言語'],['ntf','notifications','通知','サイレント モード'],['prv','shield','プライバシーとセキュリティ','ロック画面、コントロール'],['app','apps','アプリ','通知、ピン留め'],['a11y','accessibility_new','ユーザー補助機能','スクリーン リーダー、拡大'],['sto','storage','システム環境設定','ストレージ'],['sys','info','ChromeOS について','更新、ヘルプ、デベロッパー オプション']];
+  const b=w.querySelector('.wb'),PG=[['net','wifi','ネットワーク','guest-h2'],['bt','bluetooth','Bluetooth','オン'],['acct','face','アカウント',(ld('uemail')||'guest@chromeos.demo')],['dev','laptop','デバイス','音量、明るさ'],['ime','keyboard','入力方法','キーボード、日本語入力'],['disp','desktop_windows','ディスプレイ','明るさ、夜間モード、表示サイズ'],['tp','touch_app','タッチパッドとマウス','タップ、スクロール'],['print','print','印刷','プリンタ'],['sty','palette','壁紙とスタイル','ダークモード、壁紙'],['ss','hourglass_top','スクリーン セーバー','待機時間、自動ロック'],['prs','dock_to_bottom','個人設定','シェルフ'],['dtm','schedule','日付と時刻','24時間表示、タイムゾーン'],['pwr','battery_full','電源','バッテリー'],['lang','language','言語','表示言語'],['ntf','notifications','通知','サイレント モード'],['prv','shield','プライバシーとセキュリティ','ロック画面、コントロール'],['app','apps','アプリ','通知、ピン留め'],['a11y','accessibility_new','ユーザー補助機能','スクリーン リーダー、拡大'],['sto','storage','システム環境設定','ストレージ'],['cus','tune','カスタマイズ','アイコン、シェルフ、ウィンドウ'],['snd','volume_up','サウンド','音量、タップ音'],['kbd','keyboard_alt','ショートカット','キー操作一覧'],['chm','language','Chrome','検索エンジン、表示方法'],['lnx','terminal','Linux 開発環境','ターミナルの設定'],['lck','lock','ロック画面','スリープ時のロック'],['shr','share','近距離共有','共有の設定'],['dft','apps','既定のアプリ','ブラウザ、メール'],['sys','info','ChromeOS について','更新、ヘルプ、デベロッパー オプション']];
   b.innerHTML=`<div class="bar"><span class="ms">settings</span><b style="font-weight:500">設定</b><input placeholder="設定を検索" aria-label="設定を検索"></div><div class="set"><nav class="snav">${PG.map(([k,i,l,sb])=>`<button data-pg="${k}"><span class="ms">${i}</span><span>${l}${sb?`<small>${sb}</small>`:''}</span></button>`).join('')}</nav><main class="spg scroll"></main></div>`;
   const pg=b.querySelector('.spg'),nv=b.querySelector('.snav');let btd=[];
   const R=(t,d,c)=>`<div class="row"><div><div>${t}</div>${d?`<div style="font-size:12px;color:var(--sub)">${d}</div>`:''}</div><div>${c}</div></div>`;
   const SW=(k,on)=>`<button class="sw ${on?'on':''}" data-t="${k}" role="switch" aria-checked="${!!on}" aria-label="${k}"></button>`;
   const CH=(a,v,l,on)=>`<button class="cb ${on?'':'t'}" data-${a}="${v}">${l}</button>`;
+  const SEL=(k,o,v)=>`<select class="num" data-s2="${k}" style="width:auto">${o.map(([a,l])=>`<option value="${a}" ${String(v)===String(a)?'selected':''}>${l}</option>`).join('')}</select>`,RG=(k,a,b,v)=>`<div class="sl" style="margin:0;width:200px"><input type="range" data-s2="${k}" min="${a}" max="${b}" value="${v}"></div>`;
   const WP=[['','#5ab4ff'],['sunset','#ff8a65'],['forest','#4fae8a'],['night','#2b3a67']];
   const P={
    net:()=>{const c=navigator.connection;return R('Wi-Fi',navigator.onLine?'オンライン':'オフライン',SW('wifi',st.wifi))+R('接続の種類',c?`${c.effectiveType} / 下り ${c.downlink} Mbps / RTT ${c.rtt} ms`:'情報を取得できません','')+R('データセーバー',c?.saveData?'オン':'オフ','')},
@@ -929,6 +1039,15 @@ function settings(w){w.classList.add('wset');
    ss:()=>R('スクリーン セーバー','操作がない状態が続くと時計を表示します',`<select class="num" data-sel="ss" style="width:auto">${[[0,'オフ'],[1,'1 分'],[5,'5 分'],[10,'10 分']].map(([v,l])=>`<option value="${v}" ${(+S.ss||0)===v?'selected':''}>${l}</option>`).join('')}</select>`)+R('自動ロック','スクリーン セーバーの代わりに画面をロックします',SW('idlock',S.idlock))+R('プレビュー','',CH('a','sspv','表示',1)),
    acct:()=>R(ld('uname')||'ゲスト',ld('uemail')||'guest@chromeos.demo','')+R('同期と Google サービス','オフ','')+R('セットアップ画面','',CH('a','wel','再表示',0)),
    a11y:()=>R('画面の拡大','',`<select class="num" data-sel="zoom" style="width:auto">${[80,90,100,110,125].map(z=>`<option value="${z}" ${S.zoom==z?'selected':''}>${z}%</option>`).join('')}</select>`)+R('スクリーン リーダー','ChromeVox はこのデモでは利用できません',''),
+   cus:()=>R('アイコンの大きさ','',RG('ics',70,140,S.ics||100))+R('アイコンの形','',SEL('ish',[[34,'スクワークル'],[50,'円'],[14,'角丸四角'],[0,'四角']],S.ish??34))+R('ウィンドウの角丸','',RG('rad',0,32,S.rad??12))+R('ウィンドウの透明度','',RG('wop',60,100,S.wop||100))+R('シェルフの位置','',SEL('shp',[['bottom','下'],['top','上']],S.shp||'bottom'))+R('シェルフの高さ','',RG('shh',40,72,S.shh||48))+R('ぼかし効果','シェルフ・ランチャー・クイック設定',RG('blur',0,40,S.blur??20))+R('フォント','',SEL('ff',[['','標準'],['g','ゴシック'],['m','明朝'],['r','丸ゴシック'],['n','等幅']],S.ff||''))+R('文字の大きさ','アプリ内の文字',RG('fsz',80,140,S.fsz||100))+R('壁紙グラデーション','開始色 / 終了色',`<input type="color" data-s2="wc1" value="${S.wc1||'#5ab4ff'}"> <input type="color" data-s2="wc2" value="${S.wc2||'#1b3fe0'}">`)+R('すべてリセット','カスタマイズを初期状態に戻します',CH('a','cusr','リセット',0)),
+   snd:()=>R('音量','',`<div class="sl" style="margin:0;width:200px"><input type="range" data-r="vol" value="${$('#vol').value}"></div>`)+R('タップ音','ボタンを押すと短い音を鳴らします',SW('clk',S.clk))+R('通知音','このデモでは無音です',SW('nsd',S.nsd)),
+   kbd:()=>[['Ctrl + T','Chrome: 新しいタブ'],['Ctrl + W','Chrome: タブを閉じる'],['Ctrl + L','Chrome: アドレスバー'],['Ctrl + D','Chrome: ブックマーク'],['Ctrl + Tab','Chrome: 次のタブ'],['Ctrl + L','ターミナル: 画面をクリア'],['Ctrl + +/-','ターミナル: 文字サイズ'],['Ctrl + Space','入力方法の切り替え'],['Meta + V','クリップボード履歴']].map(([k,d])=>R(`<kbd>${k}</kbd>`,d,'')).join('')+R('キーのリピート速度','このデモでは動作に影響しません',RG('krs',1,10,S.krs||5)),
+   chm:()=>R('検索エンジン','アドレスバーの検索に使用します',SEL('se',[['g','Google'],['b','Bing'],['d','DuckDuckGo'],['w','Wikipedia']],S.se||'g'))+R('ブックマーク バーを隠す','',SW('nbm',S.nbm))+R('閲覧データを消去','履歴とブックマークを削除します',CH('a','chclr','消去',0))+R('プロキシ URL','Cloudflare Workers に proxy-worker.js を設置して URL を入力すると、ほとんどのサイトを表示できます',`<input class="num" type="text" data-s2="px" value="${esc(S.px||'')}" placeholder="https://xxxx.workers.dev/" style="width:230px;text-align:left">`)+R('プロキシを使わない','オンにすると常に直接読み込みます',SW('npx',S.npx))+R('表示できないサイト','Chrome のメニューから、プロキシ・リーダー・アーカイブ表示を選べます',''),
+   lnx:()=>R('文字サイズ','',RG('tfz',9,28,S.tfz||13))+R('テーマ','',SEL('tth',[['dark','ダーク'],['light','ライト'],['solar','Solarized'],['green','グリーン'],['dracula','Dracula']],S.tth||'dark'))+R('フォント','',SEL('tff',[['monospace','monospace'],['Courier New','Courier New'],['Menlo','Menlo'],['Consolas','Consolas']],S.tff||'monospace'))+R('ターミナルを開く','',CH('a','tmopen','開く',1))+R('Linux ファイルをリセット','仮想ファイルシステムを初期化します',CH('a','tmreset','初期化',0)),
+   lck:()=>R('スリープ復帰時にロック','',SW('slk',S.slk))+R('ロック画面に通知を表示','',SW('lnt',S.lnt))+R('PIN','このデモでは設定できません',''),
+   shr:()=>R('近距離共有','近くのデバイスとファイルを共有します（デモ）',SW('nsh',S.nsh))+R('デバイス名','Chromebook',''),
+   dft:()=>R('ブラウザ','Chrome','')+R('メール','Gmail','')+R('メディア','メディア プレーヤー','')+R('テキスト','テキスト',''),
+   a11y:()=>R('画面の拡大','',SEL('zoom',[80,90,100,110,125,150].map(z=>[z,z+'%']),S.zoom||100))+R('文字の大きさ','',RG('fsz',80,140,S.fsz||100))+R('ハイ コントラスト','',SW('hc',S.hc))+R('グレースケール','',SW('gs',S.gs))+R('色を反転','',SW('inv',S.inv))+R('アニメーションを減らす','',SW('na',S.na))+R('スクリーン リーダー','ChromeVox はこのデモでは利用できません',''),
    sys:()=>`<div class="ab"><div class="abh"><svg width="44" height="44" viewBox="0 0 48 48"><path d="M6.68 14A20 20 0 0 1 41.32 14L32.66 19A10 10 0 0 0 15.34 19Z" fill="#ea4335"/><path d="M41.32 14A20 20 0 0 1 24 44V34A10 10 0 0 0 32.66 19Z" fill="#fbbc04"/><path d="M24 44A20 20 0 0 1 6.68 14L15.34 19A10 10 0 0 0 24 34Z" fill="#34a853"/><circle cx="24" cy="24" r="9" fill="#fff"/><circle cx="24" cy="24" r="7" fill="#4285f4"/></svg><b style="font-weight:500">Google ChromeOS</b></div><div class="abr"><span class="ms" style="color:var(--acc)">autorenew</span><span style="flex:1">バージョン 155.0.8059.18（公式ビルド）beta （64 ビット）</span><button class="cb" data-ab="upd">アップデートを確認</button></div>${[['explore','新機能を確認する','自動更新により最新機能が提供されます。最近の主な更新内容をご確認ください。','new'],['help','ヘルプ','ヘルプ記事やデバイスのサポートを確認できます','help'],['feedback','フィードバックを送信','フィードバックを送信したり、問題を報告したりできます','fb'],['monitor_heart','診断','バッテリー、CPU、メモリ、接続などをテストできます','diag'],['system_update_alt','ファームウェア アップデート','ファームウェアは最新の状態です','fw']].map(([i,t,d,k])=>`<button class="abr" data-ab="${k}"><span class="ms">${i}</span><span style="flex:1;text-align:left">${t}<small>${d}</small></span><span class="ms" style="font-size:20px">open_in_new</span></button>`).join('')}</div><div style="margin:16px 4px 6px;font-size:14px;color:var(--acc)">デベロッパー</div>`+R('Linux 開発環境','デベロッパー ツール、IDE、エディタを実行します',CH('a','btadd0','設定',0))+R('ブラウザ',navigator.userAgent.match(/(Chrom\w+|Firefox|Safari)\/[\d.]+/)?.[0]||'-','')+R('プラットフォーム',navigator.platform||'-','')+R('CPU コア数',navigator.hardwareConcurrency||'-','')+R('メモリ',(navigator.deviceMemory||'-')+' GB','')+R('言語',navigator.language,'')+R('バッテリー',$('#bat').textContent,'')+R('稼働時間',Math.round(performance.now()/60000)+' 分','')+R('セットアップ画面','',CH('a','wel','再表示',0))+R('初期化（Powerwash）','すべてのデータと設定を削除します',CH('a','wipe','初期化',0))};
   async function show(k){nv.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.pg===k));pg.innerHTML=`<h2 style="font-weight:400;font-size:22px;margin-bottom:8px">${PG.find(x=>x[0]===k)[2]}</h2>`+await P[k]();pg.querySelectorAll('.sl input').forEach(fill);pg.animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:260,easing:'ease-out'})}
   nv.onclick=e=>{const x=e.target.closest('[data-pg]');if(x)show(x.dataset.pg)};
@@ -936,7 +1055,7 @@ function settings(w){w.classList.add('wset');
   pg.onclick=async e=>{const t=e.target.closest('button');if(!t)return;const d=t.dataset;
     if(d.t){const k=d.t;
       if(k.startsWith('pin:')){const n=k.slice(4);pinned=pinned.includes(n)?pinned.filter(x=>x!==n):[...pinned,n];sv('pins',JSON.stringify(pinned));renderPins();mark()}
-      else if(['h24','ah','na','tap','nat','ac','idlock'].includes(k)){S[k]=S[k]?0:1;saveS();applyS()}
+      else if(['h24','ah','na','tap','nat','ac','idlock','hc','gs','inv','clk','nsd','nbm','slk','lnt','nsh','npx'].includes(k)){S[k]=S[k]?0:1;saveS();applyS()}
       else{st[k]=!st[k];if(k==='wifi'){wifi=st.wifi;tick()}syncTile(k);if(k==='night')$('#night').style.opacity=st.night?.35:0}
       t.classList.toggle('on');t.setAttribute('aria-checked',t.classList.contains('on'))}
     else if(d.th!=null){setTheme(d.th);show('sty')}
@@ -946,18 +1065,18 @@ function settings(w){w.classList.add('wset');
     else if(d.a==='ntreq'){try{await Notification.requestPermission()}catch{}show('ntf')}
     else if(d.a==='nttest'){if(typeof Notification!=='undefined'&&Notification.permission==='granted')new Notification('ChromeOS',{body:'これはテスト通知です'});else toast('通知が許可されていません')}
     else if(d.ab){if(d.ab==='diag')launch('診断');else if(d.ab==='help')window.open('https://support.google.com/chromebook','_blank','noopener');else if(d.ab==='upd'){toast('アップデートを確認しています…');setTimeout(()=>toast('ChromeOS は最新の状態です'),1400)}else if(d.ab==='fb')v2fb();else if(d.ab==='new')v2info('新機能','<ul style="padding-left:20px"><li>通知センターとカレンダーの予定</li><li>画面録画・スクリーンショット</li><li>クリップボード履歴（Meta+V）・絵文字ピッカー</li><li>ウィンドウのスナップ、ピン留めの並べ替え</li><li>Gmail・Meet・スライドなどの独自アプリ</li></ul>');else if(d.ab==='fw')v2info('ファームウェア アップデート','ファームウェアは最新の状態です。')}
-    else if(d.a==='btadd0')launch('ターミナル')
+    else if(d.a==='cusr'){['ics','ish','rad','wop','shp','shh','blur','ff','fsz','wc1','wc2','hc','gs','inv'].forEach(k=>delete S[k]);saveS();applyS();show('cus')}else if(d.a==='chclr'){['hist','bm'].forEach(k=>{try{localStorage.removeItem('cros-'+k)}catch{}});toast('閲覧データを消去しました（Chrome を開き直すと反映されます）')}else if(d.a==='tmopen')launch('ターミナル');else if(d.a==='tmreset'){try{localStorage.removeItem('cros-vfs')}catch{}toast('Linux ファイルを初期化しました')}else if(d.a==='btadd0')launch('ターミナル')
     else if(d.a==='prn')window.print()
     else if(d.a==='sspv')v2ssOn()
     else if(d.a==='wel'){$('#welcome').classList.remove('gone')}
     else if(d.a==='wipe'&&confirm('保存した写真・ファイル・設定をすべて削除します。よろしいですか？')){try{localStorage.clear()}catch{}try{indexedDB.deleteDatabase('cros')}catch{}location.reload()}};
   pg.onchange=e=>{const t=e.target,d=t.dataset;
-    if(d.sel==='kb'){S.kb=t.value;saveS();tick()}
+    if(d.s2){S[d.s2]=t.type==='range'||/^-?\d+$/.test(t.value)?+t.value:t.value;saveS();applyS()}else if(d.sel==='kb'){S.kb=t.value;saveS();tick()}
     else if(d.sel==='ime'){S.ime=t.value;saveS();tick()}
     else if(d.sel==='ss'){S.ss=+t.value;saveS();v2idle()}
     else if(d.sel==='zoom'){S.zoom=+t.value;saveS();applyS()}
     else if(d.wpf!=null&&t.files[0]){const u=URL.createObjectURL(t.files[0]),im=new Image();im.onload=()=>{const c=document.createElement('canvas'),r=Math.min(1,1600/im.width);c.width=im.width*r;c.height=im.height*r;c.getContext('2d').drawImage(im,0,0,c.width,c.height);sv('wpimg',c.toDataURL('image/jpeg',.82));URL.revokeObjectURL(u);applyS();show('sty')};im.src=u}};
-  pg.oninput=e=>{const t=e.target;if(t.dataset.r){const m=$('#'+t.dataset.r);m.value=t.value;m.dispatchEvent(new Event('input'));fill(t)}};
+  pg.oninput=e=>{const t=e.target;if(t.dataset.s2){if(t.type==='range'||t.type==='color'||t.type==='text'){S[t.dataset.s2]=t.type==='range'?+t.value:t.value;saveS();applyS();t.type==='range'&&fill(t)}return}if(t.dataset.r){const m=$('#'+t.dataset.r);m.value=t.value;m.dispatchEvent(new Event('input'));fill(t)}};
   show('net')}
 /* first-run welcome */
 function init(){const th=ld('theme');if(th)setTheme(th);setWp(ld('wp')||'');$('#vol').addEventListener('input',()=>document.querySelectorAll('audio,video').forEach(a=>a.volume=$('#vol').value/100));$('#wstart').onclick=()=>{$('#welcome').classList.add('gone');sv('welcome','1')};if(ld('welcome'))$('#welcome').classList.add('gone');tiles();applyS();render();tick();setInterval(tick,10000);mark()}
@@ -1061,7 +1180,7 @@ const v2ic=l=>l>2?'wifi':l>1?'wifi_2_bar':'wifi_1_bar';
 function v2qd(k){[...$('#qs').children].forEach(c=>c.hidden=!!k&&c!==qd);qd.hidden=!k;if(!k){tiles();return}
   const on=st[k],N=k==='wifi'?'Wi-Fi':'Bluetooth',c=navigator.connection;qd.dataset.k=k;
   let h=`<div class="qdh"><button data-b aria-label="戻る"><span class="ms">arrow_back</span></button><b>${N}</b><button class="sw ${on?'on':''}" data-s role="switch" aria-checked="${on}" aria-label="${N}"></button></div>`;
-  if(k==='wifi')h+=on?`<div class="wxc" style="margin-bottom:8px"><b style="font-weight:500">${v2cur}</b><div style="font-size:12px;color:var(--sub)">接続済み${c?` ・ ${c.effectiveType} / 下り ${c.downlink} Mbps / RTT ${c.rtt} ms`:''}</div></div><div style="font-size:12px;color:var(--sub);margin:8px 4px">利用可能なネットワーク（デモ）</div>`+v2net.filter(n=>n[0]!==v2cur).map(([n,l,s])=>`<button class="qdi" data-n2="${n}"><span class="ms">${v2ic(l)}</span><span style="flex:1">${n}</span>${s?'<span class="ms" style="font-size:18px">lock</span>':''}</button>`).join(''):'<div class="empty">Wi-Fi はオフです</div>';
+  if(k==='wifi')h+=on?`<div class="wxc" style="margin-bottom:8px"><b style="font-weight:500">${v2cur}</b><div style="font-size:12px;color:var(--sub)">接続済み${c?` ・ ${c.effectiveType} / 下り ${c.downlink} Mbps / RTT ${c.rtt} ms`:''}</div></div><div style="font-size:12px;color:var(--sub);margin:8px 4px">利用可能なネットワーク（デモ）</div>`+v2net.filter(n=>n[0]!==v2cur).map(([n,l,s])=>`<button class="qdi" data-n2="${n}"><span class="ms">${v2ic(l)}</span><span style="flex:1">${n}</span>${ws.busy===n?'<i class="ldr"></i>':s?'<span class="ms" style="font-size:18px">lock</span>':''}</button>`).join(''):'<div class="empty">Wi-Fi はオフです</div>';
   else h+=on?(v2dv.length?v2dv.map(([n,cn],i)=>`<button class="qdi" data-d2="${i}"><span class="ms">bluetooth_connected</span><span style="flex:1">${esc(n)}<small>${cn?'接続済み':'ペアリング済み'}</small></span></button>`).join(''):'<div class="empty" style="padding:24px">ペアリング済みのデバイスはありません</div>')+'<button class="qdi" data-add><span class="ms">add</span>新しいデバイスとペアリング</button>':'<div class="empty">Bluetooth はオフです</div>';
   qd.innerHTML=h}
 qd.onclick=async e=>{const k=qd.dataset.k,t=e.target.closest('button'),d=t?.dataset;if(!t)return;
@@ -1180,8 +1299,8 @@ function browser(w){
   let T=[],cur=null,nid=1,zoom=100,BM=jl('bm',[]),HS=jl('hist',[]),si=-1,SG=[];
   const sv2=(k,v)=>sv(k,JSON.stringify(v)),U=t=>t.h[t.p];
   const host=u=>{try{return new URL(u).hostname.replace(/^www\./,'')}catch{return u}};
-  const isU=v=>/^https?:\/\//.test(v)?v:/^chrome:\/\/(newtab|history|bookmarks)$/.test(v)?v:/^[\w-]+(\.[\w-]+)+(\/\S*)?$/.test(v)?'https://'+v:null;
-  const title=t=>{const u=U(t);return u===NT?'新しいタブ':u==='chrome://history'?'履歴':u==='chrome://bookmarks'?'ブックマーク':host(u)};
+  const isU=v=>/^https?:\/\//.test(v)?v:/^chrome:\/\/(newtab|history|bookmarks|version|settings)$/.test(v)?v:/^[\w-]+(\.[\w-]+)+(\/\S*)?$/.test(v)?'https://'+v:null;
+  const title=t=>{const u=U(t);return u===NT?'新しいタブ':u==='chrome://history'?'履歴':u==='chrome://bookmarks'?'ブックマーク':u==='chrome://version'?'バージョン情報':host(u)};
   const col=s=>[...s].reduce((a,c)=>a+c.charCodeAt(0),0)*7%360;
   const letter=(s,sz)=>`<span class="fl2" style="background:hsl(${col(host(s))} 60% 45%)">${esc(host(s)[0]?.toUpperCase()||'?')}</span>`;
   const fav=t=>{const u=U(t);return u.startsWith('chrome://')?`<span class="ms">${t.inc&&u===NT?'visibility_off':u===NT?'search':u.includes('hist')?'history':'bookmarks'}</span>`:letter(u)};
@@ -1191,20 +1310,25 @@ function browser(w){
     if(document.activeElement!==ad)ad.value=u===NT?'':u;
     Q('.lk').textContent=u===NT?'search':u.startsWith('https')?'lock':u.startsWith('chrome')?'info':'lock_open';
     Q('[data-a=star]').classList.toggle('on',BM.some(x=>x.u===u));Q('[data-a=back]').style.opacity=cur.p>0?1:.4;Q('[data-a=fwd]').style.opacity=cur.p<cur.h.length-1?1:.4;
-    bm.hidden=!BM.length;bm.innerHTML=BM.map((x,i)=>`<button class="bmc" data-bu="${i}" title="${esc(x.u)}">${letter(x.u)}<span>${esc(x.n)}</span></button>`).join('');ldb.hidden=!cur.ld}
+    bm.hidden=!BM.length||!!S.nbm;bm.innerHTML=BM.map((x,i)=>`<button class="bmc" data-bu="${i}" title="${esc(x.u)}">${letter(x.u)}<span>${esc(x.n)}</span></button>`).join('');ldb.hidden=!cur.ld}
   const tiles=()=>[...BM.map(x=>[x.n,x.u,'bookmark']),...SC.filter(s=>!BM.some(x=>x.u===s[1]))].slice(0,10);
   function render(t){const u=U(t),el=t.el;t.ld=0;
-    if(u===NT){el.innerHTML=`<div class="ntp"><div class="glg">${[...'Google'].map((c,i)=>`<span style="color:${['#4285f4','#ea4335','#fbbc05','#4285f4','#34a853','#ea4335'][i]}">${c}</span>`).join('')}</div>${t.inc?'<div style="color:var(--sub);margin-top:8px">シークレット モード: 履歴は保存されません</div>':''}<div class="bar" style="border:0;max-width:560px;margin:20px auto"><input class="gs" placeholder="Google で検索、または URL を入力"></div><div class="tl">${tiles().map(s=>`<button class="app" data-tu="${esc(s[1])}" style="width:96px"><div class="ic" style="background:var(--tile);color:var(--acc)"><span class="ms">${s[2]}</span></div><span>${esc(s[0])}</span></button>`).join('')}</div></div>`}
+    if(u===NT){el.innerHTML=`<div class="ntp"><div class="glg"><img alt="Google" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_${st.dark?'light_':''}color_272x92dp.png" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span hidden>${[...'Google'].map((c,i)=>`<b style="font-weight:inherit;color:${['#4285f4','#ea4335','#fbbc05','#4285f4','#34a853','#ea4335'][i]}">${c}</b>`).join('')}</span></div>${t.inc?'<div style="color:var(--sub);margin-top:8px">シークレット モード: 履歴は保存されません</div>':''}<div class="bar" style="border:0;max-width:560px;margin:20px auto"><input class="gs" placeholder="Google で検索、または URL を入力"></div><div class="tl">${tiles().map(s=>`<button class="app" data-tu="${esc(s[1])}" style="width:96px"><div class="ic" style="background:var(--tile);color:var(--acc)"><span class="ms">${s[2]}</span></div><span>${esc(s[0])}</span></button>`).join('')}</div></div>`}
     else if(u==='chrome://history'){const q=(t.hq||'').toLowerCase(),L=HS.filter(x=>!q||(x.u+x.n).toLowerCase().includes(q)).slice(0,100);el.innerHTML=`<div class="cpg"><h2>履歴</h2><div class="bar" style="border:0;padding:8px 0"><input class="hq" placeholder="履歴を検索" value="${esc(t.hq||'')}"><button class="cb t" data-a="clr">履歴を消去</button></div>${L.length?L.map(x=>`<div class="fr" data-hu="${esc(x.u)}"><small style="margin:0;width:56px">${new Date(x.t).toTimeString().slice(0,5)}</small><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(x.n)} <small style="margin:0">${esc(x.u)}</small></span><button data-hd="${x.t}" aria-label="削除"><span class="ms" style="color:var(--sub)">close</span></button></div>`).join(''):'<div class="empty">履歴はありません</div>'}</div>`}
+    else if(u==='chrome://version')el.innerHTML=`<div class="cpg"><h2>バージョン情報</h2><div class="fr">Google Chrome 155.0.8059.18（公式ビルド）</div><div class="fr" style="user-select:text">${esc(navigator.userAgent)}</div></div>`;
     else if(u==='chrome://bookmarks')el.innerHTML=`<div class="cpg"><h2>ブックマーク</h2>${BM.length?BM.map((x,i)=>`<div class="fr" data-hu="${esc(x.u)}">${letter(x.u)}<span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(x.n)} <small style="margin:0">${esc(x.u)}</small></span><button data-bd="${i}" aria-label="削除"><span class="ms" style="color:var(--sub)">close</span></button></div>`).join(''):'<div class="empty">ブックマークはありません。アドレスバーの ☆ で追加できます。</div>'}</div>`;
-    else{el.innerHTML=`<iframe src="${esc(u)}"></iframe><div class="hint">表示されないサイトは ⋮ メニューから外部ブラウザで開けます</div>`;t.ld=1;const f=el.querySelector('iframe');fz(f);f.onload=()=>{t.ld=0;if(t===cur)sync()};setTimeout(()=>el.querySelector('.hint')?.remove(),6000);
+    else{const md=t.md||'';el.innerHTML=`<iframe ${md&&md!=='a'&&md!=='f'?'':`src="${esc(md==='a'?'https://web.archive.org/web/2/'+u:md==='f'?rw(u):src2(u))}"`}></iframe><div class="hint">表示されない場合:<button data-m2="f">直接</button><button data-m2="p">プロキシ</button><button data-m2="r">リーダー</button><button data-m2="a">アーカイブ</button><button data-m2="e">外部</button></div>`;t.ld=1;const f=el.querySelector('iframe');fz(f);f.onload=()=>{t.ld=0;if(t===cur)sync()};if(md==='p'||md==='r'||md==='s')pxy(t,f,u,md);setTimeout(()=>el.querySelector('.hint')?.remove(),9000);
       if(!t.inc){HS=HS.filter(x=>!(x.u===u&&Date.now()-x.t<6e4));HS.unshift({u,n:host(u),t:Date.now()});HS.length=Math.min(HS.length,300);sv2('hist',HS)}}
     if(t===cur)sync()}
-  function go(t,u,push=true){if(push){t.h=t.h.slice(0,t.p+1);t.h.push(u);t.p++}render(t)}
+  const pxu=()=>S.npx?'':(S.px||'').trim(),src2=u=>{const r=rw(u),b=pxu();return r!==u||!b?r:b+(b.includes('?')?'&':'?')+'url='+encodeURIComponent(u)};
+  const rw=u=>{try{const x=new URL(u),h=x.hostname.replace(/^www\./,'');if(h==='youtube.com'&&x.pathname==='/watch'&&x.searchParams.get('v'))return 'https://www.youtube.com/embed/'+x.searchParams.get('v');if(h==='youtu.be')return 'https://www.youtube.com/embed'+x.pathname;if(h==='google.com'&&x.pathname==='/search'){x.searchParams.set('igu','1');return x.href}if(/^(maps\.)?google\.com$/.test(h)&&x.pathname.includes('maps')&&x.searchParams.get('q'))return 'https://maps.google.com/maps?output=embed&q='+encodeURIComponent(x.searchParams.get('q'));return u}catch{return u}};
+  const md2=s=>'<body style="font:15px/1.8 sans-serif;max-width:720px;margin:auto;padding:20px;word-break:break-word">'+esc(s).replace(/^#{1,6} (.*)$/gm,'<h3>$1</h3>').replace(/!\[[^\]]*\]\(([^)\s]+)[^)]*\)/g,'<img src="$1" style="max-width:100%">').replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank">$1</a>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\n{2,}/g,'<br><br>');
+  async function pxy(t,f,u,md){let h;try{if(md==='r')h=md2(await (await fetch('https://r.jina.ai/'+u)).text());else{const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(u));if(!r.ok)throw 0;h=await r.text();if(md==='s')h=`<pre style="font:12px/1.5 monospace;padding:12px;white-space:pre-wrap;word-break:break-all">${esc(h)}</pre>`;else{h=h.replace(/<meta[^>]+content-security-policy[^>]*>/gi,'');const bs=`<base href="${esc(u)}">`;h=/<head[^>]*>/i.test(h)?h.replace(/<head[^>]*>/i,m=>m+bs):bs+h;f.setAttribute('sandbox','allow-scripts allow-forms allow-popups')}}f.srcdoc=h}catch{f.srcdoc='<p style="font:14px sans-serif;padding:24px;color:#555">取得できませんでした。ネットワーク制限、またはサイト側のブロックが原因の可能性があります。</p>'}t.ld=0;if(t===cur)sync()}
+  function go(t,u,push=true){if(u==='chrome://settings')return launch('設定');if(push)t.md='';if(push){t.h=t.h.slice(0,t.p+1);t.h.push(u);t.p++}render(t)}
   function sw(t){cur=t;T.forEach(x=>x.el.hidden=x!==t);sync()}
   function newTab(inc,u){const t={h:[],p:-1,inc:!!inc,id:nid++,el:document.createElement('div')};t.el.className='bvt';bv.append(t.el);T.push(t);t.h=[u||NT];t.p=0;sw(t);render(t);return t}
   const closeT=t=>{if(T.length===1)return v2close('Chrome');const i=T.indexOf(t);T.splice(i,1);t.el.remove();cur===t?sw(T[Math.min(i,T.length-1)]):sync()};
-  const gs=v=>window.open('https://www.google.com/search?q='+encodeURIComponent(v),'_blank','noopener');
+  const gs=v=>go(cur,({g:'https://www.google.com/search?igu=1&q=',b:'https://www.bing.com/search?q=',d:'https://html.duckduckgo.com/html/?q=',w:'https://ja.wikipedia.org/w/index.php?search='})[S.se||'g']+encodeURIComponent(v));
   const enter=v=>{v=v.trim();if(!v)return;const u=isU(v);u?go(cur,u):gs(v)};
   const suggest=()=>{const v=ad.value.trim(),l=v.toLowerCase();SG=[];const seen=new Set();
     if(v){const u=isU(v);if(u){SG.push(['language',u,'移動',()=>go(cur,u)]);seen.add(u)}SG.push(['search',v,'Google で検索',()=>gs(v)]);SG.push(['menu_book',v,'Wikipedia で検索',()=>go(cur,'https://ja.wikipedia.org/w/index.php?search='+encodeURIComponent(v))])}
@@ -1215,12 +1339,13 @@ function browser(w){
   sg.onpointerdown=e=>{e.preventDefault();const i=e.target.closest('[data-si]');if(i){sg.hidden=true;SG[+i.dataset.si][3]();ad.blur()}};
   bv.onkeydown=e=>{if(e.key==='Enter'&&e.target.classList.contains('gs'))enter(e.target.value)};
   b.oninput=e=>{if(e.target.classList.contains('hq')){cur.hq=e.target.value;render(cur);const i=cur.el.querySelector('.hq');i.focus();i.setSelectionRange(99,99)}};
-  const menu=()=>{cm.innerHTML=[['tab','新しいタブ','new'],['visibility_off','新しいシークレット タブ','inc'],0,['history','履歴','hist'],['bookmarks','ブックマーク','bms'],0].map(x=>x?`<button data-m="${x[2]}"><span class="ms">${x[0]}</span>${x[1]}</button>`:'<hr>').join('')+`<div class="zr"><span class="ms">zoom_in</span><span style="flex:1">ズーム</span><button data-m="zo" aria-label="縮小">−</button><span>${zoom}%</span><button data-m="zi" aria-label="拡大">＋</button></div><hr><button data-m="ext"><span class="ms">open_in_new</span>外部ブラウザで開く</button><button data-m="set"><span class="ms">settings</span>設定</button>`;cm.hidden=false};
+  const menu=()=>{cm.innerHTML=[['tab','新しいタブ','new'],['visibility_off','新しいシークレット タブ','inc'],0,['history','履歴','hist'],['bookmarks','ブックマーク','bms'],['bookmark_manager','ブックマーク バーの表示切替','bmb'],['content_copy','タブを複製','dup'],['link','URL をコピー','cp'],0,['dns','プロキシで開く','prx'],['article','リーダー表示','rdr'],['archive','Web アーカイブで開く','arc'],['code','ページのソースを表示','src'],['info','Chrome について','ver'],0].map(x=>x?`<button data-m="${x[2]}"><span class="ms">${x[0]}</span>${x[1]}</button>`:'<hr>').join('')+`<div class="zr"><span class="ms">zoom_in</span><span style="flex:1">ズーム</span><button data-m="zo" aria-label="縮小">−</button><span>${zoom}%</span><button data-m="zi" aria-label="拡大">＋</button></div><hr><button data-m="ext"><span class="ms">open_in_new</span>外部ブラウザで開く</button><button data-m="set"><span class="ms">settings</span>設定</button>`;cm.hidden=false};
   b.onclick=e=>{const g=s=>e.target.closest(s);if(!g('.cmn')&&!g('[data-a=menu]'))cm.hidden=true;
     const tt=g('[data-t]');if(tt){const t=T.find(x=>x.id===+tt.dataset.t);return g('[data-x]')?closeT(t):sw(t)}
     const m=g('[data-m]')?.dataset.m;
     if(m){if(m==='zo'||m==='zi'){zoom=Math.max(50,Math.min(200,zoom+(m==='zi'?10:-10)));T.forEach(t=>{const f=t.el.querySelector('iframe');f&&fz(f)});return menu()}cm.hidden=true;
-      if(m==='new')newTab();else if(m==='inc')newTab(1);else if(m==='hist')go(cur,'chrome://history');else if(m==='bms')go(cur,'chrome://bookmarks');else if(m==='set')launch('設定');else if(m==='ext'){const u=U(cur);window.open(u.startsWith('chrome://')?'https://www.google.com':u,'_blank','noopener')}return}
+      if(m==='dup')newTab(0,U(cur));else if(m==='cp'){navigator.clipboard?.writeText(U(cur));toast('URL をコピーしました')}else if(m==='bmb'){S.nbm=S.nbm?0:1;saveS();sync()}else if(m==='ver')go(cur,'chrome://version');else if(['prx','rdr','arc','src'].includes(m)){if(U(cur).startsWith('chrome://'))return toast('このページでは使用できません');cur.md={prx:'p',rdr:'r',arc:'a',src:'s'}[m];render(cur)}else if(m==='new')newTab();else if(m==='inc')newTab(1);else if(m==='hist')go(cur,'chrome://history');else if(m==='bms')go(cur,'chrome://bookmarks');else if(m==='set')launch('設定');else if(m==='ext'){const u=U(cur);window.open(u.startsWith('chrome://')?'https://www.google.com':u,'_blank','noopener')}return}
+    const m2=g('[data-m2]')?.dataset.m2;if(m2){if(m2==='e')window.open(U(cur),'_blank','noopener');else{cur.md=m2;render(cur)}return}
     const hd=g('[data-hd]');if(hd){HS=HS.filter(x=>String(x.t)!==hd.dataset.hd);sv2('hist',HS);return render(cur)}
     const bd=g('[data-bd]');if(bd){BM.splice(+bd.dataset.bd,1);sv2('bm',BM);return render(cur)}
     const nu=g('[data-tu],[data-hu]')?.dataset;if(nu)return go(cur,nu.tu||nu.hu);
@@ -1230,6 +1355,8 @@ function browser(w){
     else if(a==='re')render(cur);else if(a==='home')go(cur,NT);else if(a==='menu')cm.hidden?menu():cm.hidden=true;
     else if(a==='clr'){if(confirm('閲覧履歴をすべて消去しますか？')){HS=[];sv2('hist',HS);render(cur)}}
     else if(a==='star'){const u=U(cur);if(u.startsWith('chrome://'))return toast('このページはブックマークできません');const i=BM.findIndex(x=>x.u===u);i>=0?BM.splice(i,1):BM.push({u,n:host(u)});sv2('bm',BM);sync();toast(i>=0?'ブックマークを削除しました':'ブックマークに追加しました')}};
+  const onm=e=>{const t=T.find(x=>x.el.querySelector('iframe')?.contentWindow===e.source);if(t&&typeof e.data?.crosUrl==='string'){t.h[t.p]=e.data.crosUrl;t.ld=0;if(t===cur)sync()}};window.addEventListener('message',onm);w.cleanup=()=>window.removeEventListener('message',onm);
+  b.addEventListener('keydown',e=>{if(!(e.ctrlKey||e.metaKey))return;const k=e.key.toLowerCase();if(k==='t'){e.preventDefault();newTab()}else if(k==='w'){e.preventDefault();closeT(cur)}else if(k==='l'){e.preventDefault();ad.focus()}else if(k==='d'){e.preventDefault();Q('[data-a=star]').click()}else if(k==='tab'){e.preventDefault();sw(T[(T.indexOf(cur)+1)%T.length])}});
   newTab()}
 
 /* ===== v6: 実機 ChromeOS に寄せた仕上げ ===== */
@@ -1618,16 +1745,23 @@ let ws;
 function wzInit(){ws={i:0,lang:S.lang||'日本語',kb:S.kb||'US',ime:S.ime||'あ',zoom:+S.zoom||100,agree:0,pw:null,name:ld('uname')||'',email:ld('uemail')||'',mode:ld('uemail')?'google':'guest',av:+ld('uav')||0,theme:ld('theme')||'auto',wp:ld('wp')||'',sv:{usage:0,notif:1,loc:0},tips:1}}
 const wzsel=(k,L,v)=>`<select class="obs" data-ws="${k}">${L.map(([a,l])=>`<option value="${a}" ${String(a)===String(v)?'selected':''}>${l}</option>`).join('')}</select>`;
 const wzsw=(k,l,d)=>`<div class="rw"><span style="flex:1">${l}${d?`<small>${d}</small>`:''}</span><button class="sw ${ws.sv[k]?'on':''}" data-sv="${k}" role="switch" aria-checked="${!!ws.sv[k]}" aria-label="${l}"></button></div>`;
-function wzb(){const L=(h,p)=>`<div class="obl"><h1>${h}</h1><p>${p}</p></div>`,R=x=>`<div class="obr">${x}</div>`;
+function wzb(){const L=(h,p)=>h+'\u0001'+p+'\u0001',R=x=>x;
   if(ws.i===0)return L('ChromeOS Flex へようこそ','高速。安全。簡単。<br>まずは言語と入力方法を確認しましょう。')+R(`<div class="rw"><span class="ms">language</span><span style="flex:1">言語</span>${wzsel('lang',[['日本語','日本語'],['English','English (United States)'],['中文','中文（简体）'],['한국어','한국어'],['Español','Español'],['Français','Français'],['Deutsch','Deutsch']],ws.lang)}</div><div class="rw"><span class="ms">keyboard</span><span style="flex:1">キーボード配列</span>${wzsel('kb',[['US','US'],['JP','日本語（JIS）']],ws.kb)}</div><div class="rw"><span class="ms">translate</span><span style="flex:1">入力方法</span>${wzsel('ime',[['あ','日本語（あ）'],['A','英語（A）']],ws.ime)}</div><div class="rw"><span class="ms">zoom_in</span><span style="flex:1">画面の拡大</span>${wzsel('zoom',[80,90,100,110,125,150].map(z=>[z,z+'%']),ws.zoom)}</div>`);
-  if(ws.i===1){const kn=v2j('wk',[]);return L('ネットワークに接続','Wi-Fi ネットワークを選びます。あとから設定でも変更できます。<br>（一覧はデモ用です）')+R(v2net.map(([n,l,s])=>{const cur=v2cur===n;return `<div class="rw net" data-net="${esc(n)}"><span class="ms">${v2ic(l)}</span><span style="flex:1">${esc(n)}${cur?'<small style="color:#188038;display:inline"> ・ 接続済み</small>':''}</span>${s?'<span class="ms" style="font-size:18px">lock</span>':''}</div>${ws.pw===n&&s&&!kn.includes(n)&&!cur?'<div class="rw"><input class="obs" id="wpw" type="password" placeholder="パスワード" style="flex:1"><button class="cb" data-w="con">接続</button></div>':''}`}).join(''))}
+  if(ws.i===1){const kn=v2j('wk',[]);return L('ネットワークに接続','Wi-Fi ネットワークを選びます。あとから設定でも変更できます。<br>（一覧はデモ用です）')+R(v2net.map(([n,l,s])=>{const cur=v2cur===n;return `<div class="rw net" data-net="${esc(n)}"><span class="ms">${v2ic(l)}</span><span style="flex:1">${esc(n)}${cur?'<small style="color:#188038;display:inline"> ・ 接続済み</small>':''}</span>${ws.busy===n?'<i class="ldr"></i>':s?'<span class="ms" style="font-size:18px">lock</span>':''}</div>${ws.pw===n&&s&&!kn.includes(n)&&!cur?'<div class="rw"><input class="obs" id="wpw" type="password" placeholder="パスワード" style="flex:1"><button class="cb" data-w="con">接続</button></div>':''}`}).join(''))}
   if(ws.i===2)return L('利用規約','ご利用の前に、内容をお読みください。')+R(`<div class="terms">本デモは ChromeOS の見た目と動作を再現した学習用の環境です。入力した内容（メール、メッセージ、ファイル、設定など）は、お使いのブラウザ内にのみ保存され、外部に送信されません。<br><br>ブラウザのデータを消去すると、保存した内容も失われます。カメラ・マイク・画面共有は、ブラウザの許可を得た場合にのみ使用されます。<br><br>表示される一部のネットワーク、メール、連絡先はサンプルです。</div><label class="rw" style="cursor:pointer"><input type="checkbox" data-ws="agree" ${ws.agree?'checked':''}> 利用規約に同意します</label>`);
   if(ws.i===3)return L('アカウント','ゲストとして使うか、表示名とメールアドレスを設定します。<br>（サインインはデモで、実際のログインは行いません）')+R(`<label class="rw" style="cursor:pointer"><input type="radio" name="wm" data-ws="mode" value="guest" ${ws.mode==='guest'?'checked':''}><span class="ms">person</span>ゲストとして使う</label><label class="rw" style="cursor:pointer"><input type="radio" name="wm" data-ws="mode" value="google" ${ws.mode==='google'?'checked':''}><span class="ms">account_circle</span>Google アカウント（デモ）</label><input class="obs" data-ws="name" placeholder="表示名" value="${esc(ws.name)}" style="width:100%">${ws.mode==='google'?`<input class="obs" data-ws="email" placeholder="メールアドレス" value="${esc(ws.email)}" style="width:100%">`:''}`);
   if(ws.i===4)return L('アバターを選択','ロック画面などに表示されます。')+R(`<div class="avg">${AV.map((a,k)=>`<button class="${k===ws.av?'on':''}" data-av="${k}" style="background:${a.c}" aria-label="アバター ${k+1}"><span class="ms">${a.g}</span></button>`).join('')}</div>`);
   if(ws.i===5)return L('外観','テーマと壁紙を選びます。すぐに反映されます。')+R(`<div class="rw" style="gap:8px">${[['auto','自動'],['light','ライト'],['dark','ダーク']].map(([k,l])=>`<button class="cb ${ws.theme===k?'':'t'}" data-th="${k}" style="flex:1">${l}</button>`).join('')}</div><div class="wpg">${[['','標準','linear-gradient(135deg,#a8d8ff,#4285f4)'],['sunset','夕焼け','linear-gradient(135deg,#ffb88c,#c0506e)'],['forest','森','linear-gradient(135deg,#7fc47f,#1f5a3a)'],['night','夜','linear-gradient(135deg,#3a3f5c,#0c0e1a)']].map(([k,l,g])=>`<button class="${ws.wp===k?'on':''}" data-wp="${k}" style="background:${g}"><span>${l}</span></button>`).join('')}</div>`);
   if(ws.i===6)return L('プライバシーとサービス','必要な機能だけをオンにできます。設定からいつでも変更できます。')+R(wzsw('usage','使用状況データを送信','製品の改善に役立てます（デモでは送信されません）')+wzsw('notif','通知を許可','オフにするとサイレント モードで開始します')+wzsw('loc','位置情報の利用','天気などの機能で使用します'));
   const nm=ws.name.trim()||'ゲスト';return L(`準備が完了しました、${esc(nm)}さん`,'ChromeOS Flex をお楽しみください。')+R(`<div class="rw"><span class="ms">language</span>${esc(ws.lang)} ・ ${ws.kb} ・ ${ws.ime}</div><div class="rw"><span class="ms">palette</span>${{auto:'自動',light:'ライト',dark:'ダーク'}[ws.theme]} テーマ</div><div class="rw"><span class="ms">wifi</span>${esc(v2cur)}</div><label class="rw" style="cursor:pointer"><input type="checkbox" data-ws="tips" ${ws.tips?'checked':''}> 「使い方・ヒント」を開く</label>`)}
-function wzr(){$('#welcome').innerHTML=`<div class="ob"><div class="obp">${WZ.map((_,k)=>`<i class="${k<=ws.i?'on':''}"></i>`).join('')}</div><div class="obb">${wzb()}</div><div class="obf">${ws.i?'<button class="cb t" data-w="back">戻る</button>':''}<span style="flex:1;text-align:center;color:#80868b;font-size:12px">${ws.i+1} / ${WZ.length}　${WZ[ws.i]}</span>${ws.i===1?'<button class="cb t" data-w="next">スキップ</button>':''}<button class="cb" data-w="next">${ws.i===WZ.length-1?'始める':'次へ'}</button></div></div><button id="wstart" hidden></button>`;$('#wpw')?.focus()}
+const SH=['50%','32% 68% 56% 44%/44% 38% 62% 56%','28%','62% 38% 30% 70%/40% 55% 45% 60%','50% 50% 18% 50%','40%','58% 42% 66% 34%/52% 62% 38% 48%','45% 55% 55% 45%'],HI=['waving_hand','wifi','gavel','account_circle','face','palette','tune','celebration'];let wzp=-1;
+function wzr(){const W=$('#welcome');let o=W.querySelector('.ob[data-m]');
+  if(!o){W.innerHTML=`<div class="ob" data-m="1"><svg class="wv" viewBox="0 0 600 14" preserveAspectRatio="none"><defs><clipPath id="wcp"><rect x="0" y="0" width="0" height="14"/></clipPath></defs><line class="tr" x1="0" y1="7" x2="600" y2="7"/><g clip-path="url(#wcp)"><path class="wp2" d="M-40 7q10 -7 20 0${'t20 0'.repeat(40)}"/></g></svg><div class="obb"><div class="obl"><div class="hero"><span class="ms"></span></div><h1></h1><p></p></div><div class="obr"></div></div><div class="obf"></div></div><button id="wstart" hidden></button>`;o=W.querySelector('.ob');wzp=-1}
+  const [h,p,r]=wzb().split('\u0001'),i=ws.i,q=s=>o.querySelector(s),hero=q('.hero'),hm=hero.firstChild;
+  hero.style.borderRadius=SH[i];hero.style.transform=`rotate(${i*45}deg)`;hm.textContent=HI[i];hm.style.transform=`rotate(${-i*45}deg)`;
+  q('h1').innerHTML=h;q('p').innerHTML=p;q('.obr').innerHTML=r;q('rect').style.width=(i+1)/WZ.length*600+'px';
+  if(i!==wzp){const d=i>=wzp?1:-1;[q('h1'),q('p'),q('.obr')].forEach((e,k)=>e.animate([{opacity:0,transform:`translateX(${d*36}px)`},{opacity:1,transform:'none'}],{duration:520,delay:k*60,easing:'cubic-bezier(.34,1.3,.64,1)',fill:'backwards'}))}wzp=i;
+  q('.obf').innerHTML=`${i?'<button class="cb t" data-w="back"><span class="ms">arrow_back</span>戻る</button>':''}<span style="flex:1;text-align:center;color:var(--sub);font-size:12px">${i+1} / ${WZ.length}　${WZ[i]}</span>${i===1?'<button class="cb t" data-w="next">スキップ</button>':''}<button class="cb" data-w="next">${i===WZ.length-1?'始める<span class="ms">rocket_launch</span>':'次へ<span class="ms">arrow_forward</span>'}</button>`;$('#wpw')?.focus()}
 function wzfin(){const nm=ws.name.trim()||'ゲスト';S.lang=ws.lang;S.kb=ws.kb;S.ime=ws.ime;S.zoom=ws.zoom;saveS();applyS();sv('uname',nm==='ゲスト'&&ws.mode==='guest'?'':nm);sv('uemail',ws.mode==='google'?ws.email.trim():'');sv('uav',ws.av);sv('welcome','1');
   st.dnd=!ws.sv.notif;try{syncTile('dnd')}catch{}$('#welcome').classList.add('gone');v2prof();tick();v2n(`ようこそ、${nm}さん`,'セットアップが完了しました');if(ws.tips)setTimeout(()=>launch('使い方・ヒント'),700)}
 const wzW=$('#welcome');
@@ -1635,8 +1769,8 @@ wzW.addEventListener('click',e=>{const g=s=>e.target.closest(s);
   const w=g('[data-w]')?.dataset.w;
   if(w==='back'){ws.i--;return wzr()}
   if(w==='next'){if(ws.i===2&&!ws.agree)return toast('利用規約に同意してください');if(ws.i===3&&ws.mode==='google'&&!/.+@.+/.test(ws.email))return toast('メールアドレスを入力してください');if(ws.i===WZ.length-1)return wzfin();ws.i++;return wzr()}
-  if(w==='con'){const v=$('#wpw')?.value;if(!v)return toast('パスワードを入力してください');const kn=v2j('wk',[]);kn.push(ws.pw);v2s('wk',kn);v2cur=ws.pw;ws.pw=null;toast(v2cur+' に接続しました');return wzr()}
-  const n=g('[data-net]');if(n){const nm=n.dataset.net,s=v2net.find(x=>x[0]===nm)[2];if(v2cur===nm)return;if(!s||v2j('wk',[]).includes(nm)){v2cur=nm;toast(nm+' に接続しました')}else ws.pw=nm;return wzr()}
+  if(w==='con'){const v=$('#wpw')?.value;if(!v)return toast('パスワードを入力してください');const kn=v2j('wk',[]);kn.push(ws.pw);v2s('wk',kn);const nn=ws.pw;ws.pw=null;ws.busy=nn;wzr();return setTimeout(()=>{ws.busy=0;v2cur=nn;toast(nn+' に接続しました');wzr()},1000)}
+  const n=g('[data-net]');if(n){const nm=n.dataset.net,s=v2net.find(x=>x[0]===nm)[2];if(v2cur===nm)return;if(ws.busy)return;if(!s||v2j('wk',[]).includes(nm)){ws.busy=nm;wzr();return setTimeout(()=>{ws.busy=0;v2cur=nm;toast(nm+' に接続しました');wzr()},900)}ws.pw=nm;return wzr()}
   const a=g('[data-av]');if(a){ws.av=+a.dataset.av;return wzr()}
   const th=g('[data-th]');if(th){ws.theme=th.dataset.th;setTheme(ws.theme);return wzr()}
   const wp=g('[data-wp]');if(wp){ws.wp=wp.dataset.wp;setWp(ws.wp);return wzr()}
@@ -1647,6 +1781,32 @@ wzW.addEventListener('keydown',e=>{if(e.key==='Enter'){const t=e.target;if(t.id=
 new MutationObserver(()=>{if(!wzW.classList.contains('gone')){wzInit();wzr()}}).observe(wzW,{attributes:true,attributeFilter:['class']});
 wzInit();wzr();
 
+function v13color(w){const b=w.querySelector('.wb');b.innerHTML=`<div class="bar"><b style="flex:1;font-weight:500">カラー ピッカー</b></div><div class="scroll" style="text-align:center"><input type="color" id="cp" value="#0b57d0" style="width:160px;height:160px;border:0;border-radius:40%;background:none;cursor:pointer"><div id="co"></div></div>`;
+  const u=()=>{const h=b.querySelector('#cp').value,[r,g,l]=[1,3,5].map(i=>parseInt(h.substr(i,2),16));b.querySelector('#co').innerHTML=[h.toUpperCase(),`rgb(${r}, ${g}, ${l})`].map(s=>`<div class="fr" data-c="${s}"><span class="ms">content_copy</span>${s}</div>`).join('')};
+  b.oninput=u;b.onclick=e=>{const c=e.target.closest('[data-c]');if(c){navigator.clipboard?.writeText(c.dataset.c);toast('コピーしました')}};u()}
+function v13json(w){const b=w.querySelector('.wb');b.innerHTML=`<div class="bar"><button class="cb" data-a="f">整形</button><button class="cb t" data-a="m">圧縮</button><span id="je" style="color:#d93025;font-size:13px"></span></div><textarea style="flex:1;border:0;outline:0;padding:12px;font:13px/1.5 monospace;background:var(--panel);color:var(--txt);resize:none" spellcheck="false" placeholder="JSON を貼り付け"></textarea>`;
+  const t=b.querySelector('textarea'),e=b.querySelector('#je');b.onclick=x=>{const a=x.target.closest('[data-a]')?.dataset.a;if(!a)return;try{t.value=JSON.stringify(JSON.parse(t.value),null,a==='f'?2:0);e.textContent=''}catch(er){e.textContent=er.message}}}
+function v13dice(w){const b=w.querySelector('.wb');b.innerHTML=`<div class="bar"><b style="flex:1;font-weight:500">サイコロ</b></div><div class="scroll" style="text-align:center"><div id="dr" style="font-size:80px;margin:20px">🎲</div><button class="cb" data-d="6">サイコロ</button> <button class="cb t" data-d="2">コイン</button> <button class="cb t" data-d="20">D20</button></div>`;
+  b.onclick=e=>{const n=+e.target.closest('[data-d]')?.dataset.d;if(!n)return;const r=1+Math.floor(Math.random()*n),d=b.querySelector('#dr');d.textContent=n===2?(r==1?'表':'裏'):n===6?'⚀⚁⚂⚃⚄⚅'[r-1]:r;d.animate([{transform:'rotate(0) scale(.6)'},{transform:'rotate(360deg) scale(1)'}],{duration:400,easing:'cubic-bezier(.34,1.56,.64,1)'})}}
+A.push(...[['カラー ピッカー','#ffd8e4','palette','#8c1d52'],['JSON 整形','#e1e3e8','data_object','#444746'],['サイコロ','#ffe8a3','casino','#a06500']].map(([n,bg,g,fg])=>({n,full:n,bg,g,u:'',fg})));
+Object.assign(NAT,{'カラー ピッカー':v13color,'JSON 整形':v13json,'サイコロ':v13dice});
+
+function v14(){let s=document.getElementById('v14s');if(!s){s=document.createElement('style');s.id='v14s';document.head.appendChild(s)}
+  const F={g:'"Noto Sans JP","Hiragino Sans",sans-serif',m:'"Noto Serif JP","Hiragino Mincho ProN",serif',r:'"Hiragino Maru Gothic ProN","M PLUS Rounded 1c",sans-serif',n:'monospace'},c=[];
+  if(S.ics)c.push(`.ic{width:${48*S.ics/100}px;height:${48*S.ics/100}px}.ic .ms{font-size:${28*S.ics/100}px}`);
+  if(S.ish!=null&&S.ish!=='')c.push(`.ic{border-radius:${S.ish}%}`);
+  if(S.rad!=null)c.push(`.win{border-radius:${S.rad}px;overflow:hidden}`);
+  if(S.wop)c.push(`.win{opacity:${S.wop/100}}`);
+  if(S.shp==='top')c.push('#shelf{top:0;bottom:auto;border-radius:0 0 24px 24px}');
+  if(S.shh)c.push(`#shelf{height:${S.shh}px}`);
+  if(S.blur!=null)c.push(`#shelf,#launcher,#qs{backdrop-filter:blur(${S.blur}px)}`);
+  if(S.ff&&F[S.ff])c.push(`body{font-family:${F[S.ff]}}`);
+  if(S.fsz)c.push(`.wb{font-size:${S.fsz}%}`);
+  if(S.wc1&&S.wc2)c.push(`body:not([style*="url"]){background:linear-gradient(160deg,${S.wc1},${S.wc2})!important}svg.wp{display:none}`);
+  const fl=[S.hc&&'contrast(1.25)',S.gs&&'grayscale(1)',S.inv&&'invert(1) hue-rotate(180deg)'].filter(Boolean).join(' ');if(fl)c.push(`html{filter:${fl}}`);
+  s.textContent=c.join('\n')}
+let _ac;function beep(){try{_ac=_ac||new AudioContext();const o=_ac.createOscillator(),g=_ac.createGain();o.frequency.value=880;g.gain.value=.04*($('#vol').value/100);o.connect(g);g.connect(_ac.destination);o.start();o.stop(_ac.currentTime+.04)}catch{}}
+document.addEventListener('click',e=>{if(S.clk&&e.target.closest('button'))beep()},true);v14();
 init();
 </script>
 </body>
