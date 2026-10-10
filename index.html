@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=block">
 <title>ChromeOS ランチャー</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400..800&family=JetBrains+Mono:wght@400..700&family=Space+Grotesk:wght@400..700&family=Dela+Gothic+One&display=swap">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -859,6 +860,247 @@ body.wge .dw .wx-r{display:block;right:-14px;bottom:-14px;width:28px;height:28px
 #gmbtn{width:40px!important;height:40px!important;border-radius:20px!important;background:var(--hov)!important}
 #gmbtn:hover{border-radius:14px!important}
 body:has(#boot) #glowbar{display:none!important}
+/* ===== v34 アプリごとの個性（スキン） ===== */
+body:not(.noskin) .win[data-app]{--h:255;--c:.1;--rb:999px;--rbp:14px;--rc:28px;--rf:16px;--rw:28px;--ff:'Outfit','Google Sans','Noto Sans JP',system-ui,sans-serif;--fh:var(--ff);--panel:oklch(.982 calc(var(--c)*.2) var(--h));--tile:oklch(.935 calc(var(--c)*.45) var(--h));--surf:oklch(.955 calc(var(--c)*.3) var(--h) / .9);--surf2:oklch(.965 calc(var(--c)*.34) var(--h) / .85);--pc:oklch(.89 calc(var(--c)*.82) var(--h));--onpc:oklch(.27 calc(var(--c)*.8) var(--h));--acc:oklch(.5 var(--c) var(--h));--txt:oklch(.23 calc(var(--c)*.12) var(--h));--sub:oklch(.46 calc(var(--c)*.16) var(--h));--line:oklch(.5 calc(var(--c)*.25) var(--h) / .2);--hov:oklch(.4 calc(var(--c)*.6) var(--h) / .09);font-family:var(--ff);border-radius:var(--rw);background:var(--panel);color:var(--txt)}
+body:not(.noskin) .win[data-app][data-tone=vivid]{--pc:oklch(.86 calc(var(--c)*1.1) var(--h));--onpc:oklch(.26 calc(var(--c)*.95) var(--h));--acc:oklch(.52 calc(var(--c)*1.12) var(--h));--tile:oklch(.93 calc(var(--c)*.5) var(--h));}
+html[data-theme=dark] body:not(.noskin) .win[data-app],body:not(.noskin) .win[data-app][data-tone=night]{--panel:oklch(.2 calc(var(--c)*.28) var(--h));--tile:oklch(.275 calc(var(--c)*.34) var(--h));--surf:oklch(.25 calc(var(--c)*.3) var(--h) / .92);--surf2:oklch(.3 calc(var(--c)*.32) var(--h) / .65);--pc:oklch(.43 calc(var(--c)*.95) var(--h));--onpc:oklch(.93 calc(var(--c)*.45) var(--h));--acc:oklch(.83 calc(var(--c)*.95) var(--h));--txt:oklch(.94 calc(var(--c)*.06) var(--h));--sub:oklch(.77 calc(var(--c)*.13) var(--h));--line:oklch(.85 calc(var(--c)*.2) var(--h) / .18);--hov:oklch(1 0 0 / .1);}
+html[data-theme=dark] body:not(.noskin) .win[data-app][data-tone=vivid],body:not(.noskin) .win[data-app][data-tone=night][data-tone=vivid]{--pc:oklch(.5 calc(var(--c)*1.15) var(--h));--onpc:oklch(.97 .03 var(--h));--acc:oklch(.86 calc(var(--c)*1.1) var(--h));--tile:oklch(.3 calc(var(--c)*.5) var(--h));}
+@media (prefers-color-scheme:dark){html:not([data-theme=light]) body:not(.noskin) .win[data-app]{--panel:oklch(.2 calc(var(--c)*.28) var(--h));--tile:oklch(.275 calc(var(--c)*.34) var(--h));--surf:oklch(.25 calc(var(--c)*.3) var(--h) / .92);--surf2:oklch(.3 calc(var(--c)*.32) var(--h) / .65);--pc:oklch(.43 calc(var(--c)*.95) var(--h));--onpc:oklch(.93 calc(var(--c)*.45) var(--h));--acc:oklch(.83 calc(var(--c)*.95) var(--h));--txt:oklch(.94 calc(var(--c)*.06) var(--h));--sub:oklch(.77 calc(var(--c)*.13) var(--h));--line:oklch(.85 calc(var(--c)*.2) var(--h) / .18);--hov:oklch(1 0 0 / .1);}html:not([data-theme=light]) body:not(.noskin) .win[data-app][data-tone=vivid]{--pc:oklch(.5 calc(var(--c)*1.15) var(--h));--onpc:oklch(.97 .03 var(--h));--acc:oklch(.86 calc(var(--c)*1.1) var(--h));--tile:oklch(.3 calc(var(--c)*.5) var(--h));}}
+body:not(.noskin) .win[data-app].max{border-radius:0!important}
+body:not(.noskin) .win[data-app][data-vv=on]{--pc:oklch(.5 calc(var(--c)*1.15) var(--h));--onpc:oklch(.97 .03 var(--h));--acc:oklch(.86 calc(var(--c)*1.1) var(--h));--tile:oklch(.3 calc(var(--c)*.5) var(--h));}
+body:not(.noskin) .win[data-app="Chrome"]{--h:255;--c:0.16}
+body:not(.noskin) .win[data-app="設定"]{--h:240;--c:0.05}
+body:not(.noskin) .win[data-app="使い方・ヒント"]{--h:300;--c:0.15}
+body:not(.noskin) .win[data-app="Chrome 描画"]{--h:25;--c:0.2}
+body:not(.noskin) .win[data-app="カメラ"]{--h:85;--c:0.17}
+body:not(.noskin) .win[data-app="写真"]{--h:80;--c:0.13}
+body:not(.noskin) .win[data-app="ファイル"]{--h:255;--c:0.075}
+body:not(.noskin) .win[data-app="天気"]{--h:235;--c:0.17}
+body:not(.noskin) .win[data-app="時計"]{--h:300;--c:0.16}
+body:not(.noskin) .win[data-app="Play Books"]{--h:40;--c:0.1}
+body:not(.noskin) .win[data-app="Messages"]{--h:150;--c:0.16}
+body:not(.noskin) .win[data-app="Play Movies"]{--h:285;--c:0.14}
+body:not(.noskin) .win[data-app="Gmail"]{--h:25;--c:0.17}
+body:not(.noskin) .win[data-app="Google Meet"]{--h:195;--c:0.14}
+body:not(.noskin) .win[data-app="Google Chat"]{--h:175;--c:0.14}
+body:not(.noskin) .win[data-app="ドキュメント"]{--h:255;--c:0.14}
+body:not(.noskin) .win[data-app="スライド"]{--h:70;--c:0.17}
+body:not(.noskin) .win[data-app="スプレッドシート"]{--h:150;--c:0.13}
+body:not(.noskin) .win[data-app="YouTube Music"]{--h:350;--c:0.2}
+body:not(.noskin) .win[data-app="Google ドライブ"]{--h:255;--c:0.13}
+body:not(.noskin) .win[data-app="Google Keep"]{--h:98;--c:0.15}
+body:not(.noskin) .win[data-app="Google カレンダー"]{--h:255;--c:0.15}
+body:not(.noskin) .win[data-app="YouTube"]{--h:27;--c:0.2}
+body:not(.noskin) .win[data-app="ウェブストア"]{--h:250;--c:0.1}
+body:not(.noskin) .win[data-app="電卓"]{--h:40;--c:0.1}
+body:not(.noskin) .win[data-app="ターミナル"]{--h:145;--c:0.12}
+body:not(.noskin) .win[data-app="Google マップ"]{--h:160;--c:0.14}
+body:not(.noskin) .win[data-app="Google 翻訳"]{--h:265;--c:0.16}
+body:not(.noskin) .win[data-app="診断"]{--h:200;--c:0.08}
+body:not(.noskin) .win[data-app="タスク マネージャー"]{--h:40;--c:0.1}
+body:not(.noskin) .win[data-app="テキスト"]{--h:85;--c:0.05}
+body:not(.noskin) .win[data-app="ToDo"]{--h:160;--c:0.15}
+body:not(.noskin) .win[data-app="マインスイーパー"]{--h:260;--c:0.05}
+body:not(.noskin) .win[data-app="メディア プレーヤー"]{--h:300;--c:0.1}
+body:not(.noskin) .win[data-app="ボイスレコーダー"]{--h:20;--c:0.2}
+body:not(.noskin) .win[data-app="2048"]{--h:60;--c:0.17}
+body:not(.noskin) .win[data-app="スネーク"]{--h:140;--c:0.2}
+body:not(.noskin) .win[data-app="単位変換"]{--h:215;--c:0.1}
+body:not(.noskin) .win[data-app="ピアノ"]{--h:30;--c:0.02}
+body:not(.noskin) .win[data-app="パスワード生成"]{--h:150;--c:0.12}
+body:not(.noskin) .win[data-app="タイピング練習"]{--h:200;--c:0.12}
+body:not(.noskin) .win[data-app="カラー ピッカー"]{--h:330;--c:0.2}
+body:not(.noskin) .win[data-app="JSON 整形"]{--h:90;--c:0.12}
+body:not(.noskin) .win[data-app="サイコロ"]{--h:20;--c:0.2}
+body:not(.noskin) .win[data-app="ポモドーロ"]{--h:30;--c:0.19}
+body:not(.noskin) .win[data-app="メトロノーム"]{--h:60;--c:0.11}
+body:not(.noskin) .win[data-app="文字数カウンター"]{--h:190;--c:0.1}
+body:not(.noskin) .win[data-app="Markdown"]{--h:265;--c:0.1}
+body:not(.noskin) .win[data-app="じゃんけん"]{--h:350;--c:0.2}
+body:not(.noskin) .win[data-app="Gemini"]{--h:275;--c:0.17}
+body:not(.noskin) .win[data-app="家計簿"]{--h:165;--c:0.13}
+body:not(.noskin) .win[data-app="習慣トラッカー"]{--h:130;--c:0.17}
+body:not(.noskin) .win[data-app="環境音"]{--h:205;--c:0.12}
+body:not(.noskin) .win[data-app="付箋"]{--h:95;--c:0.16}
+body:not(.noskin) .win[data-app="単語帳"]{--h:20;--c:0.14}
+body:not(.noskin) .win[data-app="計算ドリル"]{--h:45;--c:0.17}
+body:not(.noskin) .win[data-app="関数グラフ"]{--h:255;--c:0.1}
+body:not(.noskin) .win[data-app="周期表"]{--h:310;--c:0.14}
+body:not(.noskin) .win[data-app="学習記録"]{--h:175;--c:0.13}
+body:not(.noskin) .win[data-app="時間割"]{--h:340;--c:0.12}
+body:not(.noskin) .win[data-app="AI 家庭教師"]{--h:270;--c:0.16}
+body:not(.noskin) .win[data-app="Rambler"]{--h:30;--c:0.12}
+body:not(.noskin) .win[data-app="カスタム ウィジェット"]{--h:245;--c:0.12}
+body:not(.noskin) .win[data-dia=pill]{--rb:999px;--rbp:16px;--rc:30px;--rf:999px;--rw:34px}
+body:not(.noskin) .win[data-dia=soft]{--rb:16px;--rbp:8px;--rc:24px;--rf:16px;--rw:28px}
+body:not(.noskin) .win[data-dia=rect]{--rb:10px;--rbp:4px;--rc:14px;--rf:10px;--rw:20px}
+body:not(.noskin) .win[data-dia=sharp]{--rb:3px;--rbp:3px;--rc:6px;--rf:3px;--rw:12px}
+body:not(.noskin) .win[data-dia=leaf]{--rb:18px 4px 18px 4px;--rbp:4px 18px 4px 18px;--rc:34px 8px 34px 8px;--rf:18px 4px 18px 4px;--rw:36px 12px 36px 12px}
+body:not(.noskin) .win[data-dia=bubble]{--rb:22px 22px 22px 6px;--rbp:6px 22px 22px 22px;--rc:30px 30px 30px 8px;--rf:22px 22px 22px 6px;--rw:32px 32px 32px 12px}
+body:not(.noskin) .win[data-dia=blob]{--rb:62% 38% 58% 42% / 55% 55% 45% 45%;--rbp:30% 70% 40% 60% / 45% 40% 60% 55%;--rc:44px 20px 44px 20px;--rf:28px 12px 28px 12px;--rw:44px 16px 44px 16px}
+body:not(.noskin) .win[data-ff=sans]{--ff:'Outfit','Google Sans','Noto Sans JP',system-ui,sans-serif;--fh:'Outfit','Google Sans','Noto Sans JP',system-ui,sans-serif}
+body:not(.noskin) .win[data-ff=round]{--ff:'Zen Maru Gothic','M PLUS Rounded 1c','Hiragino Maru Gothic ProN','Noto Sans JP',system-ui,sans-serif;--fh:'Zen Maru Gothic','M PLUS Rounded 1c','Hiragino Maru Gothic ProN','Noto Sans JP',system-ui,sans-serif}
+body:not(.noskin) .win[data-ff=serif]{--ff:'Noto Serif JP','Shippori Mincho','Hiragino Mincho ProN',Georgia,serif;--fh:'Noto Serif JP','Shippori Mincho','Hiragino Mincho ProN',Georgia,serif}
+body:not(.noskin) .win[data-ff=mono]{--ff:'JetBrains Mono','Noto Sans Mono CJK JP',ui-monospace,Menlo,Consolas,monospace;--fh:'JetBrains Mono','Noto Sans Mono CJK JP',ui-monospace,Menlo,Consolas,monospace}
+body:not(.noskin) .win[data-ff=disp]{--ff:'Bricolage Grotesque','Zen Maru Gothic','Noto Sans JP',system-ui,sans-serif;--fh:'Bricolage Grotesque','Zen Maru Gothic','Noto Sans JP',system-ui,sans-serif}
+body:not(.noskin) .win[data-ff=tech]{--ff:'Space Grotesk','Noto Sans JP',system-ui,sans-serif;--fh:'Space Grotesk','Noto Sans JP',system-ui,sans-serif}
+body:not(.noskin) .win[data-ff=chunk]{--ff:'Dela Gothic One','Zen Maru Gothic','Noto Sans JP',system-ui,sans-serif;--fh:'Dela Gothic One','Zen Maru Gothic','Noto Sans JP',system-ui,sans-serif}
+body:not(.noskin) .win[data-ff=serif]{--fh:'Fraunces','Noto Serif JP',serif}
+body:not(.noskin) .win[data-ff=chunk]{--ff:'Zen Maru Gothic','Noto Sans JP',system-ui,sans-serif}
+body:not(.noskin) .win[data-app] .tb .t{visibility:visible}body:not(.noskin) .win[data-app] .tb .ic{display:grid;width:30px;height:30px;font-size:0;border-radius:34%}
+body:not(.noskin) .win[data-app] .tb .t,body:not(.noskin) .win[data-app] .wb h1,body:not(.noskin) .win[data-app] .wb h2,body:not(.noskin) .win[data-app] .wb h3{font-family:var(--fh)}
+body:not(.noskin) .win[data-app] button,body:not(.noskin) .win[data-app] input,body:not(.noskin) .win[data-app] select,body:not(.noskin) .win[data-app] textarea{font-family:inherit}
+body:not(.noskin) .win[data-app] .cb{border-radius:var(--rb);transition:border-radius .38s var(--spr),transform .25s var(--spr),background .2s,box-shadow .2s}
+body:not(.noskin) .win[data-app] .cb:not(.t){background:var(--acc);color:var(--panel)}
+body:not(.noskin) .win[data-app] .cb.t{background:var(--pc);color:var(--onpc)}
+body:not(.noskin) .win[data-app] .cb:hover{box-shadow:0 2px 10px color-mix(in srgb,var(--acc) 35%,transparent)}
+body:not(.noskin) .win[data-app] .cb:active{border-radius:var(--rbp);transform:scale(.95)}
+body:not(.noskin) .win[data-app] .wxc{border-radius:var(--rc);background:var(--tile)}
+body:not(.noskin) .win[data-app] .bar input:not([type]),body:not(.noskin) .win[data-app] .bar input[type=text],body:not(.noskin) .win[data-app] .num,body:not(.noskin) .win[data-app] select,body:not(.noskin) .win[data-app] .fi{border-radius:var(--rf)}
+body:not(.noskin) .win[data-app] .bar{background:transparent}
+body:not(.noskin) .win[data-app] .tb{transition:background .3s}
+body:not(.noskin) .win[data-app] .tb button{border-radius:50%;transition:border-radius .3s var(--spr),background .2s,transform .2s var(--spr)}
+body:not(.noskin) .win[data-app] .tb button:hover{border-radius:30%}
+/* std: アプリ色に染めたバー */
+body:not(.noskin) .win[data-tbs=std] .tb{background:color-mix(in srgb,var(--pc) 60%,var(--panel));height:54px;padding:0 12px 0 14px}
+body:not(.noskin) .win[data-tbs=std] .tb .t{font-weight:600;font-size:16px;letter-spacing:-.01em}
+/* large: M3 Large top app bar（大見出し） */
+body:not(.noskin) .win[data-tbs=large] .tb{height:auto;display:grid;grid-template-columns:auto 1fr auto auto auto;grid-template-areas:"ic . mi ma cl" "t t t t t";align-items:center;gap:2px 6px;padding:10px 12px 6px 16px;background:var(--panel)}
+body:not(.noskin) .win[data-tbs=large] .tb>:nth-child(1){grid-area:ic;transform:scale(.8);transform-origin:left center}
+body:not(.noskin) .win[data-tbs=large] .tb>.t{grid-area:t;font:700 clamp(26px,4.2vw,34px)/1.1 var(--fh);letter-spacing:-.025em;padding:2px 6px 10px;white-space:nowrap}
+body:not(.noskin) .win[data-tbs=large] .tb>button:nth-of-type(1){grid-area:mi}body:not(.noskin) .win[data-tbs=large] .tb>button:nth-of-type(2){grid-area:ma}body:not(.noskin) .win[data-tbs=large] .tb>button:nth-of-type(3){grid-area:cl}
+/* float: 内容の上に浮くチップ */
+body:not(.noskin) .win[data-tbs=float]{position:fixed}
+body:not(.noskin) .win[data-tbs=float] .tb{position:absolute;top:0;left:0;right:0;height:60px;background:transparent;padding:10px 12px 0 12px;z-index:8;pointer-events:none}
+body:not(.noskin) .win[data-tbs=float] .tb>*{pointer-events:auto}
+body:not(.noskin) .win[data-tbs=float] .tb .t{flex:0 1 auto;margin-right:auto;padding:0 16px 0 6px;height:40px;line-height:40px;border-radius:var(--rb);background:color-mix(in srgb,var(--panel) 72%,transparent);backdrop-filter:blur(16px) saturate(1.4);font-weight:600;box-shadow:0 1px 6px rgba(0,0,0,.12)}
+body:not(.noskin) .win[data-tbs=float] .tb>:nth-child(1){margin-right:-8px;z-index:1}
+body:not(.noskin) .win[data-tbs=float] .tb button{width:38px;height:38px;background:color-mix(in srgb,var(--panel) 72%,transparent);backdrop-filter:blur(16px);box-shadow:0 1px 6px rgba(0,0,0,.12)}
+body:not(.noskin) .win[data-tbs=float] .wb{padding-top:64px}
+body:not(.noskin) .win[data-tbs=float] .wb>.bar:first-child{padding-top:4px}
+/* immerse: 暗い没入型オーバーレイ */
+body:not(.noskin) .win[data-tbs=immerse] .tb{position:absolute;top:0;left:0;right:0;height:50px;z-index:8;background:linear-gradient(rgba(0,0,0,.6),transparent);color:#fff;padding:6px 10px 0 14px}
+body:not(.noskin) .win[data-tbs=immerse] .tb .t{opacity:.85;font-weight:500;font-size:14px;letter-spacing:.02em}
+body:not(.noskin) .win[data-tbs=immerse] .tb button{width:34px;height:34px;color:#fff;background:rgba(255,255,255,.14);backdrop-filter:blur(10px)}
+body:not(.noskin) .win[data-tbs=immerse] .tb button:hover{background:rgba(255,255,255,.28)}
+body:not(.noskin) .win[data-tbs=immerse] .wb{padding-top:48px}
+/* term: 細い等幅バー */
+body:not(.noskin) .win[data-tbs=term] .tb{height:36px;padding:0 6px 0 12px;background:color-mix(in srgb,var(--pc) 40%,var(--panel));border-bottom:1px solid var(--line);font:500 12px var(--ff);letter-spacing:.04em;text-transform:none}
+body:not(.noskin) .win[data-tbs=term] .tb .t{font-size:12px;font-weight:500}
+body:not(.noskin) .win[data-tbs=term] .tb button{width:26px;height:26px;border-radius:4px}
+body:not(.noskin) .win[data-tbs=term] .tb>:nth-child(1){transform:scale(.6);margin:-8px}
+/* paper: 白い紙のバー */
+body:not(.noskin) .win[data-tbs=paper] .tb{height:46px;background:var(--panel);border-bottom:1px solid var(--line);padding:0 8px 0 12px}
+body:not(.noskin) .win[data-tbs=paper] .tb .t{font-weight:500;font-size:14px}
+body:not(.noskin) .win[data-tbs=paper] .tb button{width:30px;height:30px;border-radius:8px}
+body:not(.noskin) .win[data-tbs=paper] .tb>:nth-child(1){transform:scale(.72);margin:-6px}
+/* arcade: 太いバーと影 */
+body:not(.noskin) .win[data-tbs=arcade] .tb{height:56px;background:var(--acc);color:var(--panel);box-shadow:0 5px 0 color-mix(in srgb,var(--acc) 62%,black);z-index:6;position:relative}
+body:not(.noskin) .win[data-tbs=arcade] .tb .t{font:400 19px var(--fh);letter-spacing:.03em}
+body:not(.noskin) .win[data-tbs=arcade] .tb button{background:color-mix(in srgb,var(--panel) 22%,transparent);color:var(--panel);border-radius:10px}
+body:not(.noskin) .win[data-tbs=arcade] .tb>:nth-child(1){transform:scale(.8);margin:-4px}
+body:not(.noskin) .win[data-tbs=arcade] .wb{padding-top:20px}
+@keyframes winpop{from{opacity:0;transform:scale(.82) translateY(14px)}to{opacity:1;transform:none}}
+@keyframes winslide{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes winzoom{from{opacity:0;transform:scale(1.08);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+@keyframes windrop{from{opacity:0;transform:translateY(-28px) scale(.97)}to{opacity:1;transform:none}}
+body:not(.noskin) .win[data-mo=pop]{animation:winpop .5s var(--spr)}
+body:not(.noskin) .win[data-mo=slide]{animation:winslide .4s cubic-bezier(.2,0,0,1)}
+body:not(.noskin) .win[data-mo=zoom]{animation:winzoom .45s cubic-bezier(.2,0,0,1)}
+body:not(.noskin) .win[data-mo=drop]{animation:windrop .4s var(--spr)}
+body:not(.noskin) .win[data-app="設定"] .bar>.ms,.bar>b{display:none}
+body:not(.noskin) .win[data-app="設定"] .bar{justify-content:center;padding:4px 16px 12px}
+body:not(.noskin) .win[data-app="設定"] .bar input{height:56px;max-width:640px;border-radius:28px;font-size:15px;padding:0 24px;background:var(--tile)}
+body:not(.noskin) .win[data-app="設定"] .snav button{align-items:center}
+body:not(.noskin) .win[data-app="設定"] .snav button>.ms{width:42px;height:42px;border-radius:50%;background:var(--tile);display:grid;place-items:center;flex:none;transition:border-radius .35s var(--spr),background .2s}
+body:not(.noskin) .win[data-app="設定"] .snav button.on{background:var(--acc);color:var(--panel);border-radius:30px}
+body:not(.noskin) .win[data-app="設定"] .snav button.on small{color:var(--panel);opacity:.8}
+body:not(.noskin) .win[data-app="設定"] .snav button.on>.ms{background:color-mix(in srgb,var(--panel) 24%,transparent);border-radius:35%}
+body:not(.noskin) .win[data-app="カメラ"] .wb{background:#000!important}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .stg{position:absolute;inset:0;padding:0}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .cmw{width:100%;height:100%;border-radius:0}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .top{position:absolute;top:48px;left:0;right:0;flex-wrap:nowrap;overflow-x:auto;justify-content:center;padding:6px 14px;scrollbar-width:none}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .chip{border-radius:var(--rb);background:rgba(20,20,24,.5);backdrop-filter:blur(16px) saturate(1.5)}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .chip.on{background:var(--acc);color:#1a1200;border-radius:12px}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .bot{position:absolute;left:0;right:0;bottom:0;z-index:3;padding-top:60px;background:linear-gradient(transparent,rgba(0,0,0,.72))}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .fls{position:absolute;left:0;right:0;bottom:170px;z-index:3;justify-content:center}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .md{background:rgba(20,20,24,.55);backdrop-filter:blur(16px);padding:5px;gap:2px}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .md button{padding:6px 16px;border-radius:20px;color:#fff;font-weight:500;transition:background .25s,border-radius .3s var(--spr)}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .md .on{background:var(--acc);color:#1a1200}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .rb{border-radius:20px;background:rgba(20,20,24,.5);backdrop-filter:blur(14px)}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .rb:active{border-radius:50%}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .shu{width:84px;height:84px;border:5px solid #fff;box-shadow:0 0 0 6px rgba(255,255,255,.18);background:rgba(255,255,255,.92);background-clip:content-box;padding:6px}
+body:not(.noskin) .win[data-app="カメラ"] .cm2 .shu:active{border-radius:30px;transform:scale(.92)}
+body:not(.noskin) .win[data-app="写真"] .bar>b{display:none}
+body:not(.noskin) .win[data-app="写真"] .phx .seg{background:color-mix(in srgb,var(--panel) 70%,transparent);backdrop-filter:blur(14px);padding:4px;border-radius:999px;box-shadow:0 1px 6px rgba(0,0,0,.1)}
+body:not(.noskin) .win[data-app="写真"] .phx .seg button{border-radius:999px;padding:6px 16px;transition:border-radius .3s var(--spr),background .2s}
+body:not(.noskin) .win[data-app="写真"] .phx .seg button.on{background:var(--acc);color:var(--panel)}
+body:not(.noskin) .win[data-app="写真"] .phx .ph{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));grid-auto-rows:130px;grid-auto-flow:dense;gap:8px}
+body:not(.noskin) .win[data-app="写真"] .phx .ph .th{aspect-ratio:auto;height:100%;border-radius:20px}
+body:not(.noskin) .win[data-app="写真"] .phx .ph .th:nth-child(7n+1){grid-column:span 2;grid-row:span 2;border-radius:44px 12px 44px 12px}
+body:not(.noskin) .win[data-app="写真"] .phx .ph .th:nth-child(7n+4){border-radius:12px 36px 12px 36px}
+body:not(.noskin) .win[data-app="写真"] .phx .ph .th:nth-child(11n+6){border-radius:50%}
+body:not(.noskin) .win[data-app="写真"] .phx .ph .th:hover{border-radius:36px}
+body:not(.noskin) .win[data-app="写真"] .phx .empty{margin:60px auto;max-width:300px;text-align:center;padding:200px 20px 0;position:relative;color:var(--sub);background:radial-gradient(circle at 36% 30%,var(--pc) 0 38px,transparent 39px),radial-gradient(circle at 62% 42%,var(--acc) 0 22px,transparent 23px),radial-gradient(ellipse at 46% 32%,var(--tile) 0 78px,transparent 79px) no-repeat}
+body:not(.noskin) .win[data-app="天気"] .wb{background:linear-gradient(180deg,oklch(.8 .13 235),oklch(.93 .05 225) 55%,var(--panel))}
+body:not(.noskin) .win[data-app="天気"] .wb .wxc{background:color-mix(in srgb,var(--panel) 58%,transparent);backdrop-filter:blur(18px) saturate(1.4);border-radius:var(--rc);box-shadow:0 2px 14px rgba(0,0,0,.08)}
+body:not(.noskin) .win[data-app="天気"] .bar input{background:color-mix(in srgb,var(--panel) 70%,transparent);backdrop-filter:blur(14px)}
+html[data-theme=dark] body:not(.noskin) .win[data-app="天気"] .wb{background:linear-gradient(180deg,oklch(.3 .1 255),oklch(.22 .06 250) 60%,var(--panel))}
+body:not(.noskin) .win[data-app="Google Keep"] .bar>input{height:52px;border-radius:26px;background:var(--panel);box-shadow:0 1px 8px rgba(0,0,0,.1);padding:0 22px}
+body:not(.noskin) .win[data-app="Google Keep"] .scroll{background:radial-gradient(circle,color-mix(in srgb,var(--acc) 22%,transparent) 1.3px,transparent 1.6px) 0 0/22px 22px}
+body:not(.noskin) .win[data-app="Google Keep"] .scroll>.wxc{border-radius:36px 12px 36px 12px;background:var(--panel);box-shadow:0 4px 20px rgba(0,0,0,.12)}
+body:not(.noskin) .win[data-app="Google Keep"] .kg>*:not(.empty){border-radius:30px 10px 30px 10px!important;box-shadow:0 2px 10px rgba(0,0,0,.1);transition:border-radius .4s var(--spr),transform .25s var(--spr)}
+body:not(.noskin) .win[data-app="Google Keep"] .kg>*:not(.empty):nth-child(even){border-radius:10px 30px 10px 30px!important}
+body:not(.noskin) .win[data-app="Google Keep"] .kg>*:not(.empty):hover{border-radius:30px!important;transform:translateY(-3px)}
+body:not(.noskin) .win[data-app="Google カレンダー"] .bar .ttl{font:700 26px/1.1 var(--fh);letter-spacing:-.02em;padding-left:6px}
+body:not(.noskin) .win[data-app="Google カレンダー"] .cg button{border-radius:16px;height:50px;transition:border-radius .35s var(--spr),background .2s}
+body:not(.noskin) .win[data-app="Google カレンダー"] .cg button:hover{background:var(--pc);border-radius:26px}
+body:not(.noskin) .win[data-app="Google カレンダー"] .cg .td{background:var(--acc);color:var(--panel);width:auto;border-radius:42% 58% 55% 45% / 52% 44% 56% 48%;font-weight:700}
+body:not(.noskin) .win[data-app="Google カレンダー"] .nx{background:var(--pc);color:var(--onpc);border-radius:32px 32px 8px 32px;padding:18px 22px;font-weight:500}
+body:not(.noskin) .win[data-app="Google カレンダー"] .af>*{border-radius:20px 20px 6px 20px}
+body:not(.noskin) .win[data-app="時計"] .bar{padding:2px 14px 10px}
+body:not(.noskin) .win[data-app="時計"] .bar .cb{height:42px;padding:0 18px}
+body:not(.noskin) .win[data-app="時計"] .ck .num,.tz,.alr{font-family:var(--fh)}
+body:not(.noskin) .win[data-app="時計"] .alr:nth-child(odd){border-radius:30px 8px 30px 8px}
+body:not(.noskin) .win[data-app="時計"] .alr:nth-child(even){border-radius:8px 30px 8px 30px}
+body:not(.noskin) .win[data-app="時計"] .tz:nth-child(odd){border-radius:32px 10px 32px 10px}
+body:not(.noskin) .win[data-app="時計"] .tz:nth-child(even){border-radius:10px 32px 10px 32px}
+body:not(.noskin) .win[data-app="YouTube Music"] .bar>b{font:700 22px var(--fh);letter-spacing:-.02em}
+body:not(.noskin) .win[data-app="YouTube Music"] .disc{width:210px;height:210px;box-shadow:0 18px 50px rgba(0,0,0,.55);background:radial-gradient(circle,var(--acc) 0 16%,#111 16.5% 17%,transparent 17.5%),repeating-radial-gradient(circle,#0c0c0e 0 2px,#1d1d22 2px 4px),#111;position:relative;animation:v34spin 9s linear infinite;animation-play-state:paused}
+body:not(.noskin) .win[data-app="YouTube Music"] .disc .ms{position:relative;z-index:1;font-size:34px;color:var(--panel)}
+body:not(.noskin) .win[data-app="YouTube Music"] .disc::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 20deg,transparent,rgba(255,255,255,.12),transparent 30%,rgba(255,255,255,.1),transparent 70%)}
+body:not(.noskin) .win[data-app="YouTube Music"] .mt{font:700 18px var(--fh)}
+body:not(.noskin) .win[data-app="YouTube Music"][data-a=pp]{width:68px;height:68px;border-radius:50%;justify-content:center;padding:0;font-size:28px}
+body:not(.noskin) .win[data-app="YouTube Music"][data-a=pp] .ms{font-size:32px}
+body:not(.noskin) .win[data-app="YouTube Music"][data-a=pp]:active{border-radius:22px}
+body:not(.noskin) .win[data-app="YouTube Music"] .wb{background:radial-gradient(90% 60% at 15% 0%,oklch(.42 .2 350 / .8),transparent 60%),radial-gradient(70% 55% at 100% 30%,oklch(.4 .17 20 / .7),transparent 60%),var(--panel)}
+body:not(.noskin) .win[data-app="YouTube Music"] .ml>*{border-radius:18px}
+@keyframes v34spin{to{transform:rotate(360deg)}}
+body:not(.noskin) .win[data-app="Gmail"] .bar>.cb[data-g=c]{height:56px;padding:0 24px;border-radius:18px;font-size:15px;font-weight:600;box-shadow:0 4px 14px color-mix(in srgb,var(--acc) 40%,transparent)}
+body:not(.noskin) .win[data-app="Gmail"] .bar>.cb[data-g=c]:active{border-radius:30px}
+body:not(.noskin) .win[data-app="Gmail"] .v2l{border:0;padding:6px 10px 10px}
+body:not(.noskin) .win[data-app="Gmail"] .mi{border:0;margin-bottom:4px;border-radius:24px 8px 24px 8px;background:var(--surf2);transition:border-radius .4s var(--spr),background .2s}
+body:not(.noskin) .win[data-app="Gmail"] .mi:nth-child(even){border-radius:8px 24px 8px 24px}
+body:not(.noskin) .win[data-app="Gmail"] .mi:hover{background:var(--pc);border-radius:24px}
+body:not(.noskin) .win[data-app="Gmail"] .v2r{background:var(--surf2);border-radius:var(--rc);margin:0 10px 10px 0}
+body:not(.noskin) .win[data-app="ターミナル"] .tm{background:#050a07;color:#8dffbb;text-shadow:0 0 6px rgba(80,255,150,.45);background-image:repeating-linear-gradient(0deg,rgba(80,255,150,.045) 0 1px,transparent 1px 3px);font-family:var(--ff)}
+body:not(.noskin) .win[data-app="ターミナル"] .tm *{font-family:var(--ff)}
+body:not(.noskin) .win[data-app="ターミナル"] .bar{background:#0a120d;border-bottom:1px solid rgba(80,255,150,.2)}
+body:not(.noskin) .win[data-app="Google 翻訳"] textarea{border-radius:36px 36px 8px 36px;font-size:17px;padding:20px 24px;background:var(--tile)}
+body:not(.noskin) .win[data-app="Google 翻訳"] .out{border-radius:36px 36px 36px 8px;background:var(--pc);color:var(--onpc);font-size:17px;padding:20px 24px}
+body:not(.noskin) .win[data-app="ファイル"] .fsi{border-radius:10px;transition:border-radius .3s var(--spr),background .2s}
+body:not(.noskin) .win[data-app="ファイル"] .fsi.on{background:var(--acc);color:var(--panel);border-radius:10px 24px 24px 10px}
+body:not(.noskin) .win[data-app="ファイル"] .fsm,.fsf{border-radius:14px}
+body:not(.noskin) .win[data-app="Chrome"] .cts{background:color-mix(in srgb,var(--pc) 50%,var(--panel))}
+body:not(.noskin) .win[data-app="Chrome"] .ct{border-radius:16px 16px 0 0}
+body:not(.noskin) .win[data-app="Chrome"] .omni{border-radius:999px;background:var(--tile);box-shadow:inset 0 0 0 1px var(--line)}
+body:not(.noskin) .win[data-app="ドキュメント"] .scroll{background:color-mix(in srgb,var(--pc) 50%,var(--panel))}
+body:not(.noskin) .win[data-app="ドキュメント"] .pg{box-shadow:0 3px 18px rgba(0,0,0,.2);border-radius:3px}
+body:not(.noskin) .win[data-app="スプレッドシート"] .bar{background:var(--pc);border-radius:0 0 18px 18px}
+body:not(.noskin) .win[data-app="スライド"] .stage{border-radius:6px;box-shadow:0 6px 28px rgba(0,0,0,.22)}
+body:not(.noskin) .win[data-tbs=arcade] .wb{background:radial-gradient(circle,color-mix(in srgb,var(--acc) 18%,transparent) 1.5px,transparent 2px) 0 0/18px 18px,var(--panel)}
+body:not(.noskin) .win[data-tbs=immerse] .wb,.win[data-tone=night] .wb{background:radial-gradient(120% 70% at 50% -10%,color-mix(in srgb,var(--acc) 22%,transparent),transparent 60%),var(--panel)}
+body:not(.noskin) .win[data-tbs=paper] .wb{background:var(--panel)}
 </style>
 </head>
 <body>
@@ -998,12 +1240,15 @@ $('#gear').onclick=()=>{closeAll();launch('設定')};
 if(navigator.getBattery)navigator.getBattery().then(b=>{const u=()=>{const p=Math.round(b.level*100),ct=b.chargingTime;bIcon=b.charging?'battery_charging_full':p>85?'battery_full':p>60?'battery_5_bar':p>35?'battery_4_bar':p>15?'battery_2_bar':'battery_alert';$('#bat').textContent=`${p}%`+(b.charging&&isFinite(ct)&&ct>0?` - 満充電まで ${Math.floor(ct/3600)}:${String(Math.floor(ct%3600/60)).padStart(2,'0')}`:b.charging?' - 充電中':'');tick()};u();b.onlevelchange=b.onchargingchange=u}).catch(()=>{});
 /* windows */
 let z=20;const open={};
+const V34SK={"Chrome": [255, 0.16, "std", "pill", "sans", "", "pop"], "設定": [240, 0.05, "large", "soft", "sans", "", "slide"], "使い方・ヒント": [300, 0.15, "float", "blob", "disp", "vivid", "pop"], "Chrome 描画": [25, 0.2, "float", "blob", "disp", "vivid", "pop"], "カメラ": [85, 0.17, "immerse", "pill", "sans", "night", "zoom"], "写真": [80, 0.13, "float", "soft", "round", "", "pop"], "ファイル": [255, 0.075, "std", "rect", "sans", "", "slide"], "天気": [235, 0.17, "float", "pill", "round", "vivid", "drop"], "時計": [300, 0.16, "large", "bubble", "disp", "", "pop"], "Play Books": [40, 0.1, "large", "soft", "serif", "", "slide"], "Messages": [150, 0.16, "float", "bubble", "round", "", "pop"], "Play Movies": [285, 0.14, "immerse", "rect", "disp", "night", "zoom"], "Gmail": [25, 0.17, "std", "leaf", "sans", "", "slide"], "Google Meet": [195, 0.14, "immerse", "pill", "sans", "night", "zoom"], "Google Chat": [175, 0.14, "std", "bubble", "sans", "", "slide"], "ドキュメント": [255, 0.14, "paper", "soft", "sans", "", "slide"], "スライド": [70, 0.17, "paper", "soft", "sans", "", "slide"], "スプレッドシート": [150, 0.13, "paper", "sharp", "tech", "", "slide"], "YouTube Music": [350, 0.2, "immerse", "pill", "disp", "night", "zoom"], "Google ドライブ": [255, 0.13, "large", "soft", "sans", "", "slide"], "Google Keep": [98, 0.15, "float", "leaf", "round", "", "pop"], "Google カレンダー": [255, 0.15, "std", "soft", "sans", "", "slide"], "YouTube": [27, 0.2, "immerse", "pill", "sans", "night", "zoom"], "ウェブストア": [250, 0.1, "std", "pill", "sans", "", "slide"], "電卓": [40, 0.1, "float", "blob", "disp", "", "pop"], "ターミナル": [145, 0.12, "term", "sharp", "mono", "night", "drop"], "Google マップ": [160, 0.14, "float", "pill", "sans", "", "zoom"], "Google 翻訳": [265, 0.16, "std", "bubble", "sans", "", "slide"], "診断": [200, 0.08, "term", "sharp", "tech", "night", "drop"], "タスク マネージャー": [40, 0.1, "std", "rect", "tech", "", "slide"], "テキスト": [85, 0.05, "paper", "sharp", "serif", "", "slide"], "ToDo": [160, 0.15, "float", "leaf", "round", "", "pop"], "マインスイーパー": [260, 0.05, "arcade", "sharp", "tech", "", "pop"], "メディア プレーヤー": [300, 0.1, "immerse", "pill", "disp", "night", "zoom"], "ボイスレコーダー": [20, 0.2, "float", "blob", "disp", "vivid", "pop"], "2048": [60, 0.17, "arcade", "soft", "chunk", "", "pop"], "スネーク": [140, 0.2, "arcade", "sharp", "chunk", "night", "pop"], "単位変換": [215, 0.1, "std", "rect", "tech", "", "slide"], "ピアノ": [30, 0.02, "std", "sharp", "serif", "night", "zoom"], "パスワード生成": [150, 0.12, "std", "rect", "mono", "", "slide"], "タイピング練習": [200, 0.12, "std", "sharp", "mono", "", "slide"], "カラー ピッカー": [330, 0.2, "float", "blob", "disp", "vivid", "pop"], "JSON 整形": [90, 0.12, "term", "sharp", "mono", "night", "drop"], "サイコロ": [20, 0.2, "arcade", "soft", "chunk", "", "pop"], "ポモドーロ": [30, 0.19, "float", "blob", "round", "vivid", "pop"], "メトロノーム": [60, 0.11, "std", "soft", "serif", "", "slide"], "文字数カウンター": [190, 0.1, "paper", "rect", "sans", "", "slide"], "Markdown": [265, 0.1, "paper", "sharp", "tech", "", "slide"], "じゃんけん": [350, 0.2, "arcade", "blob", "chunk", "", "pop"], "Gemini": [275, 0.17, "float", "pill", "tech", "night", "zoom"], "家計簿": [165, 0.13, "std", "leaf", "sans", "", "slide"], "習慣トラッカー": [130, 0.17, "float", "blob", "round", "", "pop"], "環境音": [205, 0.12, "immerse", "blob", "round", "night", "zoom"], "付箋": [95, 0.16, "float", "leaf", "round", "", "pop"], "単語帳": [20, 0.14, "std", "bubble", "round", "", "slide"], "計算ドリル": [45, 0.17, "arcade", "soft", "chunk", "", "pop"], "関数グラフ": [255, 0.1, "paper", "sharp", "tech", "", "slide"], "周期表": [310, 0.14, "std", "rect", "tech", "", "slide"], "学習記録": [175, 0.13, "std", "soft", "round", "", "slide"], "時間割": [340, 0.12, "std", "leaf", "round", "", "slide"], "AI 家庭教師": [270, 0.16, "float", "bubble", "tech", "", "pop"], "Rambler": [30, 0.12, "paper", "soft", "serif", "", "slide"], "カスタム ウィジェット": [245, 0.12, "std", "blob", "disp", "", "pop"]};
+function v34skin(w,n){const k=V34SK[n];if(!k)return;w.dataset.app=n;w.style.setProperty('--h',k[0]);w.style.setProperty('--c',k[1]);w.dataset.tbs=k[2];w.dataset.dia=k[3];w.dataset.ff=k[4];if(k[5])w.dataset.tone=k[5];w.dataset.mo=k[6]}
+function v34toggle(){const b=document.body.classList;b.toggle('noskin');v2s('noskin',b.contains('noskin')?1:0);toast(b.contains('noskin')?'アプリのデザインを統一しました':'アプリごとの個性的なデザインを有効にしました')}
 function launch(n){
   const a=by(n);if(!a)return;closeAll();document.querySelector(`.pin[data-n="${n}"] .ic`)?.animate([{transform:'translateY(0)'},{transform:'translateY(-10px)'},{transform:'translateY(0)'}],{duration:380,easing:'ease-out'});
   recents=[n,...recents.filter(x=>x!==n)].slice(0,5);
   if(a.u&&!(n in NAT)){window.open(a.u,'_blank','popup,width=1100,height=760');toast(a.full+' を開きました');return}
   if(open[n]){open[n].style.zIndex=++z;open[n].style.display='flex';requestAnimationFrame(()=>open[n].classList.remove('min'));mark();return}
-  const w=document.createElement('div');w.className='win';
+  const w=document.createElement('div');w.className='win';v34skin(w,n);
   const k=Object.keys(open).length,big=n in NAT;
   w.style.cssText=`left:${Math.min(80+k*30,innerWidth-330)}px;top:${50+k*30}px;width:min(${big?720:560}px,calc(100% - 20px));height:min(${big?560:400}px,calc(100% - 100px));z-index:${++z}`;
   w.innerHTML=`<div class="tb">${ico(a,1)}<span class="t">${a.full}</span><button data-a="min" aria-label="最小化"><span class="ms">remove</span></button><button data-a="max" aria-label="最大化"><span class="ms">crop_square</span></button><button data-a="x" aria-label="閉じる"><span class="ms">close</span></button></div><div class="wb"></div>`;
@@ -1626,7 +1871,7 @@ document.addEventListener('contextmenu',e=>{const t=e.target,a=t.closest('.pin,.
   if(a){e.preventDefault();const n=a.dataset.n,p=pinned.includes(n);v2menu(e.clientX,e.clientY,[['open_in_new',open[n]?'ウィンドウを表示':'開く',()=>launch(n)],[p?'keep_off':'keep',p?'シェルフからピン留めを外す':'シェルフにピン留め',()=>v2pin(n)],...(open[n]?[['close','閉じる',()=>v2close(n)]]:[])]);return}
   if(t.closest('.win,#launcher,#qs,#lock,#welcome'))return;e.preventDefault();
   if(t.closest('#shelf'))v2menu(e.clientX,e.clientY,[['visibility_off',S.ah?'自動非表示をオフにする':'シェルフを自動的に隠す',()=>{S.ah=S.ah?0:1;saveS();applyS()}],['settings','シェルフの設定',()=>launch('設定')]]);
-  else v2menu(e.clientX,e.clientY,[['widgets','ウィジェットを追加',()=>launch('カスタム ウィジェット')],...(WGX.list.length?[['open_with','ウィジェットを編集',()=>WGX.edit(1)]]:[]),[WGX.hidden()?'visibility':'visibility_off',WGX.hidden()?'ウィジェットを表示':'ウィジェットを隠す',()=>WGX.hide(!WGX.hidden())],['wallpaper','壁紙を変更',v2wp],['palette','壁紙とスタイル',()=>launch('設定')],['screenshot_region','スクリーンショット',shot],['lock','画面をロック',v2lock],['keyboard','キーボード ショートカット',v2sc]])});
+  else v2menu(e.clientX,e.clientY,[['widgets','ウィジェットを追加',()=>launch('カスタム ウィジェット')],...(WGX.list.length?[['open_with','ウィジェットを編集',()=>WGX.edit(1)]]:[]),[document.body.classList.contains('noskin')?'palette':'format_paint',document.body.classList.contains('noskin')?'アプリごとの個性的なデザインを有効にする':'アプリのデザインを統一する',()=>v34toggle()],[WGX.hidden()?'visibility':'visibility_off',WGX.hidden()?'ウィジェットを表示':'ウィジェットを隠す',()=>WGX.hide(!WGX.hidden())],['wallpaper','壁紙を変更',v2wp],['palette','壁紙とスタイル',()=>launch('設定')],['screenshot_region','スクリーンショット',shot],['lock','画面をロック',v2lock],['keyboard','キーボード ショートカット',v2sc]])});
 /* 通知センター */
 const v2NT=[];
 function v2n(t,b){v2NT.unshift({t,b,d:new Date()});v2nd();if(!st.dnd)toast(t)}
@@ -3209,6 +3454,7 @@ function calc(w){const b=w.querySelector('.wb');let ex='',sci=0,hist=jl('calch',
   b.tabIndex=0;b.onkeydown=e=>{const m={'*':'×','/':'÷','-':'−'},k=m[e.key]||e.key;if(/^[0-9.+()%^!]$/.test(k)||'×÷−'.includes(k))press(k);else if(k==='Enter'||k==='='){e.preventDefault();press('=')}else if(k==='Backspace')press('⌫');else if(k==='Escape')press('C')};keys();hs();disp();b.focus()}
 
 init();
+if(v2j('noskin',0))document.body.classList.add('noskin');
 </script>
 </body>
 </html>
